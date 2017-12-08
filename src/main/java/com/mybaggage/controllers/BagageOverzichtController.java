@@ -77,10 +77,10 @@ public class BagageOverzichtController implements Initializable {
 
 //Laad alle data van de database in de tabel
     @FXML
-    private ObservableList<com.mybaggage.BagageToevoegen> data;
+    private ObservableList<com.mybaggage.models.BagageToevoegen> data;
     
     @FXML
-    private TableView<com.mybaggage.BagageToevoegen> tabelBagage;
+    private TableView<com.mybaggage.models.BagageToevoegen> tabelBagage;
     
     private Connection conn = null;
     private PreparedStatement pst = null;
@@ -93,7 +93,7 @@ public class BagageOverzichtController implements Initializable {
             pst = conn.prepareStatement("Select * from bagage");
             rs = pst.executeQuery();
             while (rs.next()) {
-                data.add(new com.mybaggage.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                data.add(new com.mybaggage.models.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);

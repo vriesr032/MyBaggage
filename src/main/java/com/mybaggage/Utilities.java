@@ -43,12 +43,12 @@ public class Utilities {
     static public ScrollPane rootScrollPane;
 
     static public void setMySQLConnectionParameters(String url, String user, String password) {
-        DatabaseConnection.url = "jdbc:mysql://localhost:3306/"
+        Database.url = "jdbc:mysql://localhost:3306/"
                 + url
                 + "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
                 + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        DatabaseConnection.user = user;
-        DatabaseConnection.password = password;
+        Database.user = user;
+        Database.password = password;
     }
 
     /*

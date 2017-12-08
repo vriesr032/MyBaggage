@@ -5,6 +5,7 @@
  */
 package com.mybaggage;
 
+import com.sun.jmx.snmp.UserAcl;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,12 +18,16 @@ import java.util.logging.Logger;
  */
 public class Database {
 
+    public static String url = "jdbc:mysql://localhost:3306/bagageregistratie";
+    public static String user = "root";
+    public static String password = "root123";
+
     public static Connection Connect() {
         try {
             //De database connectie
-            String url = "jdbc:mysql://localhost:3306/bagage";
-            String user = "root";
-            String password = "root123";
+            url = "jdbc:mysql://localhost:3306/bagageregistratie";
+            user = "root";
+            password = "root123";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -34,4 +39,5 @@ public class Database {
 
         return null;
     }
+
 }

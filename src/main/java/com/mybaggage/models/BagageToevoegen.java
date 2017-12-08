@@ -1,4 +1,4 @@
-package com.mybaggage;
+package com.mybaggage.models;
 
 /**
  *
