@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private static Scene scene;
     private static Database database;
     
     @Override
@@ -26,6 +27,10 @@ public class Main extends Application {
         stage.show();
     }
 
+    public static Scene getScene() {
+        return scene;
+    }
+    
     public static Database getDatabase() {
         return database;
     }
