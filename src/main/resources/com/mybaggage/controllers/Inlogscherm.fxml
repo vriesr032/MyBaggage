@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.InlogschermController">
+    <children>
+        <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="306.0" prefWidth="1382.0" style="-fx-background-color: red;">
+            <children>
+                <Label layoutX="413.0" layoutY="30.0" text="BAGAGE REGISTRATIE SYSTEEM" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="37.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="431.0" layoutY="93.0" prefHeight="14.0" prefWidth="524.0" />
+            </children>
+        </Pane>
+        <Pane layoutX="504.0" layoutY="141.0" prefHeight="597.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
+            <children>
+                
+                <TextField fx:id="textGebruikersnaam" layoutX="98.0" layoutY="226.0" promptText="Gebruikersnaam" />
+                <PasswordField fx:id="textPassword" layoutX="98.0" layoutY="291.0" promptText="Wachtwoord" />
+                <ChoiceBox fx:id="choiceFunctie" layoutX="103.0" layoutY="388.0" prefHeight="31.0" prefWidth="186.0" value="Medewerker">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Medewerker" />
+                            <String fx:value="Admin" />
+                        </FXCollections>
+                    </items>
+                </ChoiceBox>
+                <Button fx:id="button" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" defaultButton="true" text="Log in" />
+            <Label layoutX="122.0" layoutY="137.0" text="Inloggen">
+               <font>
+                  <Font name="System Bold" size="29.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="151.0" fitWidth="392.0">
+               <image>
+                  <Image url="@../../../../../Icons/Corendon_logo.png" />
+               </image>
+            </ImageView>
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

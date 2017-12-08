@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="verlorenBagageFormulier" prefHeight="675.0" prefWidth="1100.0" stylesheets="@../styles/Styles.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nl.hva.gordonm.bagaggeregistratie.FXMLController">
+   <children>
+      <Label layoutX="88.0" layoutY="127.0" prefHeight="17.0" prefWidth="188.0" text="Basis Informatie">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="88.0" layoutY="168.0" prefHeight="17.0" prefWidth="188.0" text="Datum:" />
+      <Label layoutX="88.0" layoutY="240.0" prefHeight="17.0" prefWidth="188.0" text="Tijd:" />
+      <Label layoutX="88.0" layoutY="310.0" prefHeight="17.0" prefWidth="188.0" text="Luchthaven" />
+      <Label layoutX="438.0" layoutY="122.0" prefHeight="27.0" prefWidth="225.0" text="Bagage Label Informatie">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="438.0" layoutY="163.0" prefHeight="17.0" prefWidth="188.0" text="Labelnummer:" />
+      <Label layoutX="438.0" layoutY="223.0" prefHeight="17.0" prefWidth="188.0" text="Vluchtnummer:" />
+      <Label layoutX="438.0" layoutY="296.0" prefHeight="17.0" prefWidth="188.0" text="Bestemming:" />
+      <Label layoutX="438.0" layoutY="366.0" prefHeight="17.0" prefWidth="188.0" text="Lost-and-found id" />
+      <Label layoutX="804.0" layoutY="124.0" prefHeight="17.0" prefWidth="188.0" text="Bagage Informatie">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="804.0" layoutY="165.0" prefHeight="17.0" prefWidth="188.0" text="Type:" />
+      <Label layoutX="804.0" layoutY="237.0" prefHeight="17.0" prefWidth="188.0" text="Merk:" />
+      <Label layoutX="804.0" layoutY="307.0" prefHeight="17.0" prefWidth="188.0" text="Kleur:" />
+      <ImageView fitHeight="42.0" fitWidth="64.0" layoutX="-26.0" layoutY="598.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="804.0" layoutY="425.0" prefHeight="17.0" prefWidth="188.0" text="Bijzondere kenmerken" />
+      <JFXDatePicker fx:id="txtDatum" defaultColor="RED" editable="false" layoutX="88.0" layoutY="187.0" prefHeight="28.0" prefWidth="208.0" showWeekNumbers="true" />
+      <JFXButton fx:id="btn_RegistreerGevondenBagage" contentDisplay="CENTER" layoutX="804.0" layoutY="585.0" onMousePressed="#insertGevondenBagageFormulier" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" text="Registreer" textFill="#f8f8f8" />
+      <JFXTextField fx:id="txtLabelnummer" focusColor="RED" layoutX="438.0" layoutY="183.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtVluchtnummer" focusColor="RED" layoutX="438.0" layoutY="246.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtBestemming" focusColor="RED" layoutX="438.0" layoutY="315.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtLostAndFoundID" focusColor="RED" layoutX="438.0" layoutY="385.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtType" focusColor="RED" layoutX="804.0" layoutY="186.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtMerk" focusColor="RED" layoutX="804.0" layoutY="262.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtKleur" focusColor="RED" layoutX="804.0" layoutY="329.0" prefHeight="25.0" prefWidth="172.0" />
+      <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="251.0" layoutY="327.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/HvA/Projecten/BagaggeRegistratie/src/main/java/images/airport.png" />
+         </image>
+      </ImageView>
+      <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="450.0" prefHeight="92.0" prefWidth="188.0" />
+      <JFXTextField fx:id="txtTijd" focusColor="RED" layoutX="88.0" layoutY="265.0" prefHeight="25.0" prefWidth="172.0" />
+      <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="251.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="file:/C:/HvA/Projecten/BagaggeRegistratie/src/main/java/images/clock.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="txtLuchthaven" focusColor="RED" layoutX="88.0" layoutY="328.0" prefHeight="25.0" prefWidth="172.0" />
+   </children>
+</AnchorPane>

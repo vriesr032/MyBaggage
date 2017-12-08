@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.mybaggage.Main;
+import com.mybaggage.controllers.MainController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -26,7 +27,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class FXMLController implements Initializable {
+public class RegistratieSysteem implements Initializable {
 
     final String DEFAULT_STRING = "";
     final int DEFAULT_INTEGER = 1;
@@ -124,6 +125,7 @@ public class FXMLController implements Initializable {
             genereerZoekResultaten(sjablonen, event);
 
             // !!!End of the Test Case.
+           
         }
     }
 
