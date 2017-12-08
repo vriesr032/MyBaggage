@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<javafx.scene.layout.GridPane fx:id="newEntryDialog" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.old.ilias.application.NewEntryController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <GridPane fx:id="gridPane" prefHeight="307.0" prefWidth="378.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="addButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="133.0" text="Toevoegen" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="134.0" text="Sluiten" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <TextField fx:id="voornaamTextField" layoutX="10.0" layoutY="64.0" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="achternaamTextField" layoutX="10.0" layoutY="108.0" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="gebruikersnaamTextField" layoutX="10.0" layoutY="152.0" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="wachtwoordTextField" layoutX="199.0" layoutY="152.0" maxWidth="-Infinity" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+          
+               
+            
+            <Label fx:id="voornaamLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="23.0" prefHeight="19.0" prefWidth="164.0" text="Voornaam" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="achternaamLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="67.0" prefHeight="19.0" prefWidth="169.0" text="Achternaam" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="gebruikersnaamLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="111.0" prefHeight="19.0" prefWidth="169.0" text="Gebruikersnaam" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="wachtwoordLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="155.0" prefHeight="19.0" prefWidth="169.0" text="Wachtwoord" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="functieLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="199.0" prefHeight="19.0" prefWidth="169.0" text="Functie" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBox"  prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+   </children>
+</javafx.scene.layout.GridPane>

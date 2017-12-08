@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane fx:id="editExistingEntryDialog" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.old.ilias.application.EditExistingEntryController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <GridPane fx:id="gridPane" prefHeight="292.0" prefWidth="424.0" GridPane.rowIndex="1">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="cancelButton" mnemonicParsing="false" onAction="#handleCancel" prefHeight="25.0" prefWidth="92.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <Button fx:id="editBookButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Wijzigen" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+            <Label fx:id="titleLabel" prefHeight="19.0" prefWidth="136.0" text="ID" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="authorLabel" layoutX="10.0" layoutY="24.0" prefHeight="19.0" prefWidth="142.0" text="Voornaam" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="numberOfPagesLabel" layoutX="10.0" layoutY="66.0" prefHeight="21.0" prefWidth="146.0" text="Achternaam" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="startDateLabel" layoutX="10.0" layoutY="108.0" prefHeight="19.0" prefWidth="145.0" text="Gebruikersnaam" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="endDateLabel" layoutX="10.0" layoutY="150.0" prefHeight="19.0" prefWidth="147.0" text="Wachtwoord" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="thoughtsLabel" layoutX="10.0" layoutY="192.0" prefHeight="19.0" prefWidth="145.0" text="Afdeling" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="titleTextField" prefHeight="25.0" prefWidth="175.0" GridPane.columnIndex="1" />
+            <TextField fx:id="authorTextField" layoutX="222.0" layoutY="19.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="numberOfPagesTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="startDateTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="endDateTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="thoughtsTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
