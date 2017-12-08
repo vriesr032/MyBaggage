@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<javafx.scene.layout.BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.old.ilias.application.UMController">
+   <children>
+      <fx:include fx:id="newEntryDialog" source="NewEntryDialog.fxml" />
+      <fx:include fx:id="editExistingEntryDialog" source="EditExistingEntryDialog.fxml" />
+   </children>
+   <top>
+      <Pane prefHeight="104.0" style="-fx-background-color: #FF0000;" BorderPane.alignment="CENTER">
+         <children>
+            <MenuButton fx:id="optionsMenuBar" layoutX="153.0" layoutY="40.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Opties">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onLoad"
+                                    text="Excel File Laden">
+                                    <accelerator>
+                                        
+                                    </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#ExportPDF"
+                                    text="PDF Export">
+                                    <accelerator>
+                                        
+                                    </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="addNewEntry" mnemonicParsing="false" onAction="#showNewEntry" text="Nieuwe medewerker toevoegen" />
+              </items>
+            </MenuButton>
+            
+            <TextField fx:id="searchField" layoutX="153.0" layoutY="8.0" prefHeight="25.0" prefWidth="310.0" promptText="Zoeken" />
+            <Button fx:id="deleteButton" layoutX="236.0" layoutY="40.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="25.0" prefWidth="128.0" style="-fx-background-color: #ffffff;" text="Verwijderen" />
+            <Button fx:id="btnLoad" layoutX="382.0" layoutY="40.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #FFffff;" text="Refresh" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <TableView fx:id="userTable" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="336.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="164.0" text="ID" />
+          <TableColumn fx:id="voornaam" minWidth="0.0" prefWidth="98.0" text="Voornaam" />
+            <TableColumn fx:id="achternaam" prefWidth="64.0" text="Achternaam" />
+            <TableColumn fx:id="gebruikersnaam" minWidth="4.0" prefWidth="59.0" text="Gebruikersnaam" />
+            <TableColumn fx:id="wachtwoord" prefWidth="62.0" text="Wachtwoord" />
+            <TableColumn fx:id="functie" prefWidth="152.0" text="Functie" />
+        </columns>
+      </TableView>
+   </center>
+</javafx.scene.layout.BorderPane>
