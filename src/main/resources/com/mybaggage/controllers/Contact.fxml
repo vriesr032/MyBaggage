@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="675.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.FAQController">
+   <children>
+    
+      <Separator layoutX="133.0" layoutY="70.0" prefHeight="1.0" prefWidth="620.0" />
+      <Label layoutX="133.0" layoutY="31.0" text="Contact">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="133.0" layoutY="119.0" prefHeight="25.0" prefWidth="620.0" text="Voor vragen die u niet heeft kunnen vinden bij veelgestelde vragen kunt u contact opnemen via:">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Label layoutX="135.0" layoutY="208.0" text="E-mail: ict-corendon@gmail.com ">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="135.0" layoutY="250.0" text="Telefoon: 06-12345678">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Label layoutX="133.0" layoutY="355.0" text="Ons personeel is beschikbaar vanaf maandag tot en met zondag tussen 08:00 en 22:00.">
+         <font>
+            <Font name="Arial" size="14.0" />
+         </font></Label>
+      <Line endX="100.0" layoutX="234.0" layoutY="225.0" startX="-100.0" />
+      <Line endX="100.0" layoutX="234.0" layoutY="267.0" startX="-100.0" />
+   </children>
+</AnchorPane>
