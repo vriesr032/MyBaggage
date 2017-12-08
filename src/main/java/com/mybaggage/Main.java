@@ -15,6 +15,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        //Utilities.setMySQLConnectionParameters("", "", "");
+        
         Main.stage = stage;
 
         database = new Database();
