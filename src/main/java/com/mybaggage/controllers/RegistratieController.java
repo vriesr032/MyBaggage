@@ -1,4 +1,4 @@
-package com.mybaggage.old.mitchell;
+package com.mybaggage.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -6,6 +6,9 @@ import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.mybaggage.Main;
 import com.mybaggage.controllers.MainController;
+import com.mybaggage.old.mitchell.Bagageregistratie;
+import com.mybaggage.old.mitchell.DatabaseConnection;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -27,7 +30,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class RegistratieSysteem implements Initializable {
+public class RegistratieController implements Initializable {
 
     final String DEFAULT_STRING = "";
     final int DEFAULT_INTEGER = 1;
@@ -133,7 +136,7 @@ public class RegistratieSysteem implements Initializable {
     private void goToVerlorenBagageRegistratie(MouseEvent event) throws IOException {
         if (event.getTarget() == btn_GoToVerlorenBagageRegistratie) {
             Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/VerlorenBagageRegistratie.fxml"));
-            Utilities.setStage(Utilities.root, event);
+            //Utilities.setStage(Utilities.root, event);
         }
     }
 
@@ -252,7 +255,7 @@ public class RegistratieSysteem implements Initializable {
         // Schakel horizontale scroll bar 
         Utilities.rootScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        Utilities.setStage(Utilities.rootScrollPane, event);
+        //Utilities.setStage(Utilities.rootScrollPane, event);
     }
 
     @FXML

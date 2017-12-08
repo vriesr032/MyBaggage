@@ -1,5 +1,6 @@
-package com.mybaggage.old.mitchell;
+package com.mybaggage;
 
+import com.mybaggage.old.mitchell.DatabaseConnection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
@@ -41,23 +42,6 @@ public class Utilities {
     @FXML
     static public ScrollPane rootScrollPane;
 
-    @FXML
-    static public void setStage(Parent root, MouseEvent event) {
-        scene = new Scene(root);
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    static public void setStage(ScrollPane rootScrollPane, MouseEvent event) {
-        scene = new Scene(rootScrollPane, 1366, 768);
-        scene.getStylesheets().add("/styles/Styles.css");
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-    }
-
     static public void setMySQLConnectionParameters(String url, String user, String password) {
         DatabaseConnection.url = "jdbc:mysql://localhost:3306/"
                 + url
@@ -68,7 +52,7 @@ public class Utilities {
     }
 
     /*
-    Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value
+    WIP: Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value 
      */
     static public Date convertStringToWrapperDate(String expectedPattern, String date) throws ParseException {
         // Use a String pattern to define the expected date format.
@@ -80,7 +64,7 @@ public class Utilities {
     }
 
     /*
-    Convert String to the wrapper Time to allow JDBC to identify this as an SQL TIME value
+    WIP: Convert String to the wrapper Time to allow JDBC to identify this as an SQL TIME value
      */
     static public Time convertStringToWrapperTime(String expectedPattern, String time) throws ParseException {
         Time convertedTime;
