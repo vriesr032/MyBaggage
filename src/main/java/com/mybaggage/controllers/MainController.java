@@ -31,6 +31,6 @@ public class MainController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         staticBorderPane = borderPane;
         
-        MainController.switchScherm("/com/mybaggage/controllers/LoginScene.fxml");
+        MainController.switchScherm("/com/mybaggage/controllers/BagageOverzicht.fxml");
     }    
 }

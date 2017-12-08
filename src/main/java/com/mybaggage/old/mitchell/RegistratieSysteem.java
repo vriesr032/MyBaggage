@@ -1,4 +1,4 @@
-package com.mybaggage.old.mitchell;
+/*package com.mybaggage.old.mitchell;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
@@ -324,4 +324,4 @@ public class RegistratieSysteem implements Initializable {
         
         Utilities.databaseConnection = new DatabaseConnection();
     }
-}
+}*/
