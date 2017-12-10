@@ -99,8 +99,12 @@ public class AdminController implements Initializable {
 
     @FXML
     private void openHome(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Admin.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
+         Node source = (Node) event.getSource();
+        dialogStage = (Stage) source.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();
     }
 
     @FXML

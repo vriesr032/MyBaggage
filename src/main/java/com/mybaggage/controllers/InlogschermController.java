@@ -98,6 +98,7 @@ public class InlogschermController implements Initializable {
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
                     scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
+                    scene.getStylesheets().add("/styles/LudoStyles.css");
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 } else if ("Admin".equals(functie)) {
@@ -106,6 +107,7 @@ public class InlogschermController implements Initializable {
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
                     scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
+                    scene.getStylesheets().add("/styles/LudoStyles.css");
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 }
