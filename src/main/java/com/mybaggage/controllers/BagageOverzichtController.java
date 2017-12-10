@@ -1,5 +1,6 @@
 package com.mybaggage.controllers;
 
+import com.mybaggage.Database;
 import com.mybaggage.old.ludo.ConnectionUtil;
 import java.net.URL;
 import java.sql.Connection;
@@ -100,6 +101,10 @@ public class BagageOverzichtController implements Initializable {
             Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
         }
         tabelBagage.setItems(data);
+    }
+    
+    public BagageOverzichtController(){
+        conn = Database.connectdb();
     }
 
     @Override

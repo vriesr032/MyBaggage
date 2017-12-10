@@ -1,5 +1,6 @@
 package com.mybaggage.controllers;
 
+import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -84,6 +85,9 @@ public class BagageWijzigenController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+     public BagageWijzigenController(){
+        conn = Database.connectdb();
     }
 
     @Override

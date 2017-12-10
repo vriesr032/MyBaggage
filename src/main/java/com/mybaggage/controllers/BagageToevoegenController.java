@@ -1,5 +1,6 @@
 package com.mybaggage.controllers;
 
+import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -84,6 +85,9 @@ public class BagageToevoegenController implements Initializable {
         } finally {
             pst.close();
         }
+    }
+     public BagageToevoegenController(){
+        conn = Database.connectdb();
     }
 
     @Override
