@@ -5,7 +5,7 @@
  */
 package com.mybaggage.controllers;
 
-import com.mybaggage.old.ludo.ConnectionUtil;
+import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -57,7 +57,7 @@ public class MedewerkerController implements Initializable {
     ResultSet resultSet2 = null;
 
     public MedewerkerController() {
-        connection = ConnectionUtil.connectdb();
+        connection = Database.connectdb();
     }
 
     @FXML
@@ -75,10 +75,9 @@ public class MedewerkerController implements Initializable {
         dialogStage.show();
     }
 
-  
     @FXML
     private void openHome(ActionEvent event) throws IOException {
-         Node source = (Node) event.getSource();
+        Node source = (Node) event.getSource();
         dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
         scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
@@ -88,7 +87,7 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private void openBagageZoeken(ActionEvent event) throws IOException {
-        
+
         Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }

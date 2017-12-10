@@ -1,7 +1,6 @@
 package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
-import com.mybaggage.old.ludo.ConnectionUtil;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -109,7 +108,7 @@ public class BagageOverzichtController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        conn = ConnectionUtil.connectdb();
+        conn = Database.connectdb();
         data = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDatabase();
