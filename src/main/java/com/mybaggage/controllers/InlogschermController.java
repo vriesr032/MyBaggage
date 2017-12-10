@@ -34,9 +34,6 @@ import javafx.stage.Stage;
  */
 public class InlogschermController implements Initializable {
 
- 
-
-
     @FXML
     private TextField textGebruikersnaam;
 
@@ -55,7 +52,6 @@ public class InlogschermController implements Initializable {
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    ResultSet resultSet2 = null;
 
     public InlogschermController() {
         connection = Database.connectdb();
@@ -71,12 +67,10 @@ public class InlogschermController implements Initializable {
         Node source = (Node) event.getSource();
         dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
-        scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
         dialogStage.setScene(scene);
         dialogStage.show();
     }
-
-    
 
     //Vergelijkt de ingevulde gegevens met die van de database en kijkt of ze correct zijn en wat de rol van de persoon is.
     //Vervolgens worden verschillende rollen naar verschillende schermen toegestuurd.
@@ -103,7 +97,7 @@ public class InlogschermController implements Initializable {
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
+                    scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 } else if ("Admin".equals(functie)) {
@@ -111,7 +105,7 @@ public class InlogschermController implements Initializable {
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Admin.fxml")));
+                    scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 }

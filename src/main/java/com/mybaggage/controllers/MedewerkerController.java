@@ -75,33 +75,22 @@ public class MedewerkerController implements Initializable {
         dialogStage.show();
     }
 
-    @FXML
-    private void openUserManagement(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openRapportage(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
+  
     @FXML
     private void openHome(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Medewerker.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
     @FXML
     private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
     @FXML
     private void openContact(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Contact.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
