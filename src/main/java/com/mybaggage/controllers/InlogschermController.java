@@ -5,7 +5,7 @@
  */
 package com.mybaggage.controllers;
 
-import com.mybaggage.old.ludo.ConnectionUtil;
+import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -58,7 +58,7 @@ public class InlogschermController implements Initializable {
     ResultSet resultSet2 = null;
 
     public InlogschermController() {
-        connection = ConnectionUtil.connectdb();
+        connection = Database.connectdb();
     }
 
     @FXML

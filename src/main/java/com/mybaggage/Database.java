@@ -5,39 +5,25 @@
  */
 package com.mybaggage;
 
-import com.sun.jmx.snmp.UserAcl;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author rickdevries
- */
+
+import java.sql.*;
+import javax.swing.*;
 public class Database {
-
-    public static String url = "jdbc:mysql://localhost:3306/bagageregistratie";
-    public static String user = "root";
-    public static String password = "root123";
-
-    public static Connection Connect() {
-        try {
-            //De database connectie
-            url = "jdbc:mysql://localhost:3306/bagageregistratie";
-            user = "root";
-            password = "root123";
-
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, user, password);
-            return conn;
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return null;
-    }
-
+Connection conn = null;
+public static Connection connectdb()
+{
+try
+{
+Class.forName("com.mysql.jdbc.Driver");
+//LET OP SWINGAPP IS DE NAAM VAN DATABASE!! https://codingbybushan.wordpress.com/2017/04/09/login-form-in-javafx-and-mysql/
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/bagage_registratie","root","admin");
+return conn;
+}
+catch(Exception e)
+{
+JOptionPane.showMessageDialog(null, e);
+return null;
+}
+}
 }

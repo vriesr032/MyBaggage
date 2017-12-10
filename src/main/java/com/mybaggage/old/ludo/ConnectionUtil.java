@@ -16,7 +16,6 @@ public static Connection connectdb()
 try
 {
 Class.forName("com.mysql.jdbc.Driver");
-//LET OP SWINGAPP IS DE NAAM VAN DATABASE!! https://codingbybushan.wordpress.com/2017/04/09/login-form-in-javafx-and-mysql/
 Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/bagage_registratie","root","admin");
 return conn;
 }

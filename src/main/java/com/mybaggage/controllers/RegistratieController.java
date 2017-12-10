@@ -106,10 +106,10 @@ public class RegistratieController implements Initializable {
         if (event.getTarget() == btn_GoToZoekResultaten) {
             Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/Test Case.fxml"));
 
-            // Maak verbinding met database
+   /*    // Maak verbinding met database
             Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "Nightfeather007!");
             Utilities.databaseConnection.getConnection();
-
+*/
             // !!!Test Case values:
             int aantalResultaten = 3;
             String[] types = {"Zakenkoffers", "Handbagage koffers", "Kinderkoffers"};
@@ -287,7 +287,7 @@ public class RegistratieController implements Initializable {
                     + "merk, kleur, kenmerken, labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-            try {
+      /*      try {
                 // Maak verbinding met database
                 Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "root123");
                 Utilities.databaseConnection.getConnection();
@@ -317,7 +317,7 @@ public class RegistratieController implements Initializable {
                 Utilities.databaseConnection.closeConnection();
             } catch (ClassNotFoundException | SQLException mySQLException) {
                 throw mySQLException;
-            }
+            }*/
         }
     }
 

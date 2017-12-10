@@ -42,6 +42,7 @@ public class Utilities {
     @FXML
     static public ScrollPane rootScrollPane;
 
+    /*
     static public void setMySQLConnectionParameters(String url, String user, String password) {
         Database.url = "jdbc:mysql://localhost:3306/"
                 + url
@@ -50,6 +51,7 @@ public class Utilities {
         Database.user = user;
         Database.password = password;
     }
+    */
 
     /*
     WIP: Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value 
