@@ -21,7 +21,7 @@ public class Main extends Application {
 
         database = new Database();
 
-        Parent root = FXMLLoader.load(getClass().getResource("/com/mybaggage/controllers/Inlogscherm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/mybaggage/controllers/BagageOverzicht.fxml"));
 
         scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");

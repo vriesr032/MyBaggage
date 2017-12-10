@@ -99,13 +99,17 @@ public class AdminController implements Initializable {
 
     @FXML
     private void openHome(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
+         Node source = (Node) event.getSource();
+        dialogStage = (Stage) source.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();
     }
 
     @FXML
     private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
@@ -113,6 +117,8 @@ public class AdminController implements Initializable {
     private void openContact(ActionEvent event) throws IOException {
         Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
+        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie2);
     }
 
     @FXML
