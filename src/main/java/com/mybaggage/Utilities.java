@@ -41,6 +41,9 @@ public class Utilities {
 
     @FXML
     static public ScrollPane rootScrollPane;
+    
+    static String timezoneFix = "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
+                + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     /*
     static public void setMySQLConnectionParameters(String url, String user, String password) {
