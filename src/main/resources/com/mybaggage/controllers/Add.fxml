@@ -58,7 +58,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label fx:id="gebruikersnaamLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="111.0" prefHeight="19.0" prefWidth="169.0" text="Datum (j-m-d):" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label fx:id="gebruikersnaamLabel" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="10.0" layoutY="111.0" prefHeight="19.0" prefWidth="169.0" text="Datum (jjjj-mm-dd):" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
