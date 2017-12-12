@@ -21,7 +21,7 @@
     <children>
         <AnchorPane prefHeight="200.0" prefWidth="200.0">
             <children>
-                <Pane fx:id="functieScherm" prefHeight="675.0" prefWidth="1100.0" />
+                <Pane fx:id="functieScherm" layoutX="188.0" layoutY="40.0" prefHeight="675.0" prefWidth="1108.0" />
                 <VBox fx:id="overflowContainer" prefHeight="104.0" prefWidth="164.0" styleClass="card-white" />
             </children>
         </AnchorPane>

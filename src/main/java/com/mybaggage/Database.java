@@ -16,7 +16,7 @@ public class Database {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 //LET OP SWINGAPP IS DE NAAM VAN DATABASE!! https://codingbybushan.wordpress.com/2017/04/09/login-form-in-javafx-and-mysql/
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/bagage_registratie", "root", "admin");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/bagage_registratie?useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "admin");
             return conn;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

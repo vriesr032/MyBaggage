@@ -47,6 +47,8 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private Pane functieScherm;
+    @FXML
+    private Button btnRegistratie;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -94,6 +96,11 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private void openContact(ActionEvent event) throws IOException {
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie);
+    }
+        @FXML
+    private void openRegistratie(ActionEvent event) throws IOException {
         Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Contact.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }

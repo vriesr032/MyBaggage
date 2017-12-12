@@ -87,7 +87,7 @@ public class AdminController implements Initializable {
 
     @FXML
     private void openUserManagement(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("UM.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
