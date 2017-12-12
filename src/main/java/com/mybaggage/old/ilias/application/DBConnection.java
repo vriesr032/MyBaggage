@@ -9,8 +9,8 @@ public class DBConnection {
 		
 	          
 	      Class.forName("com.mysql.jdbc.Driver");
-	      String url = "jdbc:mysql://localhost:3306/personen"; 
-	      Connection conn = DriverManager.getConnection(url,"root","root123");   
+	      String url = "jdbc:mysql://localhost:3306/personen?useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+	      Connection conn = DriverManager.getConnection(url,"root","admin");   
 	      return conn;
 		 
 	
