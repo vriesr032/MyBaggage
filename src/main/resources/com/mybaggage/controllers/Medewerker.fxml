@@ -93,7 +93,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="EYE" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                              <JFXButton fx:id="btnRegistratie" onAction="openRegistratie" prefHeight="47.0" prefWidth="189.0" text="Bagageregistratie" textFill="#757575" GridPane.rowIndex="3" />
+                              <JFXButton fx:id="btnRegistratie" onAction="#openRegistratie" prefHeight="47.0" prefWidth="189.0" text="Bagageregistratie" textFill="#757575" GridPane.rowIndex="3" />
                               <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="14.0" GridPane.rowIndex="3">
                                  <GridPane.margin>
                                     <Insets left="23.0" />
