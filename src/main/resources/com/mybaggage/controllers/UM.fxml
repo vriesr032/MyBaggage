@@ -9,21 +9,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="438.0" prefWidth="645.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.mybaggage.old.ilias.application.UMController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.old.ilias.application.UMController">
    <children>
-      <Pane layoutY="-2.0" prefHeight="135.0" prefWidth="645.0" style="-fx-background-color: #FF0000;">
+      <Pane layoutY="-2.0" prefHeight="85.0" prefWidth="1100.0">
          <children>
-            <MenuButton fx:id="optionsMenuBar" layoutX="196.0" layoutY="69.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="Opties">
+            <MenuButton fx:id="optionsMenuBar" layoutX="653.0" layoutY="27.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="91.0" style="-fx-background-color: #FFFFFF;" text="Opties">
               <items>
                 <MenuItem fx:id="addNewEntry" mnemonicParsing="false" onAction="#showNewEntry" text="Nieuwe medewerker toevoegen" />
               </items>
             </MenuButton>
-           <TextField fx:id="searchField" layoutX="153.0" layoutY="8.0" prefHeight="25.0" prefWidth="310.0" promptText="Zoeken" />
-            <Button fx:id="deleteButton" layoutX="236.0" layoutY="40.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="25.0" prefWidth="128.0" style="-fx-background-color: #ffffff;" text="Verwijderen" />
-            <Button fx:id="btnLoad" layoutX="382.0" layoutY="40.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #FFffff;" text="Refresh" />
+           <TextField fx:id="searchField" layoutX="20.0" layoutY="27.0" prefHeight="31.0" prefWidth="367.0" promptText="Zoeken" />
+            <Button fx:id="deleteButton" layoutX="770.0" layoutY="27.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="31.0" prefWidth="114.0" style="-fx-background-color: #ffffff;" text="Verwijderen" />
+            <Button fx:id="btnLoad" layoutX="541.0" layoutY="27.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="25.0" prefWidth="82.0" style="-fx-background-color: #FFffff;" text="Refresh" />
          </children>
       </Pane>
-      <TableView fx:id="userTable" layoutY="133.0" prefHeight="305.0" prefWidth="645.0">
+      <TableView fx:id="userTable" layoutY="93.0" prefHeight="585.0" prefWidth="1100.0">
         <columns>
             <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="voornaam" prefWidth="75.0" text="Voornaam" />
