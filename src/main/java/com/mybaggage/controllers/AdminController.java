@@ -87,26 +87,32 @@ public class AdminController implements Initializable {
 
     @FXML
     private void openUserManagement(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("UM.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
+        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("UM.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie2);
     }
 
     @FXML
     private void openRapportage(ActionEvent event) throws IOException {
         Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
+        
     }
 
     @FXML
     private void openHome(ActionEvent event) throws IOException {
+        
         Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
     }
 
     @FXML
     private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
+        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie2);
     }
 
     @FXML
