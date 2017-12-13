@@ -79,12 +79,8 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private void openHome(ActionEvent event) throws IOException {
-        Node source = (Node) event.getSource();
-        dialogStage = (Stage) source.getScene().getWindow();
-        dialogStage.close();
-        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
-        dialogStage.setScene(scene);
-        dialogStage.show();
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie);
     }
 
     @FXML
@@ -96,8 +92,10 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private void openContact(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
         functieScherm.getChildren().add(geklikteFunctie);
+        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+        functieScherm.getChildren().add(geklikteFunctie2);
     }
         @FXML
     private void openRegistratie(ActionEvent event) throws IOException {

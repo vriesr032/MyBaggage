@@ -4,7 +4,6 @@
 <?import com.jfoenix.controls.JFXToolbar?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -69,7 +68,7 @@
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                        <JFXButton fx:id="btnHome" onAction="#openHome" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Startpagina" textFill="#757575">
+                                        <JFXButton fx:id="btnHome" alignment="BOTTOM_LEFT" onAction="#openHome" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Startpagina" textFill="#757575">
                                             <font>
                                                 <Font name="Roboto Medium" size="13.0" />
                                             </font>
@@ -77,7 +76,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="DASHBOARD" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                                        <JFXButton fx:id="btnAdd" onAction="#openBagageZoeken" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Zoeken" textFill="#757575" GridPane.rowIndex="1">
+                                        <JFXButton fx:id="btnAdd" alignment="BOTTOM_LEFT" onAction="#openBagageZoeken" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Zoeken" textFill="#757575" GridPane.rowIndex="1">
                                             <font>
                                                 <Font name="Roboto Medium" size="13.0" />
                                             </font>
@@ -85,7 +84,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                                        <JFXButton fx:id="btnContact" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Contact" textFill="#757575" GridPane.rowIndex="2">
+                                        <JFXButton fx:id="btnContact" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Contact" textFill="#757575" GridPane.rowIndex="2">
                                             <font>
                                                 <Font name="Roboto Medium" size="13.0" />
                                             </font>
@@ -93,12 +92,14 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="EYE" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                              <JFXButton fx:id="btnRegistratie" onAction="#openRegistratie" prefHeight="47.0" prefWidth="189.0" text="Bagageregistratie" textFill="#757575" GridPane.rowIndex="3" />
-                              <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="14.0" GridPane.rowIndex="3">
-                                 <GridPane.margin>
-                                    <Insets left="23.0" />
-                                 </GridPane.margin>
-                              </FontAwesomeIconView>
+                              <JFXButton fx:id="btnContact1" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Toevoegen" textFill="#757575" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Roboto Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
+                                 </graphic>
+                              </JFXButton>
                                     </children>
                                 </GridPane>
                                 <JFXButton fx:id="btnLogout" layoutX="3.0" layoutY="639.0" onAction="#logOff" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Uitloggen" textFill="#757575">
@@ -119,7 +120,7 @@
                                 </JFXButton>
                             </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="holderPane" prefHeight="680.0" prefWidth="1100.0" />
+                        <AnchorPane fx:id="holderPane" prefHeight="675.0" prefWidth="1064.0" />
                     </children>
                 </HBox>
             </children>
