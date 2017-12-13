@@ -32,7 +32,7 @@
         </AnchorPane>
         <VBox prefHeight="720.0" prefWidth="1300.0">
             <children>
-                <JFXToolbar fx:id="toolBar" prefHeight="50.0" prefWidth="1300.0" style="-fx-background-color: #e40e2f;" styleClass="toolbar">
+                <JFXToolbar fx:id="toolBar" prefHeight="50.0" prefWidth="1300.0" style="-fx-background-color: d81e05;" styleClass="toolbar">
                     <right>
                         <HBox fx:id="toolBarRight" prefHeight="40.0" prefWidth="26.0" BorderPane.alignment="CENTER">
                             <children>
