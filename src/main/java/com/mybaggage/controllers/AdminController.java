@@ -5,6 +5,7 @@
  */
 package com.mybaggage.controllers;
 
+import com.jfoenix.controls.JFXButton;
 import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
@@ -13,6 +14,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,40 +29,42 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
- * @author Ludo Bak
+ * @author Ilias
  */
 public class AdminController implements Initializable {
 
+
+    @FXML
+    private AnchorPane holderPane;
+    @FXML
+    private JFXButton btnHome;
+    @FXML
+    private JFXButton btnPricing;
+    @FXML
+    private JFXButton btnContacts;
+    @FXML
+    private JFXButton btnWidgets;
+    @FXML
+    private JFXButton btnProfile;
+    @FXML
+    private JFXButton btnAlerts;
     @FXML
     private Button btnLogOut;
-
-    @FXML
-    private Button btnRapportage;
-
     @FXML
     private Button btnExit;
-
+    
+    AnchorPane bagage,um,pricing,profiles,widgets,controls;
     @FXML
-    private Button btnHome;
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnContact;
-
-    @FXML
-    private Button btnUserManagament;
-
-    @FXML
-    private Pane functieScherm;
-
-    //Zet waarden leeg en maakt nieuwe objecten via classes.
+    private JFXButton btnControls;
+    
+        //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
     Scene scene;
     Connection connection = null;
@@ -66,71 +72,79 @@ public class AdminController implements Initializable {
     ResultSet resultSet = null;
     ResultSet resultSet2 = null;
 
-    public AdminController() {
-        connection = Database.connectdb();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //Load all fxmls in a cache
+        try {
+             bagage = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+             um = FXMLLoader.load(getClass().getResource("UM.fxml"));
+             pricing = FXMLLoader.load(getClass().getResource("UM.fxml"));
+             profiles = FXMLLoader.load(getClass().getResource("UM.fxml"));
+             widgets = FXMLLoader.load(getClass().getResource("UM.fxml"));
+             controls = FXMLLoader.load(getClass().getResource("UM.fxml"));
+            setNode(pricing);
+        } catch (IOException ex) {
+            Logger.getLogger(AdminController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
-
-    @FXML
-    public void loadFxml(ActionEvent event) throws IOException {
-
-    }
-
     @FXML
     private void logOff(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
         dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
-        scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
         dialogStage.setScene(scene);
         dialogStage.show();
     }
-
-    @FXML
-    private void openUserManagement(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("UM.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
-    private void openRapportage(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        
-    }
-
-    @FXML
-    private void openHome(ActionEvent event) throws IOException {
-        
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
-    private void openContact(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("Contact.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
+    
+        @FXML
     private void exit(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();
     }
+    //Set selected node to a content holder
+    private void setNode(Node node) {
+        holderPane.getChildren().clear();
+        holderPane.getChildren().add((Node) node);
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+        FadeTransition ft = new FadeTransition(Duration.millis(1500));
+        ft.setNode(node);
+        ft.setFromValue(0.1);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.setAutoReverse(false);
+        ft.play();
     }
+
+    @FXML
+    private void switchPricing(ActionEvent event) {
+        setNode(pricing);
+    }
+
+    @FXML
+    private void switchBagage(ActionEvent event) {
+        setNode(bagage);
+    }
+
+    @FXML
+    private void switchWidget(ActionEvent event) {
+        setNode(widgets);
+    }
+
+    @FXML
+    private void switchProfile(ActionEvent event) {
+        setNode(profiles);
+    }
+
+    @FXML
+    private void switchUM(ActionEvent event) {
+        setNode(um);
+    }
+
+    @FXML
+    private void switchControls(ActionEvent event) {
+        setNode(controls);
+    }
+
 }
