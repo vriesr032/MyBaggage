@@ -47,8 +47,10 @@ public class MedewerkerController implements Initializable {
     private Button btnBagage;
     @FXML
     private Button btnBagageToevoegen;
+    @FXML
+    private Button btnBagageZoeken;
 
-    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen;
+    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -65,8 +67,9 @@ public class MedewerkerController implements Initializable {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
-            fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+            fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagage.fxml"));
 
             setNode(fxml2);
         } catch (IOException ex) {
@@ -129,9 +132,15 @@ public class MedewerkerController implements Initializable {
     private void openBagageToevoegen(ActionEvent event) {
         setNode(bagageToevoegen);
     }
+
     @FXML
-    private void openBagageOverzicht(ActionEvent event){
+    private void openBagageOverzicht(ActionEvent event) {
         setNode(bagageOverzicht);
+    }
+
+    @FXML
+    private void openBagageZoeken(ActionEvent event) {
+        setNode(bagageZoeken);
     }
 
 }

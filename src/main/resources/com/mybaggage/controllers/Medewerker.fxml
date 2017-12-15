@@ -118,6 +118,14 @@
                                     <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
                                  </graphic>
                               </JFXButton>
+                              <JFXButton fx:id="btnBagageZoeken" alignment="BOTTOM_LEFT" onAction="#openBagageZoeken" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Zoeken" textFill="#757575" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Roboto Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#757575" glyphName="SEARCH" size="16.0" wrappingWidth="40.0" />
+                                 </graphic>
+                              </JFXButton>
                               <JFXButton fx:id="btnHelpdesk" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="182.0" onAction="#openHelpdesk" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Helpdesk" textFill="#757575" GridPane.rowIndex="5">
                                  <font>
                                     <Font name="Roboto Medium" size="13.0" />
