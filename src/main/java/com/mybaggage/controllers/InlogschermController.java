@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Ludo Bak
+ * @author Ludo
  */
 public class InlogschermController implements Initializable {
 
