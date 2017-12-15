@@ -49,8 +49,9 @@ public class AdminController implements Initializable {
     private Button btnBagageToevoegen;
     @FXML
     private Button btnUserManagement;
-
-    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen, userManagement;
+    @FXML
+    private Button btnBagageZoeken;
+    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen, userManagement, bagageZoeken;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -70,6 +71,7 @@ public class AdminController implements Initializable {
             fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
             userManagement = FXMLLoader.load(getClass().getResource("UM.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagage.fxml"));
 
             setNode(fxml2);
         } catch (IOException ex) {
@@ -141,6 +143,10 @@ public class AdminController implements Initializable {
     @FXML
     private void openUserManagement(ActionEvent event) {
         setNode(userManagement);
+    }
+    @FXML
+    private void openBagageZoeken(ActionEvent event) {
+        setNode(bagageZoeken);
     }
 
 }
