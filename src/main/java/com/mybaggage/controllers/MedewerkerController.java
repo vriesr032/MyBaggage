@@ -5,14 +5,16 @@
  */
 package com.mybaggage.controllers;
 
-import com.mybaggage.Database;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,34 +23,32 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
- * @author Ludo Bak
+ * @author Ludo
  */
 public class MedewerkerController implements Initializable {
 
     @FXML
+    private AnchorPane holderPane;
+    @FXML
+    private JFXButton btnHome;
+    @FXML
     private Button btnLogOut;
-
     @FXML
     private Button btnExit;
+    @FXML
+    private Button btnHelpdesk;
+    @FXML
+    private Button btnBagage;
+    @FXML
+    private Button btnBagageToevoegen;
 
-    @FXML
-    private Button btnHome;
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private Button btnContact;
-
-    @FXML
-    private Pane functieScherm;
-    @FXML
-    private Button btnRegistratie;
+    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -58,12 +58,20 @@ public class MedewerkerController implements Initializable {
     ResultSet resultSet = null;
     ResultSet resultSet2 = null;
 
-    public MedewerkerController() {
-        connection = Database.connectdb();
-    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //Load all fxmls in a cache
+        try {
+            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+            inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
+            contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+            fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
 
-    @FXML
-    public void loadFxml(ActionEvent event) throws IOException {
+            setNode(fxml2);
+        } catch (IOException ex) {
+            Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -78,43 +86,52 @@ public class MedewerkerController implements Initializable {
     }
 
     @FXML
-    private void openHome(ActionEvent event) throws IOException {
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
-    private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
-    private void openContact(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-        Pane geklikteFunctie2 = FXMLLoader.load(getClass().getResource("Contact.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie2);
-    }
-
-    @FXML
-    private void openRegistratie(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
     private void exit(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnExit.getScene().getWindow();
         stage.close();
     }
 
-    //Vergelijkt de ingevulde gegevens met die van de database en kijkt of ze correct zijn en wat de rol van de persoon is.
-    //Vervolgens worden verschillende rollen naar verschillende schermen toegestuurd.
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    //Set selected node to a content holder
+    private void setNode(Node node) {
+        holderPane.getChildren().clear();
+        holderPane.getChildren().add((Node) node);
 
+        FadeTransition ft = new FadeTransition(Duration.millis(1500));
+        ft.setNode(node);
+        ft.setFromValue(0.1);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.setAutoReverse(false);
+        ft.play();
     }
+
+    @FXML
+    private void openHome(ActionEvent event) {
+        setNode(fxml2);
+    }
+
+    @FXML
+    private void openBagage(ActionEvent event) {
+        setNode(bagageOverzicht);
+    }
+
+    @FXML
+    private void openContact(ActionEvent event) {
+        setNode(contact);
+    }
+
+    @FXML
+    private void openHelpdesk(ActionEvent event) {
+        setNode(helpdesk);
+    }
+
+    @FXML
+    private void openBagageToevoegen(ActionEvent event) {
+        setNode(bagageToevoegen);
+    }
+    @FXML
+    private void openBagageOverzicht(ActionEvent event){
+        setNode(bagageOverzicht);
+    }
+
 }
