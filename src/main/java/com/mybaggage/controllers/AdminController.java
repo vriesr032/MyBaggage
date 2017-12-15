@@ -68,7 +68,7 @@ public class AdminController implements Initializable {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
-            fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
+            fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
             userManagement = FXMLLoader.load(getClass().getResource("UM.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagage.fxml"));
