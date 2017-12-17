@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.mybaggage.Database;
 import com.mybaggage.Main;
 import com.mybaggage.controllers.MainController;
 import com.mybaggage.old.mitchell.Bagageregistratie;
@@ -16,6 +17,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -106,10 +108,10 @@ public class RegistratieController implements Initializable {
         if (event.getTarget() == btn_GoToZoekResultaten) {
             Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/Test Case.fxml"));
 
-   /*    // Maak verbinding met database
+            /*    // Maak verbinding met database
             Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "Nightfeather007!");
             Utilities.databaseConnection.getConnection();
-*/
+             */
             // !!!Test Case values:
             int aantalResultaten = 3;
             String[] types = {"Zakenkoffers", "Handbagage koffers", "Kinderkoffers"};
@@ -128,15 +130,6 @@ public class RegistratieController implements Initializable {
             genereerZoekResultaten(sjablonen, event);
 
             // !!!End of the Test Case.
-           
-        }
-    }
-
-    @FXML
-    private void goToVerlorenBagageRegistratie(MouseEvent event) throws IOException {
-        if (event.getTarget() == btn_GoToVerlorenBagageRegistratie) {
-            Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/VerlorenBagageRegistratie.fxml"));
-            //Utilities.setStage(Utilities.root, event);
         }
     }
 
@@ -278,7 +271,7 @@ public class RegistratieController implements Initializable {
     }
 
     @FXML
-    private void insertGevondenBagageFormulier(MouseEvent event) throws ClassNotFoundException, SQLException, ParseException {
+    private void insertGevondenBagageFormulier(ActionEvent event) throws ClassNotFoundException, SQLException, ParseException {
         if (event.getTarget() == btn_RegistreerGevondenBagage) {
 
             Bagageregistratie gevondenBagageFormulier = vulGevondenBagageFormulierIn();
@@ -287,12 +280,8 @@ public class RegistratieController implements Initializable {
                     + "merk, kleur, kenmerken, labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-      /*      try {
-                // Maak verbinding met database
-                Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "root123");
-                Utilities.databaseConnection.getConnection();
-
-                Utilities.preparedStatement = Utilities.databaseConnection.connection.prepareStatement(query);
+            try {
+                Utilities.preparedStatement = Database.connectdb().prepareStatement(query);
                 Utilities.preparedStatement.setString(1, DEFAULT_STRING);
                 Utilities.preparedStatement.setString(2, DEFAULT_STRING);
                 Utilities.preparedStatement.setString(3, DEFAULT_STRING);
@@ -312,19 +301,14 @@ public class RegistratieController implements Initializable {
                 Utilities.preparedStatement.setInt(17, gevondenBagageFormulier.getLostAndFoundID());
 
                 Utilities.preparedStatement.executeUpdate();
-
-                // Sluit de verbinding met de database
-                Utilities.databaseConnection.closeConnection();
-            } catch (ClassNotFoundException | SQLException mySQLException) {
+            } catch (SQLException mySQLException) {
                 throw mySQLException;
-            }*/
+            }
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Main.getScene().getStylesheets().add("/styles/StylesMitchell.css");
-        
-        Utilities.databaseConnection = new DatabaseConnection();
     }
 }

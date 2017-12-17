@@ -23,8 +23,6 @@ import javafx.stage.Stage;
  */
 public class Utilities {
 
-    static public DatabaseConnection databaseConnection;
-
     static public PreparedStatement preparedStatement;
 
     @FXML
@@ -41,9 +39,9 @@ public class Utilities {
 
     @FXML
     static public ScrollPane rootScrollPane;
-    
+
     static String timezoneFix = "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
-                + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
     /*
     static public void setMySQLConnectionParameters(String url, String user, String password) {
@@ -54,9 +52,9 @@ public class Utilities {
         Database.user = user;
         Database.password = password;
     }
-    */
+     */
 
-    /*
+ /*
     WIP: Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value 
      */
     static public Date convertStringToWrapperDate(String expectedPattern, String date) throws ParseException {

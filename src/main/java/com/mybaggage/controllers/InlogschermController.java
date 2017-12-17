@@ -106,7 +106,18 @@ public class InlogschermController implements Initializable {
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
+                    
+                    /*
+                    NOTE (Mitchell): 
+                    Tijdens het debuggen van je code heb ik het volgende ontdekt. 
+                    De code hieronder kan de Admin fxml bestand niet laden. Andere fxml bestanden werken wel.
+                    Waarschijnlijk is op de een of andere manier je Admin fxml corrupt geraakt.
+                    
+                    FIX IT!!!
+                    
+                    */ 
                     scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
+                    
                     scene.getStylesheets().add("/styles/LudoStyles.css");
                     dialogStage.setScene(scene);
                     dialogStage.show();

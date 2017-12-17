@@ -68,8 +68,8 @@ public class MedewerkerController implements Initializable {
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
-            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagage.fxml"));
+            bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagageRegistratie.fxml"));
 
             setNode(fxml2);
         } catch (IOException ex) {
