@@ -7,6 +7,9 @@ import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -80,5 +83,15 @@ public class Utilities {
             throw parseException;
         }
         return convertedTime;
+    }
+
+    static public String convertLocalDateToString(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String formattedString = date.format(formatter);
+        return formattedString;
+    }
+
+    static public String getCurrentTimeString() {
+        return new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
     }
 }

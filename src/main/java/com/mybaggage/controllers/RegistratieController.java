@@ -53,9 +53,6 @@ public class RegistratieController implements Initializable {
     private JFXTextField txtKlantnummer;
 
     @FXML
-    private JFXTextField txtTijd;
-
-    @FXML
     private JFXDatePicker txtDatum;
 
     @FXML
@@ -255,8 +252,8 @@ public class RegistratieController implements Initializable {
     private Bagageregistratie vulGevondenBagageFormulierIn() {
         Bagageregistratie gevondenBagageFormulier = new Bagageregistratie();
 
-        gevondenBagageFormulier.setDatum(txtDatum.getPromptText());
-        gevondenBagageFormulier.setTijd(txtTijd.getText());
+        gevondenBagageFormulier.setDatum(txtDatum.getValue());
+        gevondenBagageFormulier.setTijd(); // set current system time
         gevondenBagageFormulier.setLuchthaven(txtLuchthaven.getText());
         gevondenBagageFormulier.setLabelnummer(txtLabelnummer.getText());
         gevondenBagageFormulier.setVluchtnummer(txtVluchtnummer.getText());
