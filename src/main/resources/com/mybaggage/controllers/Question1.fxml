@@ -16,7 +16,7 @@
          </font>
       </Button>
       <Label layoutX="125.0" layoutY="555.0" text="Antwoord niet gevonden?" />
-      <Label layoutX="127.0" layoutY="575.0" text="Contacteer ons dan!" />
+      <Label layoutX="125.0" layoutY="575.0" text="Contacteer ons dan!" />
       <Label layoutX="133.0" layoutY="31.0" text="Worden de formulieren automatisch opgeslagen?">
          <font>
             <Font name="Arial Bold" size="18.0" />

@@ -101,7 +101,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="DASHBOARD" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                                        <JFXButton fx:id="btnContact" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Contact" textFill="#757575" GridPane.rowIndex="4">
+                                        <JFXButton fx:id="btnContact" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="FAQ" textFill="#757575" GridPane.rowIndex="4">
                                             <font>
                                                 <Font name="Roboto Medium" size="13.0" />
                                             </font>
