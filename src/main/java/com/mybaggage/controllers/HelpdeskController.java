@@ -101,7 +101,7 @@ public class HelpdeskController implements Initializable {
             Connection conn = dc.Connect();
             data = FXCollections.observableArrayList();
             // SQL Query 1.
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM helpdesk.ticket");
+            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM bagage_registratie.ticket");
             while (rs.next()) {
                 //Get string from database.
                 data.add(new UserDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
@@ -139,7 +139,7 @@ public class HelpdeskController implements Initializable {
                 String toegewezenAan = toegewezenAanTextField.getText();
                 String beschrijving = beschrijvingTextField.getText();
                 //SQL Query 2.
-                String query = "INSERT INTO helpdesk.ticket (idTicket, voornaam, achternaam, datum, toegewezen_aan, beschrijving) VALUES (' " + idTicket + "','" + voornaam + "','" + achternaam + "','" + datum + "','" + toegewezenAan + "','" + beschrijving + "')";
+                String query = "INSERT INTO bagage_registratie.ticket (idTicket, voornaam, achternaam, datum, toegewezen_aan, beschrijving) VALUES (' " + idTicket + "','" + voornaam + "','" + achternaam + "','" + datum + "','" + toegewezenAan + "','" + beschrijving + "')";
 
                 PreparedStatement pst;
 
@@ -200,7 +200,7 @@ public class HelpdeskController implements Initializable {
             try {
                 Connection myConn = conn.getConnection();
                 //SQL Query 3.
-                String query = "DELETE FROM helpdesk.ticket WHERE idTicket = '" + data.getIdTicket() + "'";
+                String query = "DELETE FROM bagage_registratie.ticket WHERE idTicket = '" + data.getIdTicket() + "'";
 
                 PreparedStatement pst;
                 pst = myConn.prepareStatement(query);
