@@ -50,7 +50,7 @@ public class MedewerkerController implements Initializable {
     @FXML
     private Button btnBagageZoeken;
 
-    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken;
+    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -66,11 +66,11 @@ public class MedewerkerController implements Initializable {
         try {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
-            contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+            faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagageRegistratie.fxml"));
-
+            helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskMedewerker.fxml"));
             setNode(fxml2);
         } catch (IOException ex) {
             Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -120,7 +120,7 @@ public class MedewerkerController implements Initializable {
 
     @FXML
     private void openContact(ActionEvent event) {
-        setNode(contact);
+        setNode(faq);
     }
 
     @FXML

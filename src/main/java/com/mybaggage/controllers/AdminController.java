@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mybaggage.controllers;
 
 import com.jfoenix.controls.JFXButton;
@@ -49,7 +44,7 @@ public class AdminController implements Initializable {
     private Button btnUM;
 
 
-    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, UM;
+    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, UM;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -65,10 +60,10 @@ public class AdminController implements Initializable {
         try {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
-            contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
+            faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
             UM = FXMLLoader.load(getClass().getResource("UM.fxml"));
-            
+            helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskAdmin.fxml"));
 
             setNode(fxml2);
         } catch (IOException ex) {
@@ -119,7 +114,7 @@ public class AdminController implements Initializable {
 
     @FXML
     private void openContact(ActionEvent event) {
-        setNode(contact);
+        setNode(faq);
     }
 
     @FXML

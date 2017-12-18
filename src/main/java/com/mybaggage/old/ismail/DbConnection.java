@@ -15,9 +15,9 @@ public class DbConnection {
     public Connection Connect() {
         try {
             //De database connectie
-            String url = "jdbc:mysql://localhost:3306/sys";
+            String url = "jdbc:mysql://localhost:3306/sys?useLegacyDatetimeCode=false&serverTimezone=UTC";
             String user = "root";
-            String password = "";
+            String password = "admin";
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(url, user, password);
@@ -34,8 +34,8 @@ public class DbConnection {
 		
 	          
 	      Class.forName("com.mysql.jdbc.Driver");
-	      String url = "jdbc:mysql://localhost:3306/sys"; 
-	      Connection conn = DriverManager.getConnection(url,"root","");   
+	      String url = "jdbc:mysql://localhost:3306/sys?useLegacyDatetimeCode=false&serverTimezone=UTC"; 
+	      Connection conn = DriverManager.getConnection(url,"root","admin");   
 	      return conn;
 
 }
