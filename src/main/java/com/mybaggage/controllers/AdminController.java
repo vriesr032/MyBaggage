@@ -29,7 +29,7 @@ import javafx.util.Duration;
 
 /**
  *
- * @author Ludo
+ * @author Ilias
  */
 public class AdminController implements Initializable {
 
@@ -46,12 +46,10 @@ public class AdminController implements Initializable {
     @FXML
     private Button btnBagage;
     @FXML
-    private Button btnBagageToevoegen;
-    @FXML
-    private Button btnUserManagement;
-    @FXML
-    private Button btnBagageZoeken;
-    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, bagageToevoegen, userManagement, bagageZoeken;
+    private Button btnUM;
+
+
+    AnchorPane bagageOverzicht, contact, helpdesk, fxml2, inlogscherm, UM;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -68,10 +66,9 @@ public class AdminController implements Initializable {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
-            fxml2 = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
-            userManagement = FXMLLoader.load(getClass().getResource("UM.fxml"));
-            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagage.fxml"));
+            fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
+            UM = FXMLLoader.load(getClass().getResource("UM.fxml"));
+            
 
             setNode(fxml2);
         } catch (IOException ex) {
@@ -131,8 +128,8 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void openBagageToevoegen(ActionEvent event) {
-        setNode(bagageToevoegen);
+    private void openUM(ActionEvent event) {
+        setNode(UM);
     }
 
     @FXML
@@ -140,13 +137,6 @@ public class AdminController implements Initializable {
         setNode(bagageOverzicht);
     }
 
-    @FXML
-    private void openUserManagement(ActionEvent event) {
-        setNode(userManagement);
-    }
-    @FXML
-    private void openBagageZoeken(ActionEvent event) {
-        setNode(bagageZoeken);
-    }
+
 
 }
