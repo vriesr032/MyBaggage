@@ -1,6 +1,8 @@
 package com.mybaggage;
 
 import com.mybaggage.old.mitchell.DatabaseConnection;
+import static com.sun.javafx.scene.control.skin.Utils.getResource;
+import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
@@ -11,11 +13,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -45,6 +49,11 @@ public class Utilities {
 
     static String timezoneFix = "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
             + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    
+    // Voorkomt dat gebruikers een object van deze class kunnen aanmaken
+    private Utilities(){
+        
+    }
 
     /*
     static public void setMySQLConnectionParameters(String url, String user, String password) {
@@ -94,4 +103,5 @@ public class Utilities {
     static public String getCurrentTimeString() {
         return new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
     }
+
 }

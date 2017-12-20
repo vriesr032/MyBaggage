@@ -50,7 +50,7 @@
       <JFXTextField fx:id="txtKleur" focusColor="RED" layoutX="804.0" layoutY="329.0" prefHeight="25.0" prefWidth="172.0" />
       <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="265.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="file:/C:/HvA/Projecten/BagaggeRegistratie/src/main/java/images/airport.png" />
+            <Image url="file:/C:/Users/media/Desktop/MyBaggage/src/main/resources/images/airport.png" />
          </image>
       </ImageView>
       <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="450.0" prefHeight="92.0" prefWidth="188.0" />
