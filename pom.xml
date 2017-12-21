@@ -126,8 +126,23 @@
                     </additionalClasspathElements>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
+            <plugin>
+    <artifactId>maven-clean-plugin</artifactId>
+    <version>2.4.1</version>
+    <configuration>
+        <excludeDefaultDirectories>true</excludeDefaultDirectories>
+        <filesets>
+            <fileset>
+                <directory>target/classes</directory>
+                <excludes>
+                    <exclude>**/*</exclude>
+                </excludes>
+            </fileset>
+        </filesets>
+    </configuration>
+        </plugin>
+     </plugins>
+  </build>
     
 
 </project>
