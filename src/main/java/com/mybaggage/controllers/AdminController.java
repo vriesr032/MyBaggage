@@ -109,10 +109,21 @@ public class AdminController implements Initializable {
         setNode(fxml2);
     }
 
+@FXML
+    private void openBagageToevoegen(ActionEvent event) {
+        setNode(bagageToevoegen);
+    }
+
     @FXML
-    private void openBagage(ActionEvent event) {
+    private void openBagageOverzicht(ActionEvent event) {
         setNode(bagageOverzicht);
     }
+
+    @FXML
+    private void openBagageZoeken(ActionEvent event) {
+        setNode(bagageZoeken);
+    }
+
 
     @FXML
     private void openContact(ActionEvent event) {
@@ -129,11 +140,7 @@ public class AdminController implements Initializable {
         setNode(UM);
     }
 
-    @FXML
-    private void openBagageOverzicht(ActionEvent event) {
-        setNode(bagageOverzicht);
-    }
-
+ 
     @FXML
     private void openRegistreerSchadevergoeding(ActionEvent event) {
         setNode(registreerSchadevergoeding);
