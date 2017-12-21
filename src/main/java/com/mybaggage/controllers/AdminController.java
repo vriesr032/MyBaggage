@@ -24,7 +24,7 @@ import javafx.util.Duration;
 
 /**
  *
- * @author Ilias
+ * @author Ludo Bak
  */
 public class AdminController implements Initializable {
 
