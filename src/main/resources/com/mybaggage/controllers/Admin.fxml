@@ -78,7 +78,7 @@
                                       </JFXButton>
                            </children>
                         </GridPane>
-                                <GridPane layoutX="3.0" layoutY="13.0" prefHeight="245.0" prefWidth="189.0" style="-fx-alignment: left;">
+                                <GridPane layoutX="3.0" layoutY="13.0" prefHeight="452.0" prefWidth="189.0" style="-fx-alignment: left;">
                                     <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
                                     </columnConstraints>
@@ -88,6 +88,10 @@
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                               <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -101,7 +105,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="DASHBOARD" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                                        <JFXButton fx:id="btnContact" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="FAQ" textFill="#757575" GridPane.rowIndex="4">
+                                        <JFXButton fx:id="btnContact" alignment="BOTTOM_LEFT" onAction="#openContact" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="FAQ" textFill="#757575" GridPane.rowIndex="6">
                                             <font>
                                                 <Font name="Roboto Medium" size="13.0" />
                                             </font>
@@ -109,7 +113,7 @@
                                                 <FontAwesomeIconView fill="#757575" glyphName="EYE" size="16.0" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                              <JFXButton fx:id="btnUM" alignment="BOTTOM_LEFT" onAction="#openUM" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="User Management" textFill="#757575" GridPane.rowIndex="2">
+                              <JFXButton fx:id="btnUM" alignment="BOTTOM_LEFT" onAction="#openUM" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="User Management" textFill="#757575" GridPane.rowIndex="9">
                                  <font>
                                     <Font name="Roboto Medium" size="13.0" />
                                  </font>
@@ -117,7 +121,7 @@
                                     <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
                                  </graphic>
                               </JFXButton>
-                              <JFXButton fx:id="btnHelpdesk" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="182.0" onAction="#openHelpdesk" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Helpdesk" textFill="#757575" GridPane.rowIndex="5">
+                              <JFXButton fx:id="btnHelpdesk" alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="182.0" onAction="#openHelpdesk" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Helpdesk" textFill="#757575" GridPane.rowIndex="7">
                                  <font>
                                     <Font name="Roboto Medium" size="13.0" />
                                  </font>
@@ -131,6 +135,30 @@
                                  </font>
                                  <graphic>
                                     <FontAwesomeIconView fill="#757575" glyphName="VIEW_GRID" size="16.0" wrappingWidth="40.0" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btnBagageToevoegen" alignment="BOTTOM_LEFT" onAction="#openBagageToevoegen" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Toevoegen" textFill="#757575" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Roboto Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btnBagageZoeken" alignment="BOTTOM_LEFT" onAction="#openBagageZoeken" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Bagage Zoeken" textFill="#757575" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Roboto Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#757575" glyphName="SEARCH" size="16.0" wrappingWidth="40.0" />
+                                 </graphic>
+                              </JFXButton>
+                              <JFXButton fx:id="btnRegistreerSchadevergoeding" alignment="BOTTOM_LEFT" onAction="#openRegistreerSchadevergoeding" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Schade Registreren" textFill="#757575" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Roboto Medium" size="13.0" />
+                                 </font>
+                                 <graphic>
+                                    <FontAwesomeIconView fill="#757575" glyphName="PLUS_SQUARE" size="16.0" wrappingWidth="40.0" />
                                  </graphic>
                               </JFXButton>
                                     </children>

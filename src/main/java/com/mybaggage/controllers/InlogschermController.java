@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Ludo
+ * @author Ludo Bak
  */
 public class InlogschermController implements Initializable {
 
@@ -79,7 +79,7 @@ public class InlogschermController implements Initializable {
         String gebruikersnaam = textGebruikersnaam.getText().toString();
         String wachtwoord = textPassword.getText().toString();
         String functie = choiceFunctie.getValue().toString();
-        String verify = "SELECT * FROM persoonsgegevens WHERE gebruikersnaam = ? and wachtwoord = ? and functie = ?";
+        String verify = "SELECT * FROM bagage_registratie.persoonsgegevens WHERE gebruikersnaam = ? and wachtwoord = ? and functie = ?";
 
         try {
             preparedStatement = connection.prepareStatement(verify);
@@ -116,11 +116,7 @@ public class InlogschermController implements Initializable {
                     FIX IT!!!
                     
                     */ 
-                    scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
-                    
-                    scene.getStylesheets().add("/styles/LudoStyles.css");
-                    dialogStage.setScene(scene);
-                    dialogStage.show();
+                   
                 }
             }
 

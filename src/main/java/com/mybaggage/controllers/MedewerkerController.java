@@ -29,7 +29,7 @@ import javafx.util.Duration;
 
 /**
  *
- * @author Ludo
+ * @author Ludo Bak
  */
 public class MedewerkerController implements Initializable {
 
@@ -49,8 +49,9 @@ public class MedewerkerController implements Initializable {
     private Button btnBagageToevoegen;
     @FXML
     private Button btnBagageZoeken;
-
-    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken;
+    @FXML
+    private Button btnRegistreerSchadevergoeding;
+    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken, registreerSchadevergoeding;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -71,6 +72,8 @@ public class MedewerkerController implements Initializable {
             bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagageRegistratie.fxml"));
             helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskMedewerker.fxml"));
+            registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
+
             setNode(fxml2);
         } catch (IOException ex) {
             Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -143,4 +146,8 @@ public class MedewerkerController implements Initializable {
         setNode(bagageZoeken);
     }
 
+    @FXML
+    private void openRegistreerSchadevergoeding(ActionEvent event) {
+        setNode(registreerSchadevergoeding);
+    }
 }

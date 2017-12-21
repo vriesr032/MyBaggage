@@ -42,9 +42,10 @@ public class AdminController implements Initializable {
     private Button btnBagage;
     @FXML
     private Button btnUM;
+    @FXML
+            private Button btnRegistreerSchadevergoeding;
 
-
-    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, UM;
+    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, UM, registreerSchadevergoeding;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -64,7 +65,8 @@ public class AdminController implements Initializable {
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
             UM = FXMLLoader.load(getClass().getResource("UM.fxml"));
             helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskAdmin.fxml"));
-
+            registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
+            
             setNode(fxml2);
         } catch (IOException ex) {
             Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
@@ -132,6 +134,10 @@ public class AdminController implements Initializable {
         setNode(bagageOverzicht);
     }
 
+    @FXML
+    private void openRegistreerSchadevergoeding(ActionEvent event) {
+        setNode(registreerSchadevergoeding);
+    }
 
 
 }
