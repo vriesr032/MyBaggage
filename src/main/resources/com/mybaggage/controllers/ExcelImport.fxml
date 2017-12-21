@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="700" prefWidth="1300" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.ExcelImport">
+    <children>
+        <Button layoutX="0" layoutY="350" text="PDF Import" onAction="#handleButtonAction" fx:id="button" />
+        <Label layoutX="0" layoutY="0" minHeight="16" minWidth="69" fx:id="label" />
+        
+        
+    </children>
+</AnchorPane>

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mybaggage.old.jordy;
+package com.mybaggage.controllers;
 
+import com.mybaggage.old.jordy.Record;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -13,19 +14,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  *
  * @author Lenovo
  */
-public class FXMLDocumentController implements Initializable {
+public class ExcelImport implements Initializable {
     
     @FXML
     private Label label;

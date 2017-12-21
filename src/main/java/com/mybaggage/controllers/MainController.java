@@ -32,5 +32,6 @@ public class MainController implements Initializable {
         staticBorderPane = borderPane;
         
         MainController.switchScherm("/com/mybaggage/controllers/LoginScene.fxml");
+        
     }    
 }
