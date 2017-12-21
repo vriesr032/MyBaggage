@@ -289,7 +289,7 @@ public class FXMLController implements Initializable {
 
             Schaderegistratie schadeFormulier = vulSchadeFormulierIn();
 
-            String query = "INSERT INTO schade (lostandfoundID, type, datum, tijd, luchthaven, bankrekening, merk, vergoeding, schade, naam)"
+            String query = "INSERT INTO schade_goed (lostandfoundID, type, datum, tijd, luchthaven, bankrekening, merk, vergoeding, schade, naam)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try {
