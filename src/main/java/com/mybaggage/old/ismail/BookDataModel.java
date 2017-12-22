@@ -1,5 +1,7 @@
 package com.mybaggage.old.ismail;
 
+import com.mybaggage.Utilities;
+import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
@@ -11,7 +13,7 @@ public class BookDataModel {
     private SimpleStringProperty idTicket;
     private SimpleStringProperty voornaam;
     private SimpleStringProperty achternaam;
-    private SimpleStringProperty datum;
+    private String datum;
     private SimpleStringProperty toegewezenAan;
     private SimpleStringProperty beschrijving;
 
@@ -19,7 +21,7 @@ public class BookDataModel {
         this.idTicket = new SimpleStringProperty();
         this.voornaam = new SimpleStringProperty();
         this.achternaam = new SimpleStringProperty();
-        this.datum = new SimpleStringProperty();
+    
         this.toegewezenAan = new SimpleStringProperty();
         this.beschrijving = new SimpleStringProperty();
     }
@@ -49,11 +51,11 @@ public class BookDataModel {
     }
 
     public String getDatum() {
-        return datum.get();
+        return datum;
     }
-
-    public void setDatum(String datum) {
-        this.datum.set(datum);
+    
+    public void setDatum(LocalDate datum) {
+        this.datum = Utilities.convertLocalDateToString(datum);
     }
 
     public String getToegewezenAan() {

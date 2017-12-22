@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -55,7 +57,7 @@ public class HelpdeskController implements Initializable {
     @FXML
     private TextField achternaamTextField;
     @FXML
-    private TextField datumTextField;
+    private DatePicker datumTextField;
     @FXML
     private TextField toegewezenAanTextField;
     @FXML
@@ -135,7 +137,7 @@ public class HelpdeskController implements Initializable {
                 String idTicket = idTicketTextField.getText();
                 String voornaam = voornaamTextField.getText();
                 String achternaam = achternaamTextField.getText();
-                String datum = datumTextField.getText();
+                LocalDate datum = datumTextField.getValue();
                 String toegewezenAan = toegewezenAanTextField.getText();
                 String beschrijving = beschrijvingTextField.getText();
                 //SQL Query 2.

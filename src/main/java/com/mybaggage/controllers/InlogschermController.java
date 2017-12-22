@@ -101,7 +101,7 @@ public class InlogschermController implements Initializable {
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 } else if ("Admin".equals(functie)) {
-                    infoBox("U heeft succesvol ingelog  d.", "Success", null);
+                    infoBox("U heeft succesvol ingelogd.", "Success", null);
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
