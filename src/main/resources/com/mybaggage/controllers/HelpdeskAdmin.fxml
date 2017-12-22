@@ -18,7 +18,7 @@
          </columns>
       </TableView>
       <Button fx:id="addTicket" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="245.0" text="Ticket toevoegen" />
-      <Button fx:id="deleteButton" layoutX="516.0" layoutY="63.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="25.0" prefWidth="245.0" text="Ticket verwijderen" />
+      <Button fx:id="deleteButton" layoutX="516.0" layoutY="63.0" mnemonicParsing="false" onAction="#verwijderTicket" prefHeight="25.0" prefWidth="245.0" text="Ticket verwijderen" />
       <Button fx:id="btnLoad" layoutX="264.0" layoutY="63.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="25.0" prefWidth="245.0" text="Tickets laden" />
    </children>
 </AnchorPane>

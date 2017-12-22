@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -66,8 +65,6 @@ public class HelpdeskController implements Initializable {
     private Button addTicket;
     @FXML
     private Button closeTicket;
-    @FXML
-    private Button addButton;
     //Initialize observable list to hold out database data
     private ObservableList<UserDetails> data;
     private DbConnection dc;
@@ -78,7 +75,7 @@ public class HelpdeskController implements Initializable {
         dc = new DbConnection();
     }
 
-    //Method to open a popup window.
+    //Method to open && close a popup window.
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         Stage stage;
@@ -98,7 +95,7 @@ public class HelpdeskController implements Initializable {
     }
 
     @FXML
-    private void loadDataFromDatabase(ActionEvent event) {
+    private void loadDataFromDatabase() {
         try {
             Connection conn = dc.Connect();
             data = FXCollections.observableArrayList();
@@ -114,7 +111,7 @@ public class HelpdeskController implements Initializable {
         }
 
         //Set functie naar tableview.
-        //NB.PropertyValue Factory moet hetzelfde zijn als de model class
+        //PropertyValue Factory moet hetzelfde zijn als de model class
         columnIdTicket.setCellValueFactory(new PropertyValueFactory<>("idTicket"));
         columnVoornaam.setCellValueFactory(new PropertyValueFactory<>("voornaam"));
         columnAchternaam.setCellValueFactory(new PropertyValueFactory<>("achternaam"));
@@ -128,74 +125,48 @@ public class HelpdeskController implements Initializable {
     }
 
     @FXML
-    private void initialize() {
-        addButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e) {
-                DbConnection conn = new DbConnection();
+    private void ticketToevoegen() {
 
-                String idTicket = idTicketTextField.getText();
-                String voornaam = voornaamTextField.getText();
-                String achternaam = achternaamTextField.getText();
-                LocalDate datum = datumTextField.getValue();
-                String toegewezenAan = toegewezenAanTextField.getText();
-                String beschrijving = beschrijvingTextField.getText();
-                //SQL Query 2.
-                String query = "INSERT INTO bagage_registratie.ticket (idTicket, voornaam, achternaam, datum, toegewezen_aan, beschrijving) VALUES (' " + idTicket + "','" + voornaam + "','" + achternaam + "','" + datum + "','" + toegewezenAan + "','" + beschrijving + "')";
+        DbConnection conn = new DbConnection();
 
-                PreparedStatement pst;
+        String idTicket = idTicketTextField.getText();
+        String voornaam = voornaamTextField.getText();
+        String achternaam = achternaamTextField.getText();
+        LocalDate datum = datumTextField.getValue();
+        String toegewezenAan = toegewezenAanTextField.getText();
+        String beschrijving = beschrijvingTextField.getText();
+        //SQL Query 2.
+        String query = "INSERT INTO bagage_registratie.ticket (idTicket, voornaam, achternaam, datum, toegewezen_aan, beschrijving) VALUES (' " + idTicket + "','" + voornaam + "','" + achternaam + "','" + datum + "','" + toegewezenAan + "','" + beschrijving + "')";
 
-                try {
+        PreparedStatement pst;
 
-                    Connection myConn = conn.getConnection();
-                    pst = myConn.prepareStatement(query);
-                    pst.executeUpdate();
-
-                    data2.setId(idTicket);
-                    data2.setVoornaam(voornaam);
-                    data2.setAchternaam(achternaam);
-                    data2.setDatum(datum);
-                    data2.setToegewezenAan(toegewezenAan);
-                    data2.setBeschrijving(beschrijving);
-                    //Sets input information into the database.
-
-                } catch (Exception ex) {
-                    System.out.println(ex);
-                }
-
-                Stage stage = (Stage) newEntryDialog.getScene().getWindow();
-                stage.close();
-
-            }
-
-        });
-    }
-
-    final void handleAddNewEntryMenuItem(GridPane gridPane) {
         try {
-            GridPane root = FXMLLoader.load(getClass().getResource("/view/Add.fxml"));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.setScene(scene);
-            stage.showAndWait();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+
+            Connection myConn = conn.getConnection();
+            pst = myConn.prepareStatement(query);
+            pst.executeUpdate();
+
+            data2.setId(idTicket);
+            data2.setVoornaam(voornaam);
+            data2.setAchternaam(achternaam);
+            data2.setDatum(datum);
+            data2.setToegewezenAan(toegewezenAan);
+            data2.setBeschrijving(beschrijving);
+            //Sets input information into the database.
+
+        } catch (Exception ex) {
+            System.out.println(ex);
         }
 
-    }
-
-    @FXML
-    public void handleCancel() {
         Stage stage = (Stage) newEntryDialog.getScene().getWindow();
-        stage.close(); //Closes popup window.
+        stage.close();
     }
 
     //Method to delete tickets.    
     @FXML
-    private void deleteEntry(ActionEvent e) {
+    private void verwijderTicket() {
         DbConnection conn = new DbConnection();
-        UserDetails data = tableUser.getSelectionModel().getSelectedItem(); //Database connection setup.
+        UserDetails data = tableUser.getSelectionModel().getSelectedItem();
 
         if (data != null) {
 

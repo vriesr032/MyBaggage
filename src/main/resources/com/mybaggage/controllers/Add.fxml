@@ -34,7 +34,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="addButton" mnemonicParsing="false" onAction="#initialize" prefHeight="25.0" prefWidth="133.0" text="Toevoegen" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
+            <Button fx:id="addButton" mnemonicParsing="false" onAction="#ticketToevoegen" prefHeight="25.0" prefWidth="133.0" text="Toevoegen" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <Button fx:id="closeTicket" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="134.0" text="Sluiten" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="CENTER" />
             <TextField fx:id="idTicketTextField" maxWidth="-Infinity" prefHeight="25.0" prefWidth="169.0" GridPane.columnIndex="1">
                <GridPane.margin>
