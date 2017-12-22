@@ -46,7 +46,6 @@ public class InlogschermController implements Initializable {
     @FXML
     private Button btnLogIn;
 
-    //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
     Scene scene;
     Connection connection = null;
@@ -102,7 +101,7 @@ public class InlogschermController implements Initializable {
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 } else if ("Admin".equals(functie)) {
-                    infoBox("U heeft succesvol ingelogd.", "Success", null);
+                    infoBox("U heeft succesvol ingelog  d.", "Success", null);
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
@@ -112,7 +111,7 @@ public class InlogschermController implements Initializable {
                     dialogStage.show();
                 }
             }
-            
+
         } catch (IOException | SQLException e) {
         }
     }
