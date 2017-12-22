@@ -44,7 +44,7 @@ public class InlogschermController implements Initializable {
     private ChoiceBox choiceFunctie;
 
     @FXML
-    private Button button;
+    private Button btnLogIn;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -112,7 +112,7 @@ public class InlogschermController implements Initializable {
                     dialogStage.show();
                 }
             }
-
+            
         } catch (IOException | SQLException e) {
         }
     }

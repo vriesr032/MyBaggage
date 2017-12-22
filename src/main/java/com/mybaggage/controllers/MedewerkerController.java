@@ -69,8 +69,8 @@ public class MedewerkerController implements Initializable {
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
-            bagageZoeken = FXMLLoader.load(getClass().getResource("VerlorenBagageRegistratie.fxml"));
+            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskMedewerker.fxml"));
             registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
 

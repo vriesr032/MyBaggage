@@ -39,7 +39,7 @@
                         </FXCollections>
                     </items>
                 </ChoiceBox>
-                <Button fx:id="button" defaultButton="true" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" text="Log in" />
+                <Button fx:id="btnLogIn" defaultButton="true" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" text="Log in" />
             <ImageView fitHeight="161.0" fitWidth="392.0" layoutY="22.0">
                <image>
                   <Image url="@../../../images/Corendon_logo.png" />
