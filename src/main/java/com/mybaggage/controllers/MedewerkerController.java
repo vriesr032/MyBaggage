@@ -65,7 +65,7 @@ public class MedewerkerController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
         try {
-            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));

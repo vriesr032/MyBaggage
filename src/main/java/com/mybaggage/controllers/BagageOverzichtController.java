@@ -52,10 +52,10 @@ public class BagageOverzichtController implements Initializable {
 //Gaat naar het scherm Bagage Toevoegen
     @FXML
     private Button btn_bagageToevoegen;
-    
+
     @FXML
     private Button export;
-    
+
     @FXML
     private void bagageToevoegen() {
         MainController.switchScherm("/com/mybaggage/controllers/BagageToevoegen.fxml");
@@ -89,10 +89,10 @@ public class BagageOverzichtController implements Initializable {
 //Laad alle data van de database in de tabel
     @FXML
     private ObservableList<com.mybaggage.models.BagageToevoegen> data;
-    
+
     @FXML
     private TableView<com.mybaggage.models.BagageToevoegen> tabelBagage;
-    
+
     private Connection conn = null;
     private PreparedStatement pst = null;
     private ResultSet rs = null;
@@ -111,21 +111,21 @@ public class BagageOverzichtController implements Initializable {
         }
         tabelBagage.setItems(data);
     }
-    
-    public BagageOverzichtController(){
+
+    public BagageOverzichtController() {
         conn = Database.connectdb();
     }
 
     @FXML
-    private void exportExcel(){
+    private void exportExcel() {
         conn = Database.connectdb();
-        try{
+        try {
             String query = "Select * from bagage";
             pst = conn.prepareStatement(query);
             rs = pst.executeQuery();
-            
+
             // XSSF is voor 2007 of nieuwere versies voor excel. HSSF is voor 2006 en ouder.
-            XSSFWorkbook wb = new XSSFWorkbook(); 
+            XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("Bagage overzicht");// maakt een sheet aan
             XSSFRow header = sheet.createRow(0); // maakt rijen aan om de data in de database te krijgen
             header.createCell(0).setCellValue("Naam");
@@ -134,18 +134,17 @@ public class BagageOverzichtController implements Initializable {
             header.createCell(3).setCellValue("SoortBagage");
             header.createCell(4).setCellValue("Status");
             header.createCell(5).setCellValue("RegistratieNummer");
-            
-            sheet.setColumnWidth(0, 256*25);
-            sheet.setColumnWidth(1, 256*25);
-            sheet.setColumnWidth(2, 256*25);
-            sheet.setColumnWidth(3, 256*25);
-            sheet.setColumnWidth(4, 256*25);
-            sheet.setColumnWidth(5, 256*25);
-            
-            
+
+            sheet.setColumnWidth(0, 256 * 25);
+            sheet.setColumnWidth(1, 256 * 25);
+            sheet.setColumnWidth(2, 256 * 25);
+            sheet.setColumnWidth(3, 256 * 25);
+            sheet.setColumnWidth(4, 256 * 25);
+            sheet.setColumnWidth(5, 256 * 25);
+
             int index = 1;
             // Met deze code zet je pak je alleen de 1e rij van de excel bestand.
-            while(rs.next()){
+            while (rs.next()) {
                 XSSFRow row = sheet.createRow(index);
                 row.createCell(0).setCellValue(rs.getString("Naam"));
                 row.createCell(1).setCellValue(rs.getString("Kleur"));
@@ -155,30 +154,30 @@ public class BagageOverzichtController implements Initializable {
                 row.createCell(5).setCellValue(rs.getString("RegistratieNummer"));
                 index++; // Dit zorgt ervoor dat er meerdere rijen in de excel bestand worden opgepakt
             }
-               
+
             FileOutputStream fileOut = new FileOutputStream("Bagage Overzicht.xlsx");
             wb.write(fileOut);
-            
-            
+
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("BagageOverzicht");
             alert.setHeaderText(null);
             alert.setContentText("Overzicht succesvol geëxporteerd!");
             alert.showAndWait();
-            
+
             pst.close();
             rs.close();
-            
+
         } catch (SQLException | IOException ex) {
             Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         data = FXCollections.observableArrayList();
         setCellTable();
         loadDataFromDatabase();
+
     }
 }

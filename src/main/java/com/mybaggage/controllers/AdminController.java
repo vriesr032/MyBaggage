@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -65,7 +66,7 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
         try {
-            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
