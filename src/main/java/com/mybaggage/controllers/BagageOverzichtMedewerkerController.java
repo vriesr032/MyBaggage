@@ -126,12 +126,6 @@ public class BagageOverzichtMedewerkerController implements Initializable {
         setCellTable();
         loadDataFromDatabase();
 
-        tabelBagage.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Object>() {
-            @Override
-            public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
-                index.set(data.indexOf(newValue));
-            }
-        });
     }
 
     public void onDeleteItem(ActionEvent event) throws SQLException {
