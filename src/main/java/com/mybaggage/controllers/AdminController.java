@@ -66,7 +66,7 @@ public class AdminController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
         try {
-            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
+            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
             bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));

@@ -1,13 +1,23 @@
 package com.mybaggage.controllers;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.mybaggage.Database;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -55,6 +65,9 @@ public class BagageOverzichtController implements Initializable {
 
     @FXML
     private Button export;
+    
+    @FXML
+    private Button pdf;
 
     @FXML
     private void bagageToevoegen() {
@@ -172,7 +185,7 @@ public class BagageOverzichtController implements Initializable {
         }
 
     }
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         data = FXCollections.observableArrayList();
@@ -180,4 +193,65 @@ public class BagageOverzichtController implements Initializable {
         loadDataFromDatabase();
 
     }
+    
+    
+    @FXML
+    public void pdfs()
+               
+            throws Exception{
+                  
+                        conn = Database.connectdb();
+                        try {
+                                        Statement stmt = conn.createStatement();
+                                        /*  SQL query */
+                                        ResultSet query_set = stmt.executeQuery("SELECT * From bagage");
+                                        /* Step-2:  PDF document laden */
+                                        Document my_pdf_report = new Document();
+                                        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("BagageOverzicht.pdf"));
+                                        my_pdf_report.open();            
+                                        //Hoeveel tabellen ?
+                                        PdfPTable my_report_table = new PdfPTable(4);
+                                        //cell object maken
+                                          PdfPCell table_cell;
+
+                        while (query_set.next()) {  
+                            
+                                        Paragraph preface = new Paragraph();
+                                        preface.add(new Paragraph("PDF Bagage Overzicht - Corendon"));
+                                        table_cell = new PdfPCell(new Phrase("RegistratieNummer"));
+                                        String RegistratieNummer = query_set.getString("RegistratieNummer");
+                                        table_cell=new PdfPCell(new Phrase(RegistratieNummer));
+                                        my_report_table.addCell(table_cell);
+                                        table_cell = new PdfPCell(new Phrase("Kleur"));
+                                        String Kleur=query_set.getString("Kleur");
+                                        table_cell=new PdfPCell(new Phrase(Kleur));
+                                        my_report_table.addCell(table_cell);
+                                        table_cell = new PdfPCell(new Phrase("Grootte"));
+                                        String Grootte=query_set.getString("Grootte");
+                                        table_cell=new PdfPCell(new Phrase(Grootte));
+                                        my_report_table.addCell(table_cell);
+                                        table_cell = new PdfPCell(new Phrase("Status"));
+                                        String Status=query_set.getString("Status");
+                                        table_cell=new PdfPCell(new Phrase(Status));
+                                        my_report_table.addCell(table_cell);
+                                        }
+                                        /* tabel naar PDF */
+                                        my_pdf_report.add(my_report_table);                       
+                                        my_pdf_report.close();
+
+                                        /* Alles sluiten */
+                                        query_set.close();
+                                        stmt.close(); 
+                                        conn.close();               
+
+
+
+                                        } catch (FileNotFoundException e) {
+                                        // Auto-generated catch block
+                                        e.printStackTrace();
+                                        } catch (DocumentException e) {
+                                        // Auto-generated catch block
+                                        e.printStackTrace();
+                                        }
+       }
 }
