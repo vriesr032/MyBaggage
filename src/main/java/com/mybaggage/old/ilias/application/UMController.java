@@ -83,10 +83,7 @@ public class UMController implements Initializable{
     @FXML
     private EditExistingEntryController editExistingEntryDialogController;
     
-    FileChooser fc = new FileChooser();
-    public ArrayList<Contacts> list;
-    public ListIterator<Contacts> LIT;
-    private int i;
+ 
     
     
     public UMController(){}
@@ -96,26 +93,26 @@ public class UMController implements Initializable{
 	@Override
     public void initialize(URL location, ResourceBundle resources) {
     	
-		//Creates columns.
-		id.setCellValueFactory(new PropertyValueFactory<DataModel,String>("id"));		
-		voornaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("voornaam"));	
-		achternaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("achternaam"));	
-		gebruikersnaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("gebruikersnaam"));
-		wachtwoord.setCellValueFactory(new PropertyValueFactory<DataModel,String>("wachtwoord"));
-		functie.setCellValueFactory(new PropertyValueFactory<DataModel,String>("functie"));
-		
-		DBConnection conn = new DBConnection();
+            //Creates columns.
+            id.setCellValueFactory(new PropertyValueFactory<DataModel,String>("id"));		
+            voornaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("voornaam"));	
+            achternaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("achternaam"));	
+            gebruikersnaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("gebruikersnaam"));
+            wachtwoord.setCellValueFactory(new PropertyValueFactory<DataModel,String>("wachtwoord"));
+            functie.setCellValueFactory(new PropertyValueFactory<DataModel,String>("functie"));
+
+            DBConnection conn = new DBConnection();
 	
-		try{
+	try{
 		
-	    ObservableList<DataModel> bookData = FXCollections.observableArrayList();	
-		
-	    //Connects to database.
-		Connection myConn = conn.getConnection();
-		String query = "SELECT * FROM persoonsgegevens";	
-		PreparedStatement pst;
-		pst = myConn.prepareStatement(query);
-		ResultSet rs = pst.executeQuery();
+            ObservableList<DataModel> bookData = FXCollections.observableArrayList();	
+
+            //Connects to database.
+            Connection myConn = conn.getConnection();
+            String query = "SELECT * FROM persoonsgegevens";	
+            PreparedStatement pst;
+            pst = myConn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
 		
         //Iterates through database and inserts information from .csv file into table.
         while (rs.next()) {
@@ -129,10 +126,10 @@ public class UMController implements Initializable{
             bookData.add(book);
         	}
         
-        userTable.setItems(bookData);
-        userTable.setEditable(true);
+            userTable.setItems(bookData);
+            userTable.setEditable(true);
         
-        userTable.setRowFactory( tv -> {
+            userTable.setRowFactory( tv -> {
             TableRow<DataModel> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
@@ -144,12 +141,6 @@ public class UMController implements Initializable{
             });
             return row ;
         });
-        
-        
-        
-       
-        
-        
         
         //Implement search function
         FilteredList<DataModel> filteredData = new FilteredList<>(bookData, p -> true);
@@ -188,7 +179,7 @@ public class UMController implements Initializable{
 	}
         
     
-            public void load(URL location, ResourceBundle resources) {
+    public void load(URL location, ResourceBundle resources) {
     	
 		//Creates columns.
 		id.setCellValueFactory(new PropertyValueFactory<DataModel,String>("id"));		
@@ -200,16 +191,16 @@ public class UMController implements Initializable{
 		
 		DBConnection conn = new DBConnection();
 	
-		try{
+        try{
 		
 	    ObservableList<DataModel> bookData = FXCollections.observableArrayList();	
 		
-	    //Connects to database.
-		Connection myConn = conn.getConnection();
-		String query = "SELECT * FROM persoonsgegevens";	
-		PreparedStatement pst;
-		pst = myConn.prepareStatement(query);
-		ResultSet rs = pst.executeQuery();
+            //Connects to database.
+            Connection myConn = conn.getConnection();
+            String query = "SELECT * FROM persoonsgegevens";	
+            PreparedStatement pst;
+            pst = myConn.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
 		
         //Iterates through database and inserts information from .csv file into table.
         while (rs.next()) {
@@ -223,10 +214,10 @@ public class UMController implements Initializable{
             bookData.add(book);
         	}
         
-        userTable.setItems(bookData);
-        userTable.setEditable(true);
+            userTable.setItems(bookData);
+            userTable.setEditable(true);
         
-        userTable.setRowFactory( tv -> {
+            userTable.setRowFactory( tv -> {
             TableRow<DataModel> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
@@ -238,11 +229,7 @@ public class UMController implements Initializable{
             });
             return row ;
         });
-        
-       
-        
-        
-        
+
         //Implement search function
         FilteredList<DataModel> filteredData = new FilteredList<>(bookData, p -> true);
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -279,8 +266,9 @@ public class UMController implements Initializable{
 			     
 	}
 	
-	@FXML
-	private void deleteEntry(ActionEvent e){
+    @FXML
+    private void deleteEntry(ActionEvent e){
+            
 		DBConnection conn = new DBConnection();
 		DataModel data = userTable.getSelectionModel().getSelectedItem();
 		
@@ -299,151 +287,76 @@ public class UMController implements Initializable{
 			}
 		}
 		
-	    if (data == null){
-	        // Nothing selected.
-	        Alert alert = new Alert(AlertType.WARNING);
-	        alert.initOwner(Main.getStage());
-	        alert.setTitle("Niets Geselecteerd");
-	        alert.setHeaderText("Geen rij geselecteerd");
-	        alert.setContentText("U moet als eerst een rij kiezen.");
-	        alert.showAndWait();
-	    }
+                if (data == null){
+                    // Nothing selected.
+                    Alert alert = new Alert(AlertType.WARNING);
+                    alert.initOwner(Main.getStage());
+                    alert.setTitle("Niets Geselecteerd");
+                    alert.setHeaderText("Geen rij geselecteerd");
+                    alert.setContentText("U moet als eerst een rij kiezen.");
+                    alert.showAndWait();
+                }
 		
 	}
-	    @FXML
+    @FXML
     private void loadDataFromDatabase(ActionEvent event) {
         
         
-        id.setCellValueFactory(new PropertyValueFactory<DataModel,String>("id"));		
+                id.setCellValueFactory(new PropertyValueFactory<DataModel,String>("id"));		
 		voornaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("voornaam"));	
 		achternaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("achternaam"));	
 		gebruikersnaam.setCellValueFactory(new PropertyValueFactory<DataModel,String>("gebruikersnaam"));
 		wachtwoord.setCellValueFactory(new PropertyValueFactory<DataModel,String>("wachtwoord"));
 		functie.setCellValueFactory(new PropertyValueFactory<DataModel,String>("functie"));
-       		 DBConnection conn = new DBConnection();
+       		DBConnection conn = new DBConnection();
 	
 		try{
 		
-	    ObservableList<DataModel> bookData = FXCollections.observableArrayList();	
-		
-	    //Connects to database.
-		Connection myConn = conn.getConnection();
-		String query = "SELECT * FROM persoonsgegevens";	
-		PreparedStatement pst;
-		pst = myConn.prepareStatement(query);
-		ResultSet rs = pst.executeQuery();
-           while (rs.next()) {
-        	DataModel book = new DataModel();
-            book.setId(rs.getString("id"));
-            book.setVoornaam(rs.getString("voornaam"));
-            book.setAchternaam(rs.getString("achternaam"));
-            book.setGebruikersnaam(rs.getString("gebruikersnaam"));
-            book.setWachtwoord(rs.getString("wachtwoord"));
-            book.setFunctie(rs.getString("functie"));   
-            bookData.add(book);
-        	}
+                    ObservableList<DataModel> bookData = FXCollections.observableArrayList();	
+
+                    //Connects to database.
+                    Connection myConn = conn.getConnection();
+                    String query = "SELECT * FROM persoonsgegevens";	
+                    PreparedStatement pst;
+                    pst = myConn.prepareStatement(query);
+                    ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    DataModel book = new DataModel();
+                    book.setId(rs.getString("id"));
+                    book.setVoornaam(rs.getString("voornaam"));
+                    book.setAchternaam(rs.getString("achternaam"));
+                    book.setGebruikersnaam(rs.getString("gebruikersnaam"));
+                    book.setWachtwoord(rs.getString("wachtwoord"));
+                    book.setFunctie(rs.getString("functie"));   
+                    bookData.add(book);
+                }
            
-            userTable.setItems(bookData);
+                userTable.setItems(bookData);
             
 
-        } catch (SQLException ex) {
-            System.err.println("Error"+ex);
-        }   catch (ClassNotFoundException ex) {
+                } catch (SQLException ex) {
+                    System.err.println("Error"+ex);
+                }   catch (ClassNotFoundException ex) {
                 Logger.getLogger(UMController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                }
         
       
     }
-	    @FXML//Load CSV Data
-    private void onLoad(ActionEvent e)throws IOException {
 
-                ObservableList<DataModel> bookData = FXCollections.observableArrayList();
-        
-              
-
-                File fileInfo = new File("C:/Users/Ilias/Documents/NetBeansProjects/tableMaterial/src/tablematerial/People.csv");
-
-
-                if(fileInfo.length()==0) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
-                    alert.setTitle("Information");
-                    alert.setHeaderText("");
-                    alert.setContentText("No Data in File at "+ fileInfo+"\n"+
-                    "Enter Data and Save");
-                    alert.showAndWait();
-                    return;  
-                }
-
-                fc.setTitle("Load Contacts Info");
-                fc.setInitialDirectory(new File("C:/Users/Ilias/Documents/NetBeansProjects/tableMaterial/src/tablematerial"));
-                fc.setInitialDirectory(new File("C:/Users/Ilias/Documents/NetBeansProjects/tableMaterial/src/tablematerial"));
-                fc.setInitialFileName("People.csv");
-                File file = fc.showOpenDialog(null);
-                if (file == null) {
-                return;
-                }
-
-                String correctFile = file.getName();
-                if(!(correctFile.matches("People.csv"))){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Information");
-                    alert.setHeaderText("");
-                    alert.setContentText("The File at " + file + "\n\n"+
-                    "is NOT accociated with this application\n\n"+
-                    "Select the File at "+fileInfo);
-                    alert.showAndWait();
-                    return;
-                }
-
-                Path dirP = Paths.get(String.valueOf(file));
-                InputStream in = Files.newInputStream(dirP);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                list = new ArrayList<Contacts>();
-                Scanner scan = new Scanner(reader);
-                scan.useDelimiter("\\s*,\\s*");
-
-          
-                scan.close();
-
-       
-    }
-    
-    @FXML void ExportPDF(ActionEvent e){
-        
-        ObservableList<DataModel> bookData = FXCollections.observableArrayList();
-        Writer writer = null;
-        try {
-        File file = new File("C:/Users/Ilias/Documents/NetBeansProjects/tableMaterial/src/tablematerial/test.csv");
-        writer = new BufferedWriter(new FileWriter(file));
-        for (DataModel book : bookData) {
-
-            String text = book.getId() + "," + book.getVoornaam() + "," + book.getAchternaam() + "\n";
-
-
-
-            writer.write(text);
-        }
-        } catch (Exception ex) {
-        ex.printStackTrace();
-    }
-    
-    
-    }
 	      
 	
-	//Sets the New Entry menu item with its proper controller.
-	@FXML
-	void showNewEntry(ActionEvent e){
+    //Sets the New Entry menu item with its proper controller.
+    @FXML
+    void showNewEntry(ActionEvent e){
 		newEntryDialogController.handleAddNewEntryMenuItem(newEntryDialog);
-	}
+    }
 	
-	//Handle editing entry
-	@FXML
-	public void handleEdit(){
+    //Handle editing entry
+    @FXML
+    public void handleEdit(){
 	    	editExistingEntryDialogController.handleEditExistingEntryMenuItem(editExistingEntryDialog);
 	    	
-	}
+    }
 	
 
 }

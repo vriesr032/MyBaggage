@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="768.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.HelpdeskController">
+<AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="675.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.HelpdeskController">
    <children>
       <TableView fx:id="tableUser" layoutX="46.0" layoutY="88.0" prefHeight="248.0" prefWidth="395.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
          <columns>
@@ -18,7 +18,7 @@
          </columns>
       </TableView>
       <Button fx:id="addTicket" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="245.0" text="Ticket toevoegen" />
-      <Button fx:id="deleteButton" layoutX="516.0" layoutY="63.0" mnemonicParsing="false" onAction="#deleteEntry" prefHeight="25.0" prefWidth="245.0" text="Ticket verwijderen" />
+      <Button fx:id="deleteButton" layoutX="516.0" layoutY="63.0" mnemonicParsing="false" onAction="#verwijderTicket" prefHeight="25.0" prefWidth="245.0" text="Ticket verwijderen" />
       <Button fx:id="btnLoad" layoutX="264.0" layoutY="63.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" prefHeight="25.0" prefWidth="245.0" text="Tickets laden" />
    </children>
 </AnchorPane>

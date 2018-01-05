@@ -1,11 +1,20 @@
-package com.mybaggage.old.mitchell;
+package com.mybaggage.old.jordy;
 
+import com.mybaggage.old.jordy.DatabaseConnection;
+import com.mysql.cj.core.io.SqlDateValueFactory;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
+import java.util.Locale;
+import java.util.TimeZone;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,7 +27,7 @@ import javafx.stage.Stage;
 /**
  * Het doel van deze class is om bepaalde methodes en variables te generalizeren
  *
- * @author Mitchell Gordon (500775386)
+ * @author Jordy Pouw (500783513)
  */
 public class Utilities {
 
@@ -58,13 +67,13 @@ public class Utilities {
         stage.show();
     }
 
-    static public void setMySQLConnectionParameters(String url, String user, String password) {
+    static public void setMySQLConnectionParameters(String url, String root, String admin) {
         DatabaseConnection.url = "jdbc:mysql://localhost:3306/"
                 + url
                 + "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
                 + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        DatabaseConnection.user = user;
-        DatabaseConnection.password = password;
+        DatabaseConnection.user = root;
+        DatabaseConnection.password = admin;
     }
 
     /*

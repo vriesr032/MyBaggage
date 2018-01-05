@@ -34,5 +34,10 @@
          <font>
             <Font name="Arial" size="14.0" />
          </font></Label>
+      <Button fx:id="btnTerug" layoutX="24.0" layoutY="49.0" mnemonicParsing="false" onAction="#loadFAQ" prefHeight="27.0" prefWidth="90.0" text="Terug">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

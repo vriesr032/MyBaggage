@@ -1,18 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mybaggage.controllers;
 
-import com.mybaggage.old.ludo.ConnectionUtil;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  *
@@ -35,28 +30,29 @@ import javafx.stage.Stage;
 public class AdminController implements Initializable {
 
     @FXML
-    private Button btnLogOut;
-
+    private AnchorPane holderPane;
     @FXML
-    private Button btnRapportage;
-
+    private JFXButton btnHome;
+    @FXML
+    private Button btnLogOut;
     @FXML
     private Button btnExit;
-
     @FXML
-    private Button btnHome;
-
+    private Button btnHelpdesk;
     @FXML
-    private Button btnAdd;
-
+    private Button btnBagage;
     @FXML
-    private Button btnContact;
-
+    private Button btnUM;
     @FXML
-    private Button btnUserManagament;
-
+    private Button btnRegistreerSchadevergoeding;
     @FXML
-    private Pane functieScherm;
+    private Button btnBagageZoeken;
+    @FXML
+    private Button btnBagageOverzicht;
+    @FXML
+    private Button btnBagageToevoegen;
+
+    AnchorPane bagageOverzicht, bagageToevoegen, bagageZoeken, faq, helpdesk, fxml2, inlogscherm, UM, registreerSchadevergoeding;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -66,12 +62,24 @@ public class AdminController implements Initializable {
     ResultSet resultSet = null;
     ResultSet resultSet2 = null;
 
-    public AdminController() {
-        connection = ConnectionUtil.connectdb();
-    }
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        //Load all fxmls in a cache
+        try {
+            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+            inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
+            faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
+            fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
+            UM = FXMLLoader.load(getClass().getResource("UM.fxml"));
+            helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskAdmin.fxml"));
+            registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
 
-    @FXML
-    public void loadFxml(ActionEvent event) throws IOException {
+            setNode(fxml2);
+        } catch (IOException ex) {
+            Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -80,39 +88,9 @@ public class AdminController implements Initializable {
         Node source = (Node) event.getSource();
         dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
-        scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
         dialogStage.setScene(scene);
         dialogStage.show();
-    }
-
-    @FXML
-    private void openUserManagement(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openRapportage(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openHome(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openBagageZoeken(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
-    }
-
-    @FXML
-    private void openContact(ActionEvent event) throws IOException {
-        Pane geklikteFunctie = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
-        functieScherm.getChildren().add(geklikteFunctie);
     }
 
     @FXML
@@ -121,8 +99,58 @@ public class AdminController implements Initializable {
         stage.close();
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    //Set selected node to a content holder
+    private void setNode(Node node) {
+        holderPane.getChildren().clear();
+        holderPane.getChildren().add((Node) node);
 
+        FadeTransition ft = new FadeTransition(Duration.millis(1500));
+        ft.setNode(node);
+        ft.setFromValue(0.1);
+        ft.setToValue(1);
+        ft.setCycleCount(1);
+        ft.setAutoReverse(false);
+        ft.play();
     }
+
+    @FXML
+    private void openHome(ActionEvent event) {
+        setNode(fxml2);
+    }
+
+    @FXML
+    private void openBagageToevoegen(ActionEvent event) {
+        setNode(bagageToevoegen);
+    }
+
+    @FXML
+    private void openBagageOverzicht(ActionEvent event) {
+        setNode(bagageOverzicht);
+    }
+
+    @FXML
+    private void openBagageZoeken(ActionEvent event) {
+        setNode(bagageZoeken);
+    }
+
+    @FXML
+    private void openContact(ActionEvent event) {
+        setNode(faq);
+    }
+
+    @FXML
+    private void openHelpdesk(ActionEvent event) {
+        setNode(helpdesk);
+    }
+
+    @FXML
+    private void openUM(ActionEvent event) {
+        setNode(UM);
+    }
+
+    @FXML
+    private void openRegistreerSchadevergoeding(ActionEvent event) {
+        setNode(registreerSchadevergoeding);
+    }
+
 }

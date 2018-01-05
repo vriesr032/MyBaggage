@@ -16,8 +16,6 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Label layoutX="125.0" layoutY="555.0" prefHeight="20.0" prefWidth="215.0" text="Antwoord niet gevonden?" />
-      <Label layoutX="125.0" layoutY="575.0" text="Contacteer ons dan!" />
       <Label layoutX="133.0" layoutY="31.0" text="Veelgestelde vragen">
          <font>
             <Font name="Arial Bold" size="18.0" />
@@ -62,5 +60,7 @@
             <Font size="14.0" />
          </font>
       </Hyperlink>
+      <Label layoutX="125.0" layoutY="555.0" text="Antwoord niet gevonden?" />
+      <Label layoutX="125.0" layoutY="575.0" text="Contacteer ons dan!" />
    </children>
 </AnchorPane>

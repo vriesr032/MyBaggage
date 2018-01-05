@@ -5,7 +5,7 @@
  */
 package com.mybaggage.controllers;
 
-import com.mybaggage.old.ludo.ConnectionUtil;
+import com.mybaggage.Database;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -34,9 +34,6 @@ import javafx.stage.Stage;
  */
 public class InlogschermController implements Initializable {
 
- 
-
-
     @FXML
     private TextField textGebruikersnaam;
 
@@ -47,18 +44,16 @@ public class InlogschermController implements Initializable {
     private ChoiceBox choiceFunctie;
 
     @FXML
-    private Button button;
+    private Button btnLogIn;
 
-    //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
     Scene scene;
     Connection connection = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
-    ResultSet resultSet2 = null;
 
     public InlogschermController() {
-        connection = ConnectionUtil.connectdb();
+        connection = Database.connectdb();
     }
 
     @FXML
@@ -71,12 +66,10 @@ public class InlogschermController implements Initializable {
         Node source = (Node) event.getSource();
         dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
-        scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
         dialogStage.setScene(scene);
         dialogStage.show();
     }
-
-    
 
     //Vergelijkt de ingevulde gegevens met die van de database en kijkt of ze correct zijn en wat de rol van de persoon is.
     //Vervolgens worden verschillende rollen naar verschillende schermen toegestuurd.
@@ -85,7 +78,7 @@ public class InlogschermController implements Initializable {
         String gebruikersnaam = textGebruikersnaam.getText().toString();
         String wachtwoord = textPassword.getText().toString();
         String functie = choiceFunctie.getValue().toString();
-        String verify = "SELECT * FROM persoonsgegevens WHERE gebruikersnaam = ? and wachtwoord = ? and functie = ?";
+        String verify = "SELECT * FROM bagage_registratie.persoonsgegevens WHERE gebruikersnaam = ? and wachtwoord = ? and functie = ?";
 
         try {
             preparedStatement = connection.prepareStatement(verify);
@@ -103,7 +96,8 @@ public class InlogschermController implements Initializable {
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
+                    scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Medewerker.fxml")));
+                    scene.getStylesheets().add("/styles/LudoStyles.css");
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 } else if ("Admin".equals(functie)) {
@@ -111,7 +105,8 @@ public class InlogschermController implements Initializable {
                     Node source = (Node) event.getSource();
                     dialogStage = (Stage) source.getScene().getWindow();
                     dialogStage.close();
-                    scene = new Scene((Parent)FXMLLoader.load(getClass().getResource("Admin.fxml")));
+                    scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Admin.fxml")));
+                    scene.getStylesheets().add("/styles/LudoStyles.css");
                     dialogStage.setScene(scene);
                     dialogStage.show();
                 }

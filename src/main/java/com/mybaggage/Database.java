@@ -5,33 +5,22 @@
  */
 package com.mybaggage;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.sql.*;
+import javax.swing.*;
 
-/**
- *
- * @author rickdevries
- */
 public class Database {
 
-    public static Connection Connect() {
+    Connection conn = null;
+
+    public static Connection connectdb() {
         try {
-            //De database connectie
-            String url = "jdbc:mysql://localhost:3306/bagage";
-            String user = "root";
-            String password = "root123";
-
             Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(url, user, password);
+//LET OP SWINGAPP IS DE NAAM VAN DATABASE!! https://codingbybushan.wordpress.com/2017/04/09/login-form-in-javafx-and-mysql/
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/bagage_registratie?useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "admin");
             return conn;
-
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(Database.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
         }
-
-        return null;
     }
 }

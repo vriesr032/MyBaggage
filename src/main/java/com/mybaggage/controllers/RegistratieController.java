@@ -1,11 +1,15 @@
-/*package com.mybaggage.old.mitchell;
+package com.mybaggage.controllers;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.mybaggage.Database;
 import com.mybaggage.Main;
 import com.mybaggage.controllers.MainController;
+import com.mybaggage.old.mitchell.Bagageregistratie;
+import com.mybaggage.old.mitchell.DatabaseConnection;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -13,6 +17,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -27,7 +32,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
-public class RegistratieSysteem implements Initializable {
+public class RegistratieController implements Initializable {
 
     final String DEFAULT_STRING = "";
     final int DEFAULT_INTEGER = 1;
@@ -46,9 +51,6 @@ public class RegistratieSysteem implements Initializable {
 
     @FXML
     private JFXTextField txtKlantnummer;
-
-    @FXML
-    private JFXTextField txtTijd;
 
     @FXML
     private JFXDatePicker txtDatum;
@@ -103,10 +105,10 @@ public class RegistratieSysteem implements Initializable {
         if (event.getTarget() == btn_GoToZoekResultaten) {
             Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/Test Case.fxml"));
 
-            // Maak verbinding met database
+            /*    // Maak verbinding met database
             Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "Nightfeather007!");
             Utilities.databaseConnection.getConnection();
-
+             */
             // !!!Test Case values:
             int aantalResultaten = 3;
             String[] types = {"Zakenkoffers", "Handbagage koffers", "Kinderkoffers"};
@@ -125,15 +127,6 @@ public class RegistratieSysteem implements Initializable {
             genereerZoekResultaten(sjablonen, event);
 
             // !!!End of the Test Case.
-           
-        }
-    }
-
-    @FXML
-    private void goToVerlorenBagageRegistratie(MouseEvent event) throws IOException {
-        if (event.getTarget() == btn_GoToVerlorenBagageRegistratie) {
-            Utilities.root = FXMLLoader.load(getClass().getResource("/fxml/VerlorenBagageRegistratie.fxml"));
-            Utilities.setStage(Utilities.root, event);
         }
     }
 
@@ -252,15 +245,15 @@ public class RegistratieSysteem implements Initializable {
         // Schakel horizontale scroll bar 
         Utilities.rootScrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 
-        Utilities.setStage(Utilities.rootScrollPane, event);
+        //Utilities.setStage(Utilities.rootScrollPane, event);
     }
 
     @FXML
     private Bagageregistratie vulGevondenBagageFormulierIn() {
         Bagageregistratie gevondenBagageFormulier = new Bagageregistratie();
 
-        gevondenBagageFormulier.setDatum(txtDatum.getPromptText());
-        gevondenBagageFormulier.setTijd(txtTijd.getText());
+        gevondenBagageFormulier.setDatum(txtDatum.getValue());
+        gevondenBagageFormulier.setTijd(); // set current system time
         gevondenBagageFormulier.setLuchthaven(txtLuchthaven.getText());
         gevondenBagageFormulier.setLabelnummer(txtLabelnummer.getText());
         gevondenBagageFormulier.setVluchtnummer(txtVluchtnummer.getText());
@@ -275,7 +268,7 @@ public class RegistratieSysteem implements Initializable {
     }
 
     @FXML
-    private void insertGevondenBagageFormulier(MouseEvent event) throws ClassNotFoundException, SQLException, ParseException {
+    private void insertGevondenBagageFormulier(ActionEvent event) throws ClassNotFoundException, SQLException, ParseException {
         if (event.getTarget() == btn_RegistreerGevondenBagage) {
 
             Bagageregistratie gevondenBagageFormulier = vulGevondenBagageFormulierIn();
@@ -285,11 +278,7 @@ public class RegistratieSysteem implements Initializable {
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             try {
-                // Maak verbinding met database
-                Utilities.setMySQLConnectionParameters("bagageregistratie", "root", "root123");
-                Utilities.databaseConnection.getConnection();
-
-                Utilities.preparedStatement = Utilities.databaseConnection.connection.prepareStatement(query);
+                Utilities.preparedStatement = Database.connectdb().prepareStatement(query);
                 Utilities.preparedStatement.setString(1, DEFAULT_STRING);
                 Utilities.preparedStatement.setString(2, DEFAULT_STRING);
                 Utilities.preparedStatement.setString(3, DEFAULT_STRING);
@@ -309,10 +298,7 @@ public class RegistratieSysteem implements Initializable {
                 Utilities.preparedStatement.setInt(17, gevondenBagageFormulier.getLostAndFoundID());
 
                 Utilities.preparedStatement.executeUpdate();
-
-                // Sluit de verbinding met de database
-                Utilities.databaseConnection.closeConnection();
-            } catch (ClassNotFoundException | SQLException mySQLException) {
+            } catch (SQLException mySQLException) {
                 throw mySQLException;
             }
         }
@@ -321,7 +307,5 @@ public class RegistratieSysteem implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Main.getScene().getStylesheets().add("/styles/StylesMitchell.css");
-        
-        Utilities.databaseConnection = new DatabaseConnection();
     }
-}*/
+}

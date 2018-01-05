@@ -14,19 +14,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.InlogschermController">
+<AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.InlogschermController">
     <children>
-        <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="306.0" prefWidth="1382.0" style="-fx-background-color: red;">
+        <Pane layoutX="-7.0" layoutY="-8.0" prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: d81e05;">
             <children>
-                <Label layoutX="413.0" layoutY="30.0" text="BAGAGE REGISTRATIE SYSTEEM" textFill="WHITE">
+                <Label layoutX="122.0" layoutY="39.0" text="BAGAGE REGISTRATIE SYSTEEM" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="37.0" />
                     </font>
                 </Label>
-                <Separator layoutX="431.0" layoutY="93.0" prefHeight="14.0" prefWidth="524.0" />
+                <Separator layoutX="138.0" layoutY="93.0" prefHeight="14.0" prefWidth="524.0" />
             </children>
         </Pane>
-        <Pane layoutX="504.0" layoutY="141.0" prefHeight="597.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
+        <Pane layoutX="201.0" layoutY="101.0" prefHeight="600.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
             <children>
                 
                 <TextField fx:id="textGebruikersnaam" layoutX="98.0" layoutY="226.0" promptText="Gebruikersnaam" />
@@ -39,15 +39,10 @@
                         </FXCollections>
                     </items>
                 </ChoiceBox>
-                <Button fx:id="button" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" defaultButton="true" text="Log in" />
-            <Label layoutX="122.0" layoutY="137.0" text="Inloggen">
-               <font>
-                  <Font name="System Bold" size="29.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="151.0" fitWidth="392.0">
+                <Button fx:id="btnLogIn" defaultButton="true" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" text="Log in" />
+            <ImageView fitHeight="161.0" fitWidth="392.0" layoutY="22.0">
                <image>
-                  <Image url="@../../../../../Icons/Corendon_logo.png" />
+                  <Image url="@../../../images/Corendon_logo.png" />
                </image>
             </ImageView>
             </children>
