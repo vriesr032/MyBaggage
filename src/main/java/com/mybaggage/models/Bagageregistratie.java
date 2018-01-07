@@ -1,6 +1,6 @@
 package com.mybaggage.models;
 
-import com.mybaggage.old.mitchell.*;
+import com.mybaggage.Utilities;
 import java.time.LocalDate;
 
 /**
@@ -9,9 +9,12 @@ import java.time.LocalDate;
  * @author Mitchell Gordon (500775386)
  */
 public class Bagageregistratie {
+
     // Resort to a default integer when the string input is empty
     final int DEFAULT_INTEGER = 0;
     
+    private String[] lijstVanMerken;
+
     private int formuliernummer;
     private int lostAndFoundID;
     private int labelnummer;
@@ -42,7 +45,7 @@ public class Bagageregistratie {
 
     public void setLabelnummer(String labelnummer) {
         labelnummer.trim();
-        this.labelnummer = (!"".equals(labelnummer))? Integer.parseInt(labelnummer.trim()) : DEFAULT_INTEGER;
+        this.labelnummer = (!"".equals(labelnummer)) ? Integer.parseInt(labelnummer.trim()) : DEFAULT_INTEGER;
     }
 
     public int getVluchtnummer() {
@@ -51,7 +54,7 @@ public class Bagageregistratie {
 
     public void setVluchtnummer(String vluchtnummer) {
         vluchtnummer.trim();
-        this.vluchtnummer = (!"".equals(vluchtnummer))? Integer.parseInt(vluchtnummer) : DEFAULT_INTEGER;
+        this.vluchtnummer = (!"".equals(vluchtnummer)) ? Integer.parseInt(vluchtnummer) : DEFAULT_INTEGER;
     }
 
     public int getKlantnummer() {
@@ -62,16 +65,16 @@ public class Bagageregistratie {
         return tijd;
     }
 
-    public void setTijd(String tijd) {
-        this.tijd = tijd;
+    public void setTijd() {
+        this.tijd = Utilities.getCurrentTimeString();
     }
 
     public String getDatum() {
         return datum;
     }
 
-    public void setDatum(String datum) {
-        this.datum = datum;
+    public void setDatum(LocalDate datum) {
+        this.datum = Utilities.convertLocalDateToString(datum);
     }
 
     public String getNaam() {
@@ -176,7 +179,7 @@ public class Bagageregistratie {
 
     public void setLostAndFoundID(String lostAndFoundID) {
         lostAndFoundID.trim();
-        this.lostAndFoundID = (!"".equals(lostAndFoundID))? Integer.parseInt(lostAndFoundID) : DEFAULT_INTEGER;
+        this.lostAndFoundID = (!"".equals(lostAndFoundID)) ? Integer.parseInt(lostAndFoundID) : DEFAULT_INTEGER;
     }
 
 }

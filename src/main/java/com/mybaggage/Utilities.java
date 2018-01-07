@@ -1,10 +1,9 @@
 package com.mybaggage;
 
-import com.mybaggage.old.mitchell.DatabaseConnection;
-import static com.sun.javafx.scene.control.skin.Utils.getResource;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -18,9 +17,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -30,29 +29,37 @@ import javafx.stage.Stage;
  */
 public class Utilities {
 
-    static public PreparedStatement preparedStatement;
-
-    @FXML
-    static public Parent root;
-
-    @FXML
-    static public Stage stage;
-
-    @FXML
-    static public Scene scene;
-
-    @FXML
-    static public Pane rootPane;
-
-    @FXML
-    static public ScrollPane rootScrollPane;
-
-    static String timezoneFix = "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
+    public static final String TIMEZONE_FIX = "?useUnicode=true&useJDBCCompliantTimezoneShift=true"
             + "&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    
+
+    public static final String RELATIVE_PATH_OF_FXML = "/com/mybaggage/controllers/";
+
+    public static PreparedStatement preparedStatement;
+
+    public static ResultSet resultSet;
+
+    @FXML
+    public static Parent root;
+
+    @FXML
+    public static Stage stage;
+
+    @FXML
+    public static Scene scene;
+
+    @FXML
+    public static Pane rootPane;
+
+    @FXML
+    public static ScrollPane rootScrollPane;
+
+    public static void switchSchermNaarFXML(String gevondenBagageRegistratiefxml) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     // Voorkomt dat gebruikers een object van deze class kunnen aanmaken
-    private Utilities(){
-        
+    private Utilities() {
+
     }
 
     /*
@@ -69,7 +76,7 @@ public class Utilities {
  /*
     WIP: Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value 
      */
-    static public Date convertStringToWrapperDate(String expectedPattern, String date) throws ParseException {
+    public static Date convertStringToWrapperDate(String expectedPattern, String date) throws ParseException {
         // Use a String pattern to define the expected date format.
         SimpleDateFormat format = new SimpleDateFormat(date);
 
@@ -81,7 +88,7 @@ public class Utilities {
     /*
     WIP: Convert String to the wrapper Time to allow JDBC to identify this as an SQL TIME value
      */
-    static public Time convertStringToWrapperTime(String expectedPattern, String time) throws ParseException {
+    public static Time convertStringToWrapperTime(String expectedPattern, String time) throws ParseException {
         Time convertedTime;
         DateFormat format = new SimpleDateFormat(expectedPattern);
 
@@ -94,14 +101,35 @@ public class Utilities {
         return convertedTime;
     }
 
-    static public String convertLocalDateToString(LocalDate date) {
+    public static String convertLocalDateToString(LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String formattedString = date.format(formatter);
         return formattedString;
     }
 
-    static public String getCurrentTimeString() {
+    public static String getCurrentTimeString() {
         return new SimpleDateFormat("HH:mm").format(Calendar.getInstance().getTime());
     }
 
+    /*
+    Switch de huidige (holder)scherm naar een pane van keuze
+    
+    @param  node In dit object kan je allerlei soorten Panes zetten (Pane, AnchorPane, Scrollpane, etc)
+    @param  holderPane Refereert naar de root anchorPane (hierin zitten al je containers, buttons, etc) uit je fxml bestand.
+     */
+    public static void switchSchermNaarPane(Node node, AnchorPane holderPane) {
+        holderPane.getChildren().setAll(node);
+    }
+
+    /*
+    Switch de huidige (holder)scherm naar een FXML van keuze
+    
+    @param  fxml Refereert naar de locatie van de FXML bestand waar je naar wilt switchen in String vorm
+    @param  holderPane Refereert naar de root anchorPane (hierin zitten al je containers, buttons, etc) uit je fxml bestand.
+     */
+    public static void switchSchermNaarFXML(String fxml, AnchorPane holderPane) throws IOException {
+        Parent parent = FXMLLoader.load(Utilities.class.getResource(RELATIVE_PATH_OF_FXML + fxml));
+        AnchorPane pane = (AnchorPane) parent;
+        holderPane.getChildren().setAll(pane);
+    }
 }

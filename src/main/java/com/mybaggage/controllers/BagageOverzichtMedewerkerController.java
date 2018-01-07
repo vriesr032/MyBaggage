@@ -1,6 +1,7 @@
 package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
+import com.mybaggage.Utilities;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
@@ -26,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -43,6 +45,10 @@ public class BagageOverzichtMedewerkerController implements Initializable {
 
     private int indexNummer = 1;
     private IntegerProperty index = new SimpleIntegerProperty();
+    
+    @FXML
+    private AnchorPane rootAnchorPane;
+    
     @FXML
     private TableColumn kolomNaam;
 
@@ -71,13 +77,15 @@ public class BagageOverzichtMedewerkerController implements Initializable {
     private Button btn_bagageVerwijderen;
 
     @FXML
-    private void bagageVerwijderen() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
+    private void bagageVerwijderen() throws IOException {
+        //MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
+        Utilities.switchSchermNaarFXML("BagageVerwijderen.fxml", rootAnchorPane);
     }
 
     @FXML
-    private void bagageWijzigen() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
+    private void bagageWijzigen() throws IOException {
+        //MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
+        Utilities.switchSchermNaarFXML("BagageWijzigen.fxml", rootAnchorPane);
     }
 
     @FXML

@@ -1,6 +1,7 @@
 package com.mybaggage.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -119,18 +120,21 @@ public class AdminController implements Initializable {
     }
 
     @FXML
-    private void openBagageToevoegen(ActionEvent event) {
-        setNode(bagageToevoegen);
+    private void openBagageToevoegen(ActionEvent event) throws IOException {
+        //setNode(bagageToevoegen);
+        Utilities.switchSchermNaarFXML("GevondenBagageRegistratie.fxml", holderPane);
     }
 
     @FXML
-    private void openBagageOverzicht(ActionEvent event) {
-        setNode(bagageOverzicht);
+    private void openBagageOverzicht(ActionEvent event) throws IOException {
+        //setNode(bagageOverzicht);
+        Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", holderPane);
     }
 
     @FXML
-    private void openBagageZoeken(ActionEvent event) {
-        setNode(bagageZoeken);
+    private void openBagageZoeken(ActionEvent event) throws IOException {
+        //setNode(bagageZoeken);
+        Utilities.switchSchermNaarFXML("VermisteBagageRegistratie.fxml", holderPane);
     }
 
     @FXML

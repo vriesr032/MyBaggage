@@ -1,6 +1,7 @@
 package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -15,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -22,6 +24,9 @@ import javafx.scene.control.TextField;
  * @author rickdevries
  */
 public class BagageVerwijderenController implements Initializable {
+    
+    @FXML
+    private AnchorPane rootAnchorPane;
 
     @FXML
     private TextField txt_registratienummer;
@@ -31,8 +36,9 @@ public class BagageVerwijderenController implements Initializable {
     private Button btn_annuleren;
 
     @FXML
-    private void annuleren() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageOverzicht.fxml");
+    private void annuleren() throws IOException {
+        //MainController.switchScherm("/com/mybaggage/controllers/BagageOverzicht.fxml");
+        Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);
     }
 //Maakt het mogelijk data uit de database te verwijderen
     @FXML
@@ -51,7 +57,8 @@ public class BagageVerwijderenController implements Initializable {
             int i = pst.executeUpdate();
             if (i == 1) {
                 System.out.println("Bagage Verwijderd!");
-                MainController.switchScherm("/com/mybaggage/controllers/BagageOverzicht.fxml");
+                //MainController.switchScherm("/com/mybaggage/controllers/BagageOverzicht.fxml");
+                Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);

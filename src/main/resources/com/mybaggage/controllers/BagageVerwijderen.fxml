@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageVerwijderenController">
+<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageVerwijderenController">
     <children>
         <GridPane layoutX="4.0" prefHeight="400.0" prefWidth="600.0">
             <columnConstraints>

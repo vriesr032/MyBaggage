@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="verlorenBagageFormulier" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.RegistratieController">
+<AnchorPane id="gevondenBagageFormulier" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.RegistratieController">
    <children>
       <Label layoutX="88.0" layoutY="127.0" prefHeight="17.0" prefWidth="188.0" text="Basis Informatie">
          <font>

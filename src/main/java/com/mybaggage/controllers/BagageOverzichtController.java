@@ -8,6 +8,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mybaggage.Database;
+import com.mybaggage.Utilities;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -31,6 +32,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -41,6 +43,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author rickdevries
  */
 public class BagageOverzichtController implements Initializable {
+    
+    @FXML
+    private AnchorPane rootAnchorPane;
 
     @FXML
     private TableColumn kolomnaam;
@@ -70,24 +75,26 @@ public class BagageOverzichtController implements Initializable {
     private Button pdf;
 
     @FXML
-    private void bagageToevoegen() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageToevoegen.fxml");
+    private void bagageToevoegen() throws IOException {
+        Utilities.switchSchermNaarFXML("BagageToevoegen.fxml", rootAnchorPane);
     }
 //Gaat naar het scherm Bagage Wijzigen
     @FXML
     private Button btn_bagageWijzigen;
 
     @FXML
-    private void bagageWijzigen() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
+    private void bagageWijzigen() throws IOException {
+        //MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
+        Utilities.switchSchermNaarFXML("BagageWijzigen.fxml", rootAnchorPane);
     }
 //Gaat naar het scherm Bagage Wijzigen
     @FXML
     private Button btn_bagageVerwijderen;
 
     @FXML
-    private void bagageVerwijderen() {
-        MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
+    private void bagageVerwijderen() throws IOException {
+        //MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
+        Utilities.switchSchermNaarFXML("BagageVerwijderen.fxml", rootAnchorPane);
     }
 
     @FXML

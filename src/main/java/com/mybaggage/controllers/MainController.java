@@ -17,6 +17,7 @@ public class MainController implements Initializable {
     
     private static BorderPane staticBorderPane;
     
+    
     public static void switchScherm(String fxml) {
         try {
             Parent parent = FXMLLoader.load(MainController.class.getResource(fxml));
