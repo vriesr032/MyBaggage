@@ -1,6 +1,7 @@
 package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -10,18 +11,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /**
  * FXML Controller class
@@ -49,15 +46,14 @@ public class BagageWijzigenController implements Initializable {
     private TextField txt_registratienummer;
 
     @FXML
-    private AnchorPane holderPane;
+    private AnchorPane rootAnchorPane;
 
 //Gaat terug naar het scherm Overzicht Bagage
     @FXML
     private Button btn_annuleren;
 
-    @FXML
-    private void annuleren() {
-        setNode(bagageOverzicht);
+    private void annuleren() throws IOException {
+        Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);
     }
 
 //Maakt het mogelijk alle data aan te passen in de database
@@ -92,9 +88,8 @@ public class BagageWijzigenController implements Initializable {
             int i = pst.executeUpdate();
             if (i == 1) {
                 System.out.println("Bagage aangepast!");
-                setNode(bagageOverzicht);
+               Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -106,21 +101,5 @@ public class BagageWijzigenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
-
-    }
-
-    //Set selected node to a content holder
-    private void setNode(Node node) {
-        holderPane.getChildren().clear();
-        holderPane.getChildren().add((Node) node);
-
-        FadeTransition ft = new FadeTransition(Duration.millis(1500));
-        ft.setNode(node);
-        ft.setFromValue(0.1);
-        ft.setToValue(1);
-        ft.setCycleCount(1);
-        ft.setAutoReverse(false);
-        ft.play();
     }
 }

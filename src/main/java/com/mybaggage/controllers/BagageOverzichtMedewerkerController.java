@@ -1,6 +1,7 @@
 package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -10,16 +11,13 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.FadeTransition;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -27,7 +25,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -62,7 +59,7 @@ public class BagageOverzichtMedewerkerController implements Initializable {
     private TableColumn kolomRegistratieNummer;
 
     @FXML
-    private AnchorPane holderPane;
+    private AnchorPane rootAnchorPane;
 //Gaat naar het scherm Bagage Toevoegen
 
 //Gaat naar het scherm Bagage Wijzigen
@@ -81,14 +78,12 @@ public class BagageOverzichtMedewerkerController implements Initializable {
         loadDataFromDatabase();
     }
 
-    @FXML
-    private void bagageVerwijderen() {
-        setNode(bagageVerwijderen);
+    private void bagageVerwijderen() throws IOException {
+        Utilities.switchSchermNaarFXML("BagageVerwijderen.fxml", rootAnchorPane);
     }
 
-    @FXML
-    private void bagageWijzigen() {
-        setNode(bagageWijzigen);
+    private void bagageWijzigen() throws IOException {
+        Utilities.switchSchermNaarFXML("BagageWijzigen.fxml", rootAnchorPane);
     }
 
     @FXML
@@ -136,11 +131,9 @@ public class BagageOverzichtMedewerkerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //data = FXCollections.observableArrayList();
-        //setCellTable();
-        //loadDataFromDatabase();
-        //bagageWijzigen = FXMLLoader.load(getClass().getResource("BagageWijzigen.fxml"));
-        //bagageVerwijderen = FXMLLoader.load(getClass().getResource("BagageVerwijderen.fxml"));
+        data = FXCollections.observableArrayList();
+        setCellTable();
+        loadDataFromDatabase();
     }
 
     public void onDeleteItem(ActionEvent event) throws SQLException {
@@ -156,17 +149,4 @@ public class BagageOverzichtMedewerkerController implements Initializable {
         }
     }
 
-    //Set selected node to a content holder
-    private void setNode(Node node) {
-        holderPane.getChildren().clear();
-        holderPane.getChildren().add((Node) node);
-
-        FadeTransition ft = new FadeTransition(Duration.millis(1500));
-        ft.setNode(node);
-        ft.setFromValue(0.1);
-        ft.setToValue(1);
-        ft.setCycleCount(1);
-        ft.setAutoReverse(false);
-        ft.play();
-    }
 }
