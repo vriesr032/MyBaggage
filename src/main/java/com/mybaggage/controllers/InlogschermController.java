@@ -46,6 +46,9 @@ public class InlogschermController implements Initializable {
     @FXML
     private Button btnLogIn;
 
+    @FXML
+    private Button buttonForgotPassword;
+
     Stage dialogStage = new Stage();
     Scene scene;
     Connection connection = null;
@@ -54,11 +57,6 @@ public class InlogschermController implements Initializable {
 
     public InlogschermController() {
         connection = Database.connectdb();
-    }
-
-    @FXML
-    public void loadFxml(ActionEvent event) throws IOException {
-
     }
 
     @FXML
@@ -116,6 +114,17 @@ public class InlogschermController implements Initializable {
         }
     }
 
+    @FXML
+    public void forgotPassword(ActionEvent event) throws IOException {
+        infoBox("Dient u alstublieft een ticket in of neem contact op. De helpdesk zal u dan verder helpen.", "Success", null);
+        Node source = (Node) event.getSource();
+        dialogStage = (Stage) source.getScene().getWindow();
+        dialogStage.close();
+        scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Oningelogd.fxml")));
+        dialogStage.setScene(scene);
+        dialogStage.show();
+    }
+
     //De infoBox die aangeeft of de ingevulde gegevens kloppen.
     public static void infoBox(String berichtMain, String berichtTitle, String berichtHeader) {
         Alert alert = new Alert(AlertType.INFORMATION);
@@ -125,8 +134,14 @@ public class InlogschermController implements Initializable {
         alert.showAndWait();
     }
 
+    @FXML
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
+    public void initialize(URL location, ResourceBundle resources) {
+       
     }
+
+   
+
+
+
 }

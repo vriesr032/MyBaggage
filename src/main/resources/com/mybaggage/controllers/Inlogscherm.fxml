@@ -29,8 +29,8 @@
         <Pane layoutX="201.0" layoutY="101.0" prefHeight="600.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
             <children>
                 
-                <TextField fx:id="textGebruikersnaam" layoutX="98.0" layoutY="226.0" promptText="Gebruikersnaam" />
-                <PasswordField fx:id="textPassword" layoutX="98.0" layoutY="291.0" promptText="Wachtwoord" />
+                <TextField fx:id="textGebruikersnaam" layoutX="116.0" layoutY="226.0" promptText="Gebruikersnaam" />
+                <PasswordField fx:id="textPassword" layoutX="116.0" layoutY="288.0" promptText="Wachtwoord" />
                 <ChoiceBox fx:id="choiceFunctie" layoutX="103.0" layoutY="388.0" prefHeight="31.0" prefWidth="186.0" value="Medewerker">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
@@ -45,6 +45,7 @@
                   <Image url="@../../../images/Corendon_logo.png" />
                </image>
             </ImageView>
+            <Button fx:id="buttonForgotPassword" layoutX="238.0" layoutY="561.0" mnemonicParsing="false" onAction="#forgotPassword" style="-fx-background-color: transparent;" text="Wachtwoord vergeten?" textFill="#0d96ff" />
             </children>
         </Pane>
     </children>
