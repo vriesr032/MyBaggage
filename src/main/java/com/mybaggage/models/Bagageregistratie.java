@@ -12,7 +12,7 @@ public class Bagageregistratie {
 
     // Resort to a default integer when the string input is empty
     final int DEFAULT_INTEGER = 0;
-    
+
     private String[] lijstVanMerken;
 
     private int formuliernummer;

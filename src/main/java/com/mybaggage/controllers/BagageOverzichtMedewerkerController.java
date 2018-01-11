@@ -128,16 +128,11 @@ public class BagageOverzichtMedewerkerController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        data = FXCollections.observableArrayList();
-        setCellTable();
-        loadDataFromDatabase();
-        try {
-            bagageWijzigen = FXMLLoader.load(getClass().getResource("BagageWijzigen.fxml"));
-            bagageVerwijderen = FXMLLoader.load(getClass().getResource("BagageVerwijderen.fxml"));
-
-        } catch (IOException ex) {
-            Logger.getLogger(BagageOverzichtMedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //data = FXCollections.observableArrayList();
+        //setCellTable();
+        //loadDataFromDatabase();
+        //bagageWijzigen = FXMLLoader.load(getClass().getResource("BagageWijzigen.fxml"));
+        //bagageVerwijderen = FXMLLoader.load(getClass().getResource("BagageVerwijderen.fxml"));
     }
 
     public void onDeleteItem(ActionEvent event) throws SQLException {

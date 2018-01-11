@@ -34,6 +34,8 @@ public class Utilities {
 
     public static final String RELATIVE_PATH_OF_FXML = "/com/mybaggage/controllers/";
 
+    public static final String EXPECTED_SQL_DATE_PATTERN = "dd/MM/yyyy";
+
     public static PreparedStatement preparedStatement;
 
     public static ResultSet resultSet;
@@ -76,9 +78,9 @@ public class Utilities {
  /*
     WIP: Convert String to the wrapper Date to allow JDBC to identify this as an SQL DATE value 
      */
-    public static Date convertStringToWrapperDate(String expectedPattern, String date) throws ParseException {
+    public static Date convertStringToWrapperDate(String date) throws ParseException {
         // Use a String pattern to define the expected date format.
-        SimpleDateFormat format = new SimpleDateFormat(date);
+        SimpleDateFormat format = new SimpleDateFormat(EXPECTED_SQL_DATE_PATTERN);
 
         java.util.Date utilDate = format.parse(date);
         java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
