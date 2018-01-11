@@ -1,6 +1,8 @@
-package com.mybaggage.old.ilias.application;
+package com.mybaggage.controllers;
 
 import com.mybaggage.Main;
+import com.mybaggage.Utilities;
+import com.mybaggage.old.ilias.application.DBConnection;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,14 +32,20 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.print.PrinterJob;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 
 
@@ -45,10 +53,10 @@ import javafx.stage.FileChooser;
 
 
 public class UMController implements Initializable{
-	
-	@FXML
-	private BorderPane borderPane;
-	@FXML
+     
+    @FXML
+    private AnchorPane borderPane;
+    @FXML
     public TableView<DataModel> userTable;
     @FXML
     private TableColumn<DataModel, String> id;
@@ -64,6 +72,8 @@ public class UMController implements Initializable{
     private TableColumn<DataModel, String> functie;
     @FXML
     private TextField searchField;
+    @FXML
+    private Button Toevoegen;
     @FXML
     private Button deleteButton;
     @FXML
@@ -82,15 +92,20 @@ public class UMController implements Initializable{
     private NewEntryController newEntryDialogController;
     @FXML
     private EditExistingEntryController editExistingEntryDialogController;
+    @FXML
+    private Button Sluiten;
     
+    
+  
+
  
     
     
     public UMController(){}
     
-    
+
 	
-	@Override
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
     	
             //Creates columns.
@@ -342,12 +357,27 @@ public class UMController implements Initializable{
         
       
     }
+    
 
+        //Builds window.
+	public void handleAddNewEntryMenuItem(ActionEvent event){
+		try{
+			GridPane root = FXMLLoader.load(getClass().getResource("NewEntryDialog.fxml"));	
+			Scene scene = new Scene(root);
+			Stage stage = new Stage();
+			stage.initModality(Modality.WINDOW_MODAL);
+			stage.setScene(scene);
+			stage.showAndWait();
+		} catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+	}
 	      
 	
     //Sets the New Entry menu item with its proper controller.
     @FXML
-    void showNewEntry(ActionEvent e){
+    public void showNewEntry(ActionEvent e){
 		newEntryDialogController.handleAddNewEntryMenuItem(newEntryDialog);
     }
 	
