@@ -16,14 +16,10 @@
             <left>
                 <VBox prefHeight="605.0" prefWidth="123.0" BorderPane.alignment="CENTER">
                     <children>
-<<<<<<< HEAD
-                        <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false"  prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
-=======
                         <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
->>>>>>> 4a6a20c8c5cd4e9f0d8e2614505c57d74da327c0
                         <Button fx:id="btn_bagageVerwijderen" mnemonicParsing="false" onAction="#onDeleteItem" prefHeight="27.0" prefWidth="124.0" text="Bagage Verwijderen" />
-                  <Button fx:id="btn_update" mnemonicParsing="false" onAction="#update" prefHeight="27.0" prefWidth="134.0" text="Update" />
-                       </children>
+                        <Button fx:id="btn_update" mnemonicParsing="false" onAction="#update" prefHeight="27.0" prefWidth="134.0" text="Update" />
+                    </children>
                 </VBox>
             </left>
             <center>
