@@ -17,31 +17,28 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.util.Duration;
 
 public class RegistratieController implements Initializable {
 
     final String DEFAULT_STRING = "";
     final int DEFAULT_INTEGER = 1;
 
+    private ArrayList<Button> lijstVanButtons;
+    private ArrayList<Integer> lijstVanFormuliernummers;
     private ArrayList<String> lijstVanLuchthavens;
     private ArrayList<String> lijstVanTypes;
     private ArrayList<String> lijstVanMerken;
@@ -115,14 +112,17 @@ public class RegistratieController implements Initializable {
     @FXML
     private void ShowZoekResultaten(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
         if (event.getTarget() == btn_GetZoekResultaten) {
+            Bagageregistratie ingevuldeVermisteBagageFormulier = vulVermisteBagageFormulierIn();
             // Vul de vermistebagageformulier in en verzamel relevante zoekresultaten
-            getZoekResultaten(vulVermisteBagageFormulierIn());
+            getZoekResultaten(ingevuldeVermisteBagageFormulier);
 
             // Get de opmaak met behulp van de zoekresultaten
             Pane[] sjablonen = CreateZoekResultatenLijst();
 
             // Genereer de zoekresultaten
             genereerZoekResultaten(sjablonen);
+
+            //claimVermisteBagage(ingevuldeVermisteBagageFormulier);
         }
     }
 
@@ -152,7 +152,6 @@ public class RegistratieController implements Initializable {
     @FXML
     private void getZoekResultaten(Bagageregistratie vermisteBagageFormulier) throws SQLException {
         String query = "SELECT * FROM registratie";
-
         try {
 
             // Bouw een dynamische WHERE query die zichzelf opbouwt aan de hand van wat de gebruiker wilt zoeken
@@ -164,7 +163,6 @@ public class RegistratieController implements Initializable {
 
             // For testing purposes only, to see how many matches are generated per request
             //int matches = 0;
-
             // Haal de relevante data op op basis van de kolomnaam
             while (Utilities.resultSet.next()) {
                 //matches++;
@@ -174,6 +172,7 @@ public class RegistratieController implements Initializable {
                 lijstVanKleuren.add(Utilities.resultSet.getString("kleur"));
                 lijstVanDatums.add(Utilities.resultSet.getString("datum"));
                 lijstVanTijdstippen.add(Utilities.resultSet.getString("tijd"));
+                //lijstVanFormuliernummers.add(Utilities.resultSet.getInt("formuliernummer"));
             }
 
             // Show amount of matches that were generated
@@ -262,6 +261,7 @@ public class RegistratieController implements Initializable {
             claimKoffer.setLayoutY(30);
             claimKoffer.setPrefSize(90, 45);
             sjablonen[kofferIndex].getChildren().add(claimKoffer);
+            //lijstVanButtons.add(claimKoffer);
 
             // Set scheidingslijn
             scheidingslijn = new Line();
@@ -295,6 +295,51 @@ public class RegistratieController implements Initializable {
 
         // Toon lijst met alle zoekresultaten
         Utilities.switchSchermNaarPane(Utilities.rootScrollPane, vermisteBagageFormulierPane);
+    }
+
+    @FXML
+    private void claimVermisteBagage(Bagageregistratie vermisteBagageFormulier) throws SQLException {
+        // Start alleen de query als de gebruiker op een claim knop heeft geklikt
+        boolean isClaimButtonGeklikt = false;
+        do {
+            for (Button button : lijstVanButtons) {
+                if (button.isPressed()) {
+                    break;
+                }
+
+            }
+        } while (isClaimButtonGeklikt == false);
+
+        String query = "INSERT INTO registratie (naam, adres, woonplaats, postcode, land, telefoonnummer WHERE formuliernummer = ?";
+
+        try {
+            Utilities.preparedStatement = Database.connectdb().prepareStatement(query);
+            Utilities.preparedStatement.setString(1, vermisteBagageFormulier.getNaam());
+            Utilities.preparedStatement.setString(2, vermisteBagageFormulier.getAdres());
+            Utilities.preparedStatement.setString(3, vermisteBagageFormulier.getWoonplaats());
+            Utilities.preparedStatement.setString(4, vermisteBagageFormulier.getPostcode());
+            Utilities.preparedStatement.setString(5, vermisteBagageFormulier.getLand());
+            Utilities.preparedStatement.setString(6, vermisteBagageFormulier.getTelefoonnummer());
+            Utilities.preparedStatement.setInt(7, getFormuliernummerVanBagageDieWordtGeclaimed());
+
+            Utilities.preparedStatement.executeUpdate();
+
+            // Show resultaat
+            Optional<ButtonType> alert2 = new Alert(Alert.AlertType.ERROR, "Bagage is geclaimed!").showAndWait();
+        } catch (SQLException mySQLException) {
+            throw mySQLException;
+        }
+    }
+
+    @FXML
+    private int getFormuliernummerVanBagageDieWordtGeclaimed() {
+        int formuliernummerVanBagageDieWordtGeclaimed = 0;
+        for (int index = 0; index < lijstVanButtons.size(); index++) {
+            if (lijstVanButtons.get(index).isPressed()) {
+                formuliernummerVanBagageDieWordtGeclaimed = lijstVanFormuliernummers.get(index);
+            }
+        }
+        return formuliernummerVanBagageDieWordtGeclaimed;
     }
 
     @FXML

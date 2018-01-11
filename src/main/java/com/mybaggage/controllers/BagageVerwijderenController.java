@@ -77,11 +77,8 @@ public class BagageVerwijderenController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        try {
-            bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
+
     }
 
     //Set selected node to a content holder

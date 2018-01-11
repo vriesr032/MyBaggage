@@ -195,9 +195,9 @@ public class BagageOverzichtController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        data = FXCollections.observableArrayList();
-        setCellTable();
-        loadDataFromDatabase();
+        //data = FXCollections.observableArrayList();
+        //setCellTable();
+        //loadDataFromDatabase();
 
     }
     
