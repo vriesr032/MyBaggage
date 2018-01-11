@@ -74,6 +74,14 @@ public class BagageOverzichtMedewerkerController implements Initializable {
     private Button btn_bagageVerwijderen;
 
     @FXML
+    private Button btn_update;
+
+    @FXML
+    private void update() {
+        loadDataFromDatabase();
+    }
+
+    @FXML
     private void bagageVerwijderen() {
         setNode(bagageVerwijderen);
     }
