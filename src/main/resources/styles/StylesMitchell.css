@@ -1,6 +1,5 @@
 .root {
     -fx-font: sans-serif;
-    -fx-background-color: white;
 }
 .jfx-button {
     -fx-background-color: #ff0000;
@@ -12,8 +11,7 @@
 }
 
 .scroll-pane {
-   -fx-background: #FFFFFF;
-   -fx-border-color: #FFFFFF;
+
 }
 
 .scroll-pane > .corner {

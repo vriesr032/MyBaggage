@@ -1,6 +1,7 @@
-package com.mybaggage.old.ilias.application;
+package com.mybaggage.controllers;
 
 
+import com.mybaggage.old.ilias.application.DBConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javafx.collections.ObservableList;

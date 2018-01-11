@@ -1,5 +1,5 @@
 
-package com.mybaggage.old.ilias.application;
+package com.mybaggage.controllers;
 
 import javafx.beans.property.*;
 

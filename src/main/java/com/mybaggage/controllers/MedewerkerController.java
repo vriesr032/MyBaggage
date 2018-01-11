@@ -6,6 +6,7 @@
 package com.mybaggage.controllers;
 
 import com.jfoenix.controls.JFXButton;
+import com.mybaggage.Utilities;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -32,7 +33,7 @@ import javafx.util.Duration;
  * @author Ludo Bak
  */
 public class MedewerkerController implements Initializable {
-
+    
     @FXML
     private AnchorPane holderPane;
     @FXML
@@ -60,7 +61,7 @@ public class MedewerkerController implements Initializable {
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
     ResultSet resultSet2 = null;
-
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //Load all fxmls in a cache
@@ -69,18 +70,18 @@ public class MedewerkerController implements Initializable {
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
-            bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
+            bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
+            bagageZoeken = FXMLLoader.load(getClass().getResource("VermisteBagageRegistratie.fxml"));
             helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskMedewerker.fxml"));
             registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
-
+            
             setNode(fxml2);
         } catch (IOException ex) {
             Logger.getLogger(MedewerkerController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
     }
-
+    
     @FXML
     private void logOff(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
@@ -90,7 +91,7 @@ public class MedewerkerController implements Initializable {
         dialogStage.setScene(scene);
         dialogStage.show();
     }
-
+    
     @FXML
     private void exit(ActionEvent event) throws IOException {
         Stage stage = (Stage) btnExit.getScene().getWindow();
@@ -101,7 +102,7 @@ public class MedewerkerController implements Initializable {
     private void setNode(Node node) {
         holderPane.getChildren().clear();
         holderPane.getChildren().add((Node) node);
-
+        
         FadeTransition ft = new FadeTransition(Duration.millis(1500));
         ft.setNode(node);
         ft.setFromValue(0.1);
@@ -110,42 +111,45 @@ public class MedewerkerController implements Initializable {
         ft.setAutoReverse(false);
         ft.play();
     }
-
+    
     @FXML
     private void openHome(ActionEvent event) {
         setNode(fxml2);
     }
-
+    
     @FXML
-    private void openBagage(ActionEvent event) {
-        setNode(bagageOverzicht);
+    private void openBagage(ActionEvent event) throws IOException {
+        //setNode(bagageOverzicht);
+        Utilities.switchSchermNaarFXML("BagageOverzichtMedewerker.fxml", holderPane);
     }
-
+    
     @FXML
     private void openContact(ActionEvent event) {
         setNode(faq);
     }
-
+    
     @FXML
     private void openHelpdesk(ActionEvent event) {
         setNode(helpdesk);
     }
-
+    
     @FXML
-    private void openBagageToevoegen(ActionEvent event) {
-        setNode(bagageToevoegen);
+    private void openBagageToevoegen(ActionEvent event) throws IOException {
+        //setNode(bagageToevoegen);
+        Utilities.switchSchermNaarFXML("GevondenBagageRegistratie.fxml", holderPane);
     }
-
+    
     @FXML
     private void openBagageOverzicht(ActionEvent event) {
         setNode(bagageOverzicht);
     }
-
+    
     @FXML
-    private void openBagageZoeken(ActionEvent event) {
-        setNode(bagageZoeken);
+    private void openBagageZoeken(ActionEvent event) throws IOException {
+        //setNode(bagageZoeken);
+        Utilities.switchSchermNaarFXML("VermisteBagageRegistratie.fxml", holderPane);
     }
-
+    
     @FXML
     private void openRegistreerSchadevergoeding(ActionEvent event) {
         setNode(registreerSchadevergoeding);
