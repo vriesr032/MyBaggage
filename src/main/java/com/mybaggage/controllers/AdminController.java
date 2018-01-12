@@ -114,10 +114,10 @@ public class AdminController implements Initializable {
         ft.setAutoReverse(false);
         ft.play();
     }
-    
-    @FXML  
-        void keyPressed(KeyEvent event) throws IOException {
-            switch (event.getCode()) {
+
+    @FXML
+    private void keyPressed(KeyEvent event) throws IOException {
+        switch (event.getCode()) {
             case F2:
                 Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", holderPane);
                 break;
@@ -129,20 +129,20 @@ public class AdminController implements Initializable {
                 break;
             case F5:
                 Utilities.switchSchermNaarFXML("VermisteBagageRegistratie.fxml", holderPane);
-                break;     
+                break;
             case F6:
                 Utilities.switchSchermNaarFXML("FAQ.fxml", holderPane);
-                break;     
+                break;
             case F7:
                 Utilities.switchSchermNaarFXML("HelpdeskAdmin.fxml", holderPane);
-                break;     
-                case F8:
+                break;
+            case F8:
                 Utilities.switchSchermNaarFXML("UM.fxml", holderPane);
-                break;  
+                break;
             default:
                 break;
-            }
         }
+    }
 
     @FXML
     private void openHome(ActionEvent event) {
