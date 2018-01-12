@@ -52,16 +52,6 @@
       <JFXTextField fx:id="txtVergoeding" focusColor="RED" layoutX="796.0" layoutY="245.0" prefHeight="25.0" prefWidth="172.0" />
       <JFXTextField fx:id="txtSchade" focusColor="RED" layoutX="438.0" layoutY="245.0" prefHeight="25.0" prefWidth="172.0" />
       <JFXButton fx:id="btn_RegistreerSchadevergoeding" buttonType="RAISED" contentDisplay="CENTER" layoutX="790.0" layoutY="567.0" onAction="#insertSchadeFormulier" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" stylesheets="@../../../styles/StylesMitchell.css" text="Registreer" />      
-      <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="262.0" layoutY="326.0" pickOnBounds="true" preserveRatio="true">
-   
-          <image>
-            <Image url="file:/C:/Desktop/tijdelijk//MyBaggage/src/main/resources/images/airport.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="262.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="file:/C:/Desktop/MyBaggage/src/main/resources/images/clock.png" />
-         </image>
-      </ImageView>      
+           
    </children>
 </AnchorPane>
