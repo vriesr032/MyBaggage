@@ -109,7 +109,7 @@ public class BagageOverzichtMedewerkerController implements Initializable {
             pst = conn.prepareStatement("Select * from registratie");
             rs = pst.executeQuery();
             while (rs.next()) {
-                data.add(new com.mybaggage.models.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(12), rs.getString(4), rs.getString(6), rs.getString(11)));
+                data.add(new com.mybaggage.models.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(18), rs.getString(11), rs.getString(12), rs.getString(17)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BagageOverzichtMedewerkerController.class.getName()).log(Level.SEVERE, null, ex);

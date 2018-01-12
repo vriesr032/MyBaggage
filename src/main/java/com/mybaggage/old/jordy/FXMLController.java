@@ -88,7 +88,7 @@ public  class FXMLController implements Initializable {
 
             Schaderegistratie schadeFormulier = vulSchadeFormulierIn();
 
-            String query = "INSERT INTO check.schade (lostandfoundID, bankrekening, datum, tijd, luchthaven, naam, schade, "
+            String query = "INSERT INTO bagage_registratie.schade (lostandfoundID, bankrekening, datum, tijd, luchthaven, naam, schade, "
                     + "vergoeding, type, merk)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
