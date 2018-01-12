@@ -26,12 +26,12 @@
                 <Separator layoutX="138.0" layoutY="93.0" prefHeight="14.0" prefWidth="524.0" />
             </children>
         </Pane>
-        <Pane layoutX="201.0" layoutY="101.0" prefHeight="600.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
+        <Pane layoutX="201.0" layoutY="101.0" prefHeight="584.0" prefWidth="392.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0,1.5); -fx-background-radius: 3;">
             <children>
                 
-                <TextField fx:id="textGebruikersnaam" layoutX="116.0" layoutY="226.0" promptText="Gebruikersnaam" />
-                <PasswordField fx:id="textPassword" layoutX="116.0" layoutY="288.0" promptText="Wachtwoord" />
-                <ChoiceBox fx:id="choiceFunctie" layoutX="103.0" layoutY="388.0" prefHeight="31.0" prefWidth="186.0" value="Medewerker">
+                <TextField fx:id="textGebruikersnaam" layoutX="103.0" layoutY="196.0" promptText="Gebruikersnaam" style="-fx-background-color: transparent; -fx-border-color: d81e05;" />
+                <PasswordField fx:id="textPassword" layoutX="103.0" layoutY="268.0" promptText="Wachtwoord" style="-fx-background-color: transparent; -fx-border-color: d81e05;" />
+                <ChoiceBox fx:id="choiceFunctie" layoutX="104.0" layoutY="350.0" prefHeight="31.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: d81e05;" value="Medewerker">
                     <items>
                         <FXCollections fx:factory="observableArrayList">
                             <String fx:value="Medewerker" />
@@ -39,13 +39,13 @@
                         </FXCollections>
                     </items>
                 </ChoiceBox>
-                <Button fx:id="btnLogIn" defaultButton="true" layoutX="166.0" layoutY="499.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" text="Log in" />
+                <Button fx:id="btnLogIn" defaultButton="true" layoutX="104.0" layoutY="434.0" mnemonicParsing="false" onAction="#logIn" onMouseClicked="#logIn" prefHeight="31.0" prefWidth="186.0" style="-fx-background-color: d81e05; -fx-border-color: black;" text="Log in" textFill="WHITE" />
             <ImageView fitHeight="161.0" fitWidth="392.0" layoutY="22.0">
                <image>
                   <Image url="@../../../images/Corendon_logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="buttonForgotPassword" layoutX="238.0" layoutY="561.0" mnemonicParsing="false" onAction="#forgotPassword" style="-fx-background-color: transparent;" text="Wachtwoord vergeten?" textFill="#0d96ff" />
+            <Button fx:id="buttonForgotPassword" layoutX="202.0" layoutY="533.0" mnemonicParsing="false" onAction="#forgotPassword" style="-fx-background-color: transparent;" text="Wachtwoord vergeten?" textFill="#0d96ff" />
             </children>
         </Pane>
     </children>

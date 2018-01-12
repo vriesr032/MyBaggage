@@ -6,88 +6,107 @@ package com.mybaggage.models;
  */
 public class BagageToevoegen {
 
-    private String naam;
-    private String kleur;
-    private String grootte;
-    private String soortBagage;
-    private String status;
+    private String formuliernummer;
+    private String type;
+    private String lostandfoundID;
+    private String kenmerken;
+    private String labelnummer;
+    private String luchthaven;
 
-    public BagageToevoegen(String naam, String kleur, String grootte, String soortBagage, String status) {
-        this.naam = naam;
-        this.kleur = kleur;
-        this.grootte = grootte;
-        this.soortBagage = soortBagage;
-        this.status = status;
-    }
-
-    /**
-     * @return the naam
-     */
-    public String getNaam() {
-        return naam;
-    }
-
-    /**
-     * @param naam the naam to set
-     */
-    public void setNaam(String naam) {
-        this.naam = naam;
+    public BagageToevoegen(String formuliernummer, String type, String lostandfoundID, String kenmerken, String labelnummer, String luchthaven) {
+        this.formuliernummer = formuliernummer;
+        this.type = type;
+        this.lostandfoundID = lostandfoundID;
+        this.kenmerken = kenmerken;
+        this.labelnummer = labelnummer;
+        this.luchthaven = luchthaven;
     }
 
     /**
      * @return the kleur
      */
-    public String getKleur() {
-        return kleur;
+    public String getFormuliernummer() {
+        return formuliernummer;
     }
 
     /**
+     * @param formuliernummer
      * @param kleur the kleur to set
      */
-    public void setKleur(String kleur) {
-        this.kleur = kleur;
+    public void setFormuliernummer(String formuliernummer) {
+        this.formuliernummer = formuliernummer;
+    }
+
+    /**
+     * @return the naam
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     * @param naam the naam to set
+     */
+    public void setType(String type) {
+        this.type = type;
     }
 
     /**
      * @return the grootte
      */
-    public String getGrootte() {
-        return grootte;
+    public String getLostandfoundID() {
+        return lostandfoundID;
     }
 
     /**
+     * @param lostandfoundID
      * @param grootte the grootte to set
      */
-    public void setGrootte(String grootte) {
-        this.grootte = grootte;
+    public void setLostandfoundID(String lostandfoundID) {
+        this.lostandfoundID = lostandfoundID;
     }
 
     /**
      * @return the soortBagage
      */
-    public String getSoortBagage() {
-        return soortBagage;
+    public String getKenmerken() {
+        return kenmerken;
     }
 
     /**
+     * @param kenmerken
      * @param soortBagage the soortBagage to set
      */
-    public void setSoortBagage(String soortBagage) {
-        this.soortBagage = soortBagage;
+    public void setKenmerken(String kenmerken) {
+        this.kenmerken = kenmerken;
+    }
+
+    public String getLabelnummer() {
+        return labelnummer;
+    }
+
+    /**
+     * @param labelnummer
+     * @param soortBagage the soortBagage to set
+     */
+    public void setLabelnummer(String labelnummer) {
+        this.labelnummer = labelnummer;
     }
 
     /**
      * @return the status
      */
-    public String getStatus() {
-        return status;
+    public String getLuchthaven() {
+        return luchthaven;
     }
 
     /**
+     * @param luchthaven
      * @param status the status to set
      */
-    public void setStatus(String status) {
-        this.status = status;
+    public void setLuchthaven(String luchthaven) {
+        this.luchthaven = luchthaven;
     }
 
 }

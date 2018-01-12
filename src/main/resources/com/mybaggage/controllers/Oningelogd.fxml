@@ -85,15 +85,15 @@
                                                 <Font size="14.0" />
                                             </font>
                                             <graphic>
-                                                <FontAwesomeIconView fx:id="iconLogin" fill="#757575" glyphName="LOG-IN" size="16.0" text="" wrappingWidth="40.0" />
+                                                <FontAwesomeIconView fx:id="iconLogin" fill="#757575" glyphName="SIGN-IN" size="16.0" text="" wrappingWidth="40.0" />
                                             </graphic>
                                         </JFXButton>
-                              <JFXButton fx:id="btnExit" alignment="BOTTOM_LEFT" onAction="#exit" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Inloggen" textFill="#757575" GridPane.rowIndex="2">
+                              <JFXButton fx:id="btnExit" alignment="BOTTOM_LEFT" onAction="#exit" prefHeight="36.0" prefWidth="189.0" styleClass="side-buttons" text="Afsluiten" textFill="#757575" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                                  <graphic>
-                                    <FontAwesomeIconView fx:id="iconLogin1" fill="#757575" glyphName="EXIT" size="16.0" text="" wrappingWidth="40.0" />
+                                    <FontAwesomeIconView fx:id="EXIT" fill="#757575" glyphName="EXIT" size="16.0" text="" wrappingWidth="40.0" />
                                  </graphic>
                               </JFXButton>
                                     </children>

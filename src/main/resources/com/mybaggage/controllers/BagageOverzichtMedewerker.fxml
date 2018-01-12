@@ -10,15 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageOverzichtMedewerkerController">
+<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageOverzichtMedewerkerController">
     <children>
         <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox prefHeight="605.0" prefWidth="123.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false" prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
+                        <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false" onAction="#bagageWijzigen" prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
                         <Button fx:id="btn_bagageVerwijderen" mnemonicParsing="false" onAction="#onDeleteItem" prefHeight="27.0" prefWidth="124.0" text="Bagage Verwijderen" />
-                        <Button fx:id="btn_update" mnemonicParsing="false" onAction="#update" prefHeight="27.0" prefWidth="134.0" text="Update" />
                     </children>
                 </VBox>
             </left>
@@ -27,12 +26,12 @@
                     <children>
                         <TableView fx:id="tabelBagage" editable="true" prefHeight="605.0" prefWidth="1001.0">
                             <columns>
-                                <TableColumn fx:id="kolomRegistratieNummer" editable="false" minWidth="-1.0" prefWidth="128.0" text="Registratie Nummer" />
-                                <TableColumn fx:id="kolomNaam" editable="false" prefWidth="103.0" text="Naam" />
-                                <TableColumn fx:id="kolomKleur" editable="false" minWidth="-1.0" prefWidth="88.0" text="Kleur" />
-                                <TableColumn fx:id="kolomBagageGrootte" editable="false" minWidth="0.0" prefWidth="153.0" text="Grootte (L/B/H in cm)" />
-                                <TableColumn fx:id="kolomSoortBagage" editable="false" prefWidth="251.0" text="Soort Bagage" />
-                                <TableColumn fx:id="kolomStatus" prefWidth="233.0" text="Status" />
+                                <TableColumn fx:id="formuliernummer" editable="false" minWidth="-1.0" prefWidth="128.0" text="Formuliernummer" />
+                                <TableColumn fx:id="type" editable="false" prefWidth="103.0" text="Type" />
+                                <TableColumn fx:id="lostandfoundID" editable="false" minWidth="-1.0" prefWidth="159.0" text="Lost and Found ID" />
+                                <TableColumn fx:id="kenmerken" editable="false" prefWidth="167.0" text="Kenmerk" />
+                                <TableColumn fx:id="labelnummer" prefWidth="242.0" text="Labelnummer" />
+                                <TableColumn fx:id="luchthaven" prefWidth="177.0" text="Luchthaven" />
                             </columns>
                         </TableView>
                     </children>

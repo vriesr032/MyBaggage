@@ -14,7 +14,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,34 +42,34 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * @author rickdevries
  */
 public class BagageOverzichtController implements Initializable {
-    
+
     @FXML
     private AnchorPane rootAnchorPane;
 
     @FXML
-    private TableColumn kolomnaam;
+    private TableColumn type;
 
     @FXML
-    private TableColumn kolomkleur;
+    private TableColumn formuliernummer;
 
     @FXML
-    private TableColumn kolomgrootte;
+    private TableColumn lostandfoundID;
 
     @FXML
-    private TableColumn kolomsoortbagage;
+    private TableColumn kenmerken;
 
     @FXML
-    private TableColumn kolomstatus;
+    private TableColumn labelnummer;
 
     @FXML
-    private TableColumn kolomRegistratieNummer;
+    private TableColumn luchthaven;
 //Gaat naar het scherm Bagage Toevoegen
     @FXML
     private Button btn_bagageToevoegen;
 
     @FXML
     private Button export;
-    
+
     @FXML
     private Button pdf;
 
@@ -84,7 +83,7 @@ public class BagageOverzichtController implements Initializable {
 
     @FXML
     private void bagageWijzigen() throws IOException {
-        //MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
+//MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
         Utilities.switchSchermNaarFXML("BagageWijzigen.fxml", rootAnchorPane);
     }
 //Gaat naar het scherm Bagage Wijzigen
@@ -93,17 +92,18 @@ public class BagageOverzichtController implements Initializable {
 
     @FXML
     private void bagageVerwijderen() throws IOException {
-        //MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
+//MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
         Utilities.switchSchermNaarFXML("BagageVerwijderen.fxml", rootAnchorPane);
     }
 
     @FXML
     private void setCellTable() {
-        kolomnaam.setCellValueFactory(new PropertyValueFactory<>("naam"));
-        kolomkleur.setCellValueFactory(new PropertyValueFactory<>("kleur"));
-        kolomgrootte.setCellValueFactory(new PropertyValueFactory<>("grootte"));
-        kolomsoortbagage.setCellValueFactory(new PropertyValueFactory<>("soortBagage"));
-        kolomstatus.setCellValueFactory(new PropertyValueFactory<>("status"));
+        formuliernummer.setCellValueFactory(new PropertyValueFactory<>("formuliernummer"));
+        type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        lostandfoundID.setCellValueFactory(new PropertyValueFactory<>("lostandfoundID"));
+        kenmerken.setCellValueFactory(new PropertyValueFactory<>("kenmerken"));
+        labelnummer.setCellValueFactory(new PropertyValueFactory<>("labelnummer"));
+        luchthaven.setCellValueFactory(new PropertyValueFactory<>("luchthaven"));
     }
 
 //Laad alle data van de database in de tabel
@@ -121,10 +121,10 @@ public class BagageOverzichtController implements Initializable {
     private void loadDataFromDatabase() {
         data.clear();
         try {
-            pst = conn.prepareStatement("Select * from bagage");
+            pst = conn.prepareStatement("Select * from registratie");
             rs = pst.executeQuery();
             while (rs.next()) {
-                data.add(new com.mybaggage.models.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
+                data.add(new com.mybaggage.models.BagageToevoegen(rs.getString(1), rs.getString(2), rs.getString(12), rs.getString(4), rs.getString(6), rs.getString(11)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
@@ -140,20 +140,20 @@ public class BagageOverzichtController implements Initializable {
     private void exportExcel() {
         conn = Database.connectdb();
         try {
-            String query = "Select * from bagage";
+            String query = "Select * from registratie";
             pst = conn.prepareStatement(query);
             rs = pst.executeQuery();
 
-            // XSSF is voor 2007 of nieuwere versies voor excel. HSSF is voor 2006 en ouder.
+// XSSF is voor 2007 of nieuwere versies voor excel. HSSF is voor 2006 en ouder.
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("Bagage overzicht");// maakt een sheet aan
             XSSFRow header = sheet.createRow(0); // maakt rijen aan om de data in de database te krijgen
-            header.createCell(0).setCellValue("Naam");
-            header.createCell(1).setCellValue("Kleur");
-            header.createCell(2).setCellValue("Grootte");
-            header.createCell(3).setCellValue("SoortBagage");
-            header.createCell(4).setCellValue("Status");
-            header.createCell(5).setCellValue("RegistratieNummer");
+            header.createCell(0).setCellValue("formuliernummer");
+            header.createCell(1).setCellValue("type");
+            header.createCell(2).setCellValue("lostandfoundID");
+            header.createCell(3).setCellValue("kenmerken");
+            header.createCell(4).setCellValue("labelnummer");
+            header.createCell(5).setCellValue("luchthaven");
 
             sheet.setColumnWidth(0, 256 * 25);
             sheet.setColumnWidth(1, 256 * 25);
@@ -163,15 +163,15 @@ public class BagageOverzichtController implements Initializable {
             sheet.setColumnWidth(5, 256 * 25);
 
             int index = 1;
-            // Met deze code zet je pak je alleen de 1e rij van de excel bestand.
+// Met deze code zet je pak je alleen de 1e rij van de excel bestand.
             while (rs.next()) {
                 XSSFRow row = sheet.createRow(index);
-                row.createCell(0).setCellValue(rs.getString("Naam"));
-                row.createCell(1).setCellValue(rs.getString("Kleur"));
-                row.createCell(2).setCellValue(rs.getString("Grootte"));
-                row.createCell(3).setCellValue(rs.getString("SoortBagage"));
-                row.createCell(4).setCellValue(rs.getString("Status"));
-                row.createCell(5).setCellValue(rs.getString("RegistratieNummer"));
+                row.createCell(0).setCellValue(rs.getString("formuliernummer"));
+                row.createCell(1).setCellValue(rs.getString("type"));
+                row.createCell(2).setCellValue(rs.getString("lostandfoundID"));
+                row.createCell(3).setCellValue(rs.getString("kenmerken"));
+                row.createCell(4).setCellValue(rs.getString("labelnummmer"));
+                row.createCell(5).setCellValue(rs.getString("luchthaven"));
                 index++; // Dit zorgt ervoor dat er meerdere rijen in de excel bestand worden opgepakt
             }
 
@@ -192,73 +192,73 @@ public class BagageOverzichtController implements Initializable {
         }
 
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //data = FXCollections.observableArrayList();
-        //setCellTable();
-        //loadDataFromDatabase();
+        data = FXCollections.observableArrayList();
+        setCellTable();
+        loadDataFromDatabase();
 
     }
-    
-    
+
     @FXML
     public void pdfs()
-               
-            throws Exception{
-                  
-                        conn = Database.connectdb();
-                        try {
-                                        Statement stmt = conn.createStatement();
-                                        /*  SQL query */
-                                        ResultSet query_set = stmt.executeQuery("SELECT * From bagage");
-                                        /* Step-2:  PDF document laden */
-                                        Document my_pdf_report = new Document();
-                                        PdfWriter.getInstance(my_pdf_report, new FileOutputStream("BagageOverzicht.pdf"));
-                                        my_pdf_report.open();            
-                                        //Hoeveel tabellen ?
-                                        PdfPTable my_report_table = new PdfPTable(4);
-                                        //cell object maken
-                                          PdfPCell table_cell;
+            throws Exception {
 
-                        while (query_set.next()) {  
-                            
-                                        Paragraph preface = new Paragraph();
-                                        preface.add(new Paragraph("PDF Bagage Overzicht - Corendon"));
-                                        table_cell = new PdfPCell(new Phrase("RegistratieNummer"));
-                                        String RegistratieNummer = query_set.getString("RegistratieNummer");
-                                        table_cell=new PdfPCell(new Phrase(RegistratieNummer));
-                                        my_report_table.addCell(table_cell);
-                                        table_cell = new PdfPCell(new Phrase("Kleur"));
-                                        String Kleur=query_set.getString("Kleur");
-                                        table_cell=new PdfPCell(new Phrase(Kleur));
-                                        my_report_table.addCell(table_cell);
-                                        table_cell = new PdfPCell(new Phrase("Grootte"));
-                                        String Grootte=query_set.getString("Grootte");
-                                        table_cell=new PdfPCell(new Phrase(Grootte));
-                                        my_report_table.addCell(table_cell);
-                                        table_cell = new PdfPCell(new Phrase("Status"));
-                                        String Status=query_set.getString("Status");
-                                        table_cell=new PdfPCell(new Phrase(Status));
-                                        my_report_table.addCell(table_cell);
-                                        }
-                                        /* tabel naar PDF */
-                                        my_pdf_report.add(my_report_table);                       
-                                        my_pdf_report.close();
+        conn = Database.connectdb();
+        try {
+            Statement stmt = conn.createStatement();
+            /* SQL query */
+            ResultSet query_set = stmt.executeQuery("SELECT * From registratie");
+            /* Step-2: PDF document laden */
+            Document my_pdf_report = new Document();
+            PdfWriter.getInstance(my_pdf_report, new FileOutputStream("BagageOverzicht.pdf"));
+            my_pdf_report.open();
+//Hoeveel tabellen ?
+            PdfPTable my_report_table = new PdfPTable(4);
+//cell object maken
+            PdfPCell table_cell;
 
-                                        /* Alles sluiten */
-                                        query_set.close();
-                                        stmt.close(); 
-                                        conn.close();               
+            while (query_set.next()) {
 
+                Paragraph preface = new Paragraph();
+                preface.add(new Paragraph("PDF Bagage Overzicht - Corendon"));
+                table_cell = new PdfPCell(new Phrase("formuliernummer"));
+                String RegistratieNummer = query_set.getString("formuliernummer");
+                table_cell = new PdfPCell(new Phrase(RegistratieNummer));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("type"));
+                String Kleur = query_set.getString("type");
+                table_cell = new PdfPCell(new Phrase(Kleur));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("lostandfoundID"));
+                String Grootte = query_set.getString("lostandfoundID");
+                table_cell = new PdfPCell(new Phrase(Grootte));
+                my_report_table.addCell(table_cell);
+                table_cell = new PdfPCell(new Phrase("kenmerken"));
+                String Status = query_set.getString("kenmerken");
+                table_cell = new PdfPCell(new Phrase(Status));
+                my_report_table.addCell(table_cell);
+            }
+            /* tabel naar PDF */
+            my_pdf_report.add(my_report_table);
+            my_pdf_report.close();
 
+            Alert alert = new Alert(AlertType.INFORMATION);
+            alert.setTitle("Bagage Overzicht");
+            alert.setHeaderText(null);
+            alert.setContentText("Overzicht succesvol geëxporteerd!");
+            alert.showAndWait();
 
-                                        } catch (FileNotFoundException e) {
-                                        // Auto-generated catch block
-                                        e.printStackTrace();
-                                        } catch (DocumentException e) {
-                                        // Auto-generated catch block
-                                        e.printStackTrace();
-                                        }
-       }
+            /* Alles sluiten */
+            query_set.close();
+            stmt.close();
+            conn.close();
+
+        } catch (FileNotFoundException | DocumentException e) {
+// Auto-generated catch block
+
+        }
+
+    }
 }
