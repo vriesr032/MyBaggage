@@ -20,6 +20,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -113,6 +114,35 @@ public class AdminController implements Initializable {
         ft.setAutoReverse(false);
         ft.play();
     }
+    
+    @FXML  
+        void keyPressed(KeyEvent event) throws IOException {
+            switch (event.getCode()) {
+            case F2:
+                Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", holderPane);
+                break;
+            case F3:
+                Utilities.switchSchermNaarFXML("GevondenBagageRegistratie.fxml", holderPane);
+                break;
+            case F4:
+                Utilities.switchSchermNaarFXML("RegistreerSchadevergoeding.fxml", holderPane);
+                break;
+            case F5:
+                Utilities.switchSchermNaarFXML("VermisteBagageRegistratie.fxml", holderPane);
+                break;     
+            case F6:
+                Utilities.switchSchermNaarFXML("FAQ.fxml", holderPane);
+                break;     
+            case F7:
+                Utilities.switchSchermNaarFXML("HelpdeskAdmin.fxml", holderPane);
+                break;     
+                case F8:
+                Utilities.switchSchermNaarFXML("UM.fxml", holderPane);
+                break;  
+            default:
+                break;
+            }
+        }
 
     @FXML
     private void openHome(ActionEvent event) {
