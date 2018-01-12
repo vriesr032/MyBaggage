@@ -1,9 +1,10 @@
 package com.mybaggage.old.jordy;
 
+import com.mybaggage.Utilities;
 import java.time.LocalDate;
 
 /**
- * Het doel van deze class is om de bagage registratie formulieren functioneel
+ * Het doel van deze class is om het schade registratie formulier functioneel
  * te maken
  *
  * @author Jordy Pouw (500783513)
@@ -12,7 +13,7 @@ public class Schaderegistratie {
 
     // Resort to a default integer when the string input is empty
     final int DEFAULT_INTEGER = 0;
-
+    final String DEFAULT_STRING = "";
 
     private int lostAndFoundID;
     private String tijd;
@@ -29,16 +30,16 @@ public class Schaderegistratie {
         return tijd;
     }
 
-    public void setTijd(String tijd) {
-        this.tijd = tijd;
+    public void setTijd() {
+        this.tijd = Utilities.getCurrentTimeString();
     }
 
     public String getDatum() {
         return datum;
     }
 
-    public void setDatum(String datum) {
-        this.datum = datum;
+    public void setDatum(LocalDate datum) {
+        this.datum = Utilities.convertLocalDateToString(datum);
     }
 
     public String getNaam() {

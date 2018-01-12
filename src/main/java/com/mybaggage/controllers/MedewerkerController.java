@@ -151,7 +151,9 @@ public class MedewerkerController implements Initializable {
     }
     
     @FXML
-    private void openRegistreerSchadevergoeding(ActionEvent event) {
-        setNode(registreerSchadevergoeding);
+    private void openRegistreerSchadevergoeding(ActionEvent event) throws IOException {
+        //setNode(registreerSchadevergoeding);
+        Utilities.switchSchermNaarFXML("RegistreerSchadevergoeding.fxml", holderPane);
+
     }
 }
