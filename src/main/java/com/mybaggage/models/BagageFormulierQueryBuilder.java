@@ -28,7 +28,7 @@ public class BagageFormulierQueryBuilder extends WhereQueryBuilder<Bagageregistr
             if (vermisteBagageFormulier.getLabelnummer() != 0) {
                 whereConditions.add(new BagageFormulierQueryBuilder("labelnummer", vermisteBagageFormulier.getLabelnummer()));
             }
-            if (vermisteBagageFormulier.getVluchtnummer() != 0) {
+            if (!vermisteBagageFormulier.getVluchtnummer().equals("")) {
                 whereConditions.add(new BagageFormulierQueryBuilder("vluchtnummer", vermisteBagageFormulier.getVluchtnummer()));
             }
             if (!vermisteBagageFormulier.getBestemming().equals("")) {

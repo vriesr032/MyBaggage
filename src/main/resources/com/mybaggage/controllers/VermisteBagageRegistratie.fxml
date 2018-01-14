@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -19,7 +20,7 @@
          </font>
       </Label>
       <Label layoutX="88.0" layoutY="169.0" prefHeight="17.0" prefWidth="188.0" text="Datum:" />
-      <Label layoutX="86.0" layoutY="242.0" prefHeight="17.0" prefWidth="188.0" text="Luchthaven" />
+      <Label layoutX="86.0" layoutY="242.0" prefHeight="17.0" prefWidth="188.0" text="Luchthaven:" />
       <Label layoutX="88.0" layoutY="403.0" prefHeight="27.0" prefWidth="225.0" text="Bagage Label Informatie">
          <font>
             <Font size="18.0" />
@@ -48,28 +49,28 @@
       <Label layoutX="804.0" layoutY="241.0" prefHeight="17.0" prefWidth="188.0" text="Merk:" />
       <Label layoutX="804.0" layoutY="311.0" prefHeight="17.0" prefWidth="188.0" text="Kleur:" />
       <ImageView fitHeight="42.0" fitWidth="64.0" layoutX="-26.0" layoutY="598.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="804.0" layoutY="429.0" prefHeight="17.0" prefWidth="188.0" text="Bijzondere kenmerken" />
+      <Label layoutX="804.0" layoutY="443.0" prefHeight="17.0" prefWidth="188.0" text="Bijzondere kenmerken:" />
       <JFXDatePicker fx:id="txtDatum" defaultColor="RED" editable="false" layoutX="88.0" layoutY="188.0" prefHeight="28.0" prefWidth="208.0" showWeekNumbers="true" />
       <JFXButton fx:id="btn_GetZoekResultaten" contentDisplay="CENTER" layoutX="804.0" layoutY="589.0" onAction="#ShowZoekResultaten" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" stylesheets="@../../../styles/StylesMitchell.css" text="Zoek" textFill="#f8f8f8" />
-      <JFXTextField fx:id="txtLabelnummer" focusColor="RED" layoutX="88.0" layoutY="464.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtVluchtnummer" focusColor="RED" layoutX="88.0" layoutY="527.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtBestemming" focusColor="RED" layoutX="88.0" layoutY="596.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtNaam" focusColor="RED" layoutX="438.0" layoutY="190.0" prefHeight="25.0" prefWidth="172.0" text="Mitchell Gordon" />
-      <JFXTextField fx:id="txtAdres" focusColor="RED" layoutX="438.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" text="Kelbergen 404" />
-      <JFXTextField fx:id="txtWoonplaats" focusColor="RED" layoutX="438.0" layoutY="333.0" prefHeight="25.0" prefWidth="172.0" text="Amsterdam" />
-      <JFXTextField fx:id="txtPostcode" focusColor="RED" layoutX="438.0" layoutY="464.0" prefHeight="25.0" prefWidth="172.0" text="1104 LV" />
-      <JFXTextField fx:id="txtLand" focusColor="RED" layoutX="438.0" layoutY="527.0" prefHeight="25.0" prefWidth="172.0" text="Nederland" />
-      <JFXTextField fx:id="txtTelefoonnummer" focusColor="RED" layoutX="438.0" layoutY="596.0" prefHeight="25.0" prefWidth="172.0" text="0641222375" />
-      <JFXTextField fx:id="txtType" focusColor="RED" layoutX="804.0" layoutY="190.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtMerk" focusColor="RED" layoutX="804.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtKleur" focusColor="RED" layoutX="804.0" layoutY="333.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtLabelnummer" focusColor="RED" layoutX="88.0" layoutY="464.0" prefHeight="25.0" prefWidth="172.0" promptText="164" />
+      <JFXTextField fx:id="txtVluchtnummer" focusColor="RED" layoutX="88.0" layoutY="527.0" prefHeight="25.0" prefWidth="172.0" promptText="KLM39" />
+      <JFXTextField fx:id="txtNaam" focusColor="RED" layoutX="438.0" layoutY="190.0" prefHeight="25.0" prefWidth="172.0" promptText="Louise Green" />
+      <JFXTextField fx:id="txtAdres" focusColor="RED" layoutX="438.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" promptText="Molenstraat2" />
+      <JFXTextField fx:id="txtWoonplaats" focusColor="RED" layoutX="438.0" layoutY="333.0" prefHeight="25.0" prefWidth="172.0" promptText="Den Haag" />
+      <JFXTextField fx:id="txtPostcode" focusColor="RED" layoutX="438.0" layoutY="464.0" prefHeight="25.0" prefWidth="172.0" promptText="2513BK" />
+      <JFXTextField fx:id="txtTelefoonnummer" focusColor="RED" layoutX="438.0" layoutY="596.0" prefHeight="25.0" prefWidth="172.0" promptText="0612345678" />
       <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="262.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/C:/Users/media/Desktop/MyBaggage/src/main/resources/images/airport.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="454.0" prefHeight="92.0" prefWidth="188.0" />
-      <JFXTextField fx:id="txtLuchthaven" focusColor="RED" layoutX="88.0" layoutY="265.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="460.0" prefHeight="92.0" prefWidth="188.0" promptText="Schrijf hier de bijzondere kenmerken op." />
+      <JFXComboBox fx:id="luchthavenComboBox" focusColor="RED" layoutX="86.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="bestemmingComboBox" focusColor="RED" layoutX="86.0" layoutY="597.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="typeComboBox" focusColor="RED" layoutX="804.0" layoutY="190.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="merkComboBox" focusColor="RED" layoutX="804.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="kleurComboBox" focusColor="RED" layoutX="804.0" layoutY="333.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="landComboBox" focusColor="RED" layoutX="438.0" layoutY="527.0" prefHeight="25.0" prefWidth="172.0" />
    </children>
    <stylesheets>
       <URL value="@../styles/StylesMitchell.css" />

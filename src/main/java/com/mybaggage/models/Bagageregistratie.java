@@ -1,6 +1,9 @@
 package com.mybaggage.models;
 
 import com.mybaggage.Utilities;
+import java.sql.Date;
+import java.sql.Time;
+import java.text.ParseException;
 import java.time.LocalDate;
 
 /**
@@ -13,15 +16,13 @@ public class Bagageregistratie {
     // Resort to a default integer when the string input is empty
     final int DEFAULT_INTEGER = 0;
 
-    private String[] lijstVanMerken;
-
     private int formuliernummer;
     private int lostAndFoundID;
     private int labelnummer;
-    private int vluchtnummer;
+    private String vluchtnummer;
     private int klantnummer;
-    private String tijd;
-    private String datum;
+    private Time tijd;
+    private Date datum;
     private String naam;
     private String adres;
     private String woonplaats;
@@ -48,33 +49,32 @@ public class Bagageregistratie {
         this.labelnummer = (!"".equals(labelnummer)) ? Integer.parseInt(labelnummer.trim()) : DEFAULT_INTEGER;
     }
 
-    public int getVluchtnummer() {
+    public String getVluchtnummer() {
         return vluchtnummer;
     }
 
     public void setVluchtnummer(String vluchtnummer) {
-        vluchtnummer.trim();
-        this.vluchtnummer = (!"".equals(vluchtnummer)) ? Integer.parseInt(vluchtnummer) : DEFAULT_INTEGER;
+        this.vluchtnummer = vluchtnummer;
     }
 
     public int getKlantnummer() {
         return klantnummer;
     }
 
-    public String getTijd() {
+    public Time getTijd() {
         return tijd;
     }
 
-    public void setTijd() {
-        this.tijd = Utilities.getCurrentTimeString();
+    public void setTijd() throws ParseException {
+        this.tijd = Utilities.convertStringToSQLTime(Utilities.getCurrentTimeString());
     }
 
-    public String getDatum() {
+    public Date getDatum() {
         return datum;
     }
 
-    public void setDatum(LocalDate datum) {
-        this.datum = Utilities.convertLocalDateToString(datum);
+    public void setDatum(LocalDate datum) throws ParseException {
+        this.datum = Utilities.convertStringToSQLDate(Utilities.convertLocalDateToString(datum));
     }
 
     public String getNaam() {
@@ -130,7 +130,7 @@ public class Bagageregistratie {
     }
 
     public void setType(String type) {
-        this.type = type;
+        this.type = (type != null) ? type : "";
     }
 
     public String getMerk() {
@@ -138,7 +138,7 @@ public class Bagageregistratie {
     }
 
     public void setMerk(String merk) {
-        this.merk = merk;
+        this.merk = (merk != null) ? merk : "";
     }
 
     public String getKleur() {
@@ -146,7 +146,7 @@ public class Bagageregistratie {
     }
 
     public void setKleur(String kleur) {
-        this.kleur = kleur;
+        this.kleur = (kleur != null) ? kleur : "";
     }
 
     public String getKenmerken() {
@@ -162,7 +162,7 @@ public class Bagageregistratie {
     }
 
     public void setBestemming(String bestemming) {
-        this.bestemming = bestemming;
+        this.bestemming = (bestemming != null) ? bestemming : "";
     }
 
     public String getLuchthaven() {
@@ -170,7 +170,7 @@ public class Bagageregistratie {
     }
 
     public void setLuchthaven(String luchthaven) {
-        this.luchthaven = luchthaven;
+        this.luchthaven = (luchthaven != null) ? luchthaven : "";
     }
 
     public int getLostAndFoundID() {
@@ -181,5 +181,4 @@ public class Bagageregistratie {
         lostAndFoundID.trim();
         this.lostAndFoundID = (!"".equals(lostAndFoundID)) ? Integer.parseInt(lostAndFoundID) : DEFAULT_INTEGER;
     }
-
 }

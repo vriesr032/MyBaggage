@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
@@ -19,7 +20,7 @@
          </font>
       </Label>
       <Label layoutX="88.0" layoutY="168.0" prefHeight="17.0" prefWidth="188.0" text="Datum:" />
-      <Label layoutX="91.0" layoutY="239.0" prefHeight="17.0" prefWidth="188.0" text="Luchthaven" />
+      <Label layoutX="91.0" layoutY="239.0" prefHeight="17.0" prefWidth="188.0" text="Luchthaven:" />
       <Label layoutX="438.0" layoutY="122.0" prefHeight="27.0" prefWidth="225.0" text="Bagage Label Informatie">
          <font>
             <Font size="18.0" />
@@ -28,33 +29,33 @@
       <Label layoutX="438.0" layoutY="163.0" prefHeight="17.0" prefWidth="188.0" text="Labelnummer:" />
       <Label layoutX="438.0" layoutY="223.0" prefHeight="17.0" prefWidth="188.0" text="Vluchtnummer:" />
       <Label layoutX="438.0" layoutY="296.0" prefHeight="17.0" prefWidth="188.0" text="Bestemming:" />
-      <Label layoutX="438.0" layoutY="366.0" prefHeight="17.0" prefWidth="188.0" text="Lost-and-found id" />
+      <Label layoutX="438.0" layoutY="366.0" prefHeight="17.0" prefWidth="188.0" text="Lost-and-found id:" />
       <Label layoutX="804.0" layoutY="124.0" prefHeight="17.0" prefWidth="188.0" text="Bagage Informatie">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="804.0" layoutY="165.0" prefHeight="17.0" prefWidth="188.0" text="Type:" />
-      <Label layoutX="804.0" layoutY="237.0" prefHeight="17.0" prefWidth="188.0" text="Merk:" />
-      <Label layoutX="804.0" layoutY="307.0" prefHeight="17.0" prefWidth="188.0" text="Kleur:" />
+      <Label layoutX="804.0" layoutY="160.0" prefHeight="17.0" prefWidth="188.0" text="Type:" />
+      <Label layoutX="804.0" layoutY="223.0" prefHeight="17.0" prefWidth="188.0" text="Merk:" />
+      <Label layoutX="804.0" layoutY="296.0" prefHeight="17.0" prefWidth="188.0" text="Kleur:" />
       <ImageView fitHeight="42.0" fitWidth="64.0" layoutX="-26.0" layoutY="598.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="804.0" layoutY="425.0" prefHeight="17.0" prefWidth="188.0" text="Bijzondere kenmerken" />
+      <Label layoutX="804.0" layoutY="425.0" prefHeight="17.0" prefWidth="188.0" text="Bijzondere kenmerken:" />
       <JFXDatePicker fx:id="txtDatum" defaultColor="RED" editable="false" layoutX="88.0" layoutY="187.0" prefHeight="28.0" prefWidth="208.0" showWeekNumbers="true" />
       <JFXButton fx:id="btn_RegistreerGevondenBagage" contentDisplay="CENTER" layoutX="804.0" layoutY="585.0" onAction="#insertGevondenBagageFormulier" prefHeight="40.0" prefWidth="200.0" ripplerFill="WHITE" stylesheets="@../../../styles/StylesMitchell.css" text="Registreer" textFill="#f8f8f8" />
-      <JFXTextField fx:id="txtLabelnummer" focusColor="RED" layoutX="438.0" layoutY="183.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtVluchtnummer" focusColor="RED" layoutX="438.0" layoutY="246.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtBestemming" focusColor="RED" layoutX="438.0" layoutY="315.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtLostAndFoundID" focusColor="RED" layoutX="438.0" layoutY="385.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtType" focusColor="RED" layoutX="804.0" layoutY="186.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtMerk" focusColor="RED" layoutX="804.0" layoutY="262.0" prefHeight="25.0" prefWidth="172.0" />
-      <JFXTextField fx:id="txtKleur" focusColor="RED" layoutX="804.0" layoutY="329.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextField fx:id="txtLabelnummer" focusColor="RED" layoutX="438.0" layoutY="183.0" prefHeight="25.0" prefWidth="172.0" promptText="164" />
+      <JFXTextField fx:id="txtVluchtnummer" focusColor="RED" layoutX="438.0" layoutY="246.0" prefHeight="25.0" prefWidth="172.0" promptText="KLM39" />
+      <JFXTextField fx:id="txtLostAndFoundID" focusColor="RED" layoutX="438.0" layoutY="385.0" prefHeight="25.0" prefWidth="172.0" promptText="30" />
       <ImageView fitHeight="28.0" fitWidth="28.0" layoutX="265.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="file:/C:/Users/media/Desktop/MyBaggage/src/main/resources/images/airport.png" />
          </image>
       </ImageView>
-      <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="450.0" prefHeight="92.0" prefWidth="188.0" />
-      <JFXTextField fx:id="txtLuchthaven" focusColor="RED" layoutX="88.0" layoutY="259.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXTextArea fx:id="txtKenmerken" focusColor="RED" layoutX="804.0" layoutY="450.0" prefHeight="92.0" prefWidth="188.0" promptText="Schrijf hier de bijzondere kenmerken op." />
+      <JFXComboBox fx:id="luchthavenComboBox" focusColor="RED" layoutX="88.0" layoutY="262.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="bestemmingComboBox" focusColor="RED" layoutX="438.0" layoutY="325.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="typeComboBox" focusColor="RED" layoutX="804.0" layoutY="183.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="merkComboBox" focusColor="RED" layoutX="804.0" layoutY="244.0" prefHeight="25.0" prefWidth="172.0" />
+      <JFXComboBox fx:id="kleurComboBox" focusColor="RED" layoutX="804.0" layoutY="325.0" prefHeight="25.0" prefWidth="172.0" />
    </children>
    <stylesheets>
       <URL value="@../styles/StylesMitchell.css" />
