@@ -21,6 +21,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Time;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -224,13 +225,12 @@ public class BagageOverzichtController implements Initializable {
                         pst.setInt(12,(int) row.getCell(11).getNumericCellValue());
                         pst.setString(13, row.getCell(12).getStringCellValue());
                         pst.setInt(14, (int) row.getCell(13).getNumericCellValue());
-                        pst.setInt(15,(int) row.getCell(14).getNumericCellValue());
-                        pst.setString(16, row.getCell(15).getStringCellValue());
+                        pst.setTime(15, new Time((int) row.getCell(14).getNumericCellValue()));
+                        pst.setDate (16, Date.valueOf(row.getCell(15).getStringCellValue()));
                         pst.setInt(17,(int) row.getCell(16).getNumericCellValue());
                         pst.setInt(18,(int) row.getCell(17).getNumericCellValue());
                         pst.execute();
                     } catch (NumberFormatException e) {
-                        e.printStackTrace();
                     }
                 }
 
