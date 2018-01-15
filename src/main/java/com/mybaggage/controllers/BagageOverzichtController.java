@@ -9,11 +9,14 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mybaggage.Database;
 import com.mybaggage.Utilities;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,6 +35,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -147,31 +151,28 @@ public class BagageOverzichtController implements Initializable {
 // XSSF is voor 2007 of nieuwere versies voor excel. HSSF is voor 2006 en ouder.
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("Bagage overzicht");// maakt een sheet aan
-            XSSFRow header = sheet.createRow(0); // maakt rijen aan om de data in de database te krijgen
+            XSSFRow header = sheet.createRow(0); // maakt rijen aan om de data van de database te krijgen
             header.createCell(0).setCellValue("formuliernummer");
-            header.createCell(1).setCellValue("type");
+            header.createCell(1).setCellValue("naam");
             header.createCell(2).setCellValue("lostandfoundID");
             header.createCell(3).setCellValue("kenmerken");
-            header.createCell(4).setCellValue("labelnummer");
-            header.createCell(5).setCellValue("luchthaven");
+            header.createCell(4).setCellValue("luchthaven");
 
             sheet.setColumnWidth(0, 256 * 25);
             sheet.setColumnWidth(1, 256 * 25);
             sheet.setColumnWidth(2, 256 * 25);
             sheet.setColumnWidth(3, 256 * 25);
             sheet.setColumnWidth(4, 256 * 25);
-            sheet.setColumnWidth(5, 256 * 25);
 
             int index = 1;
-// Met deze code zet je pak je alleen de 1e rij van de excel bestand.
+// Met deze code  pak je alleen de 1e rij van de excel bestand.
             while (rs.next()) {
                 XSSFRow row = sheet.createRow(index);
                 row.createCell(0).setCellValue(rs.getString("formuliernummer"));
-                row.createCell(1).setCellValue(rs.getString("type"));
+                row.createCell(1).setCellValue(rs.getString("naam"));
                 row.createCell(2).setCellValue(rs.getString("lostandfoundID"));
                 row.createCell(3).setCellValue(rs.getString("kenmerken"));
-                row.createCell(4).setCellValue(rs.getString("labelnummmer"));
-                row.createCell(5).setCellValue(rs.getString("luchthaven"));
+                row.createCell(4).setCellValue(rs.getString("luchthaven"));
                 index++; // Dit zorgt ervoor dat er meerdere rijen in de excel bestand worden opgepakt
             }
 
@@ -188,6 +189,63 @@ public class BagageOverzichtController implements Initializable {
             rs.close();
 
         } catch (SQLException | IOException ex) {
+            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @FXML
+    private void importExcel() {
+        try {
+            conn = Database.connectdb();
+            String query = "Insert into registratie(naam, adres, woonplaats, postcode, land, telefoonnummer, type, merk, kleur, kenmerken, "
+                    + "labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID, klantnummer) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            pst = conn.prepareStatement(query);
+
+            String excelFilePath = "Bagage.xlsx";
+            try (FileInputStream fileIn = new FileInputStream(new File(excelFilePath));
+                    XSSFWorkbook wb = new XSSFWorkbook(fileIn)) {
+                XSSFSheet sheet = wb.getSheetAt(0);
+                Row row;
+                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+                    try {
+                        row = sheet.getRow(i);
+                        pst.setString(1, row.getCell(0).getStringCellValue());
+                        pst.setString(2, row.getCell(1).getStringCellValue());
+                        pst.setString(3, row.getCell(2).getStringCellValue());
+                        pst.setString(4, row.getCell(3).getStringCellValue());
+                        pst.setString(5, row.getCell(4).getStringCellValue());
+                        pst.setString(6, row.getCell(5).getStringCellValue());
+                        pst.setString(7, row.getCell(6).getStringCellValue());
+                        pst.setString(8, row.getCell(7).getStringCellValue());
+                        pst.setString(9, row.getCell(8).getStringCellValue());
+                        pst.setString(10, row.getCell(9).getStringCellValue());
+                        pst.setInt(11,(int) row.getCell(10).getNumericCellValue());
+                        pst.setInt(12,(int) row.getCell(11).getNumericCellValue());
+                        pst.setString(13, row.getCell(12).getStringCellValue());
+                        pst.setInt(14, (int) row.getCell(13).getNumericCellValue());
+                        pst.setInt(15,(int) row.getCell(14).getNumericCellValue());
+                        pst.setString(16, row.getCell(15).getStringCellValue());
+                        pst.setInt(17,(int) row.getCell(16).getNumericCellValue());
+                        pst.setInt(18,(int) row.getCell(17).getNumericCellValue());
+                        pst.execute();
+                    } catch (NumberFormatException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("BagageOverzicht");
+                alert.setHeaderText(null);
+                alert.setContentText("Data succesvol geïmporteerd!");
+                alert.showAndWait();
+
+            }
+            pst.close();
+            rs.close();
+        } catch (SQLException | FileNotFoundException ex) {
+            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
             Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
