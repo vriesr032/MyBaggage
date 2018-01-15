@@ -36,10 +36,10 @@ public class RapController implements Initializable {
             Connection myConn = Database.connectdb();
             String query3; 
             String query21;
-            String queryNooit;
+//            String queryNooit;
             query3 = "SELECT * FROM registratie WHERE datum >= (CURDATE() - INTERVAL 3 DAY);";
             query21 = "SELECT * FROM registratie WHERE datum >= (CURDATE() - INTERVAL 21 DAY);";
-            queryNooit = "SELECT * FROM registratie WHERE status = 'nooit';";
+//            queryNooit = "SELECT * FROM registratie WHERE status = 'nooit';";
             PreparedStatement pst3;
             PreparedStatement pst21;
             pst3 = myConn.prepareStatement(query3);

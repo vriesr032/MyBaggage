@@ -195,61 +195,61 @@ public class BagageOverzichtController implements Initializable {
 
     }
 
-    @FXML
-    private void importExcel() {
-        try {
-            conn = Database.connectdb();
-            String query = "Insert into registratie(naam, adres, woonplaats, postcode, land, telefoonnummer, type, merk, kleur, kenmerken, "
-                    + "labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID, klantnummer) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-            pst = conn.prepareStatement(query);
-
-            String excelFilePath = "Bagage.xlsx";
-            try (FileInputStream fileIn = new FileInputStream(new File(excelFilePath));
-                    XSSFWorkbook wb = new XSSFWorkbook(fileIn)) {
-                XSSFSheet sheet = wb.getSheetAt(0);
-                Row row;
-                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
-                    try {
-                        row = sheet.getRow(i);
-                        pst.setString(1, row.getCell(0).getStringCellValue());
-                        pst.setString(2, row.getCell(1).getStringCellValue());
-                        pst.setString(3, row.getCell(2).getStringCellValue());
-                        pst.setString(4, row.getCell(3).getStringCellValue());
-                        pst.setString(5, row.getCell(4).getStringCellValue());
-                        pst.setString(6, row.getCell(5).getStringCellValue());
-                        pst.setString(7, row.getCell(6).getStringCellValue());
-                        pst.setString(8, row.getCell(7).getStringCellValue());
-                        pst.setString(9, row.getCell(8).getStringCellValue());
-                        pst.setString(10, row.getCell(9).getStringCellValue());
-                        pst.setInt(11,(int) row.getCell(10).getNumericCellValue());
-                        pst.setInt(12,(int) row.getCell(11).getNumericCellValue());
-                        pst.setString(13, row.getCell(12).getStringCellValue());
-                        pst.setInt(14, (int) row.getCell(13).getNumericCellValue());
-                        pst.setTime(15, new Time((int) row.getCell(14).getNumericCellValue()));
-                        pst.setDate (16, Date.valueOf(row.getCell(15).getStringCellValue()));
-                        pst.setInt(17,(int) row.getCell(16).getNumericCellValue());
-                        pst.setInt(18,(int) row.getCell(17).getNumericCellValue());
-                        pst.execute();
-                    } catch (NumberFormatException e) {
-                    }
-                }
-
-                Alert alert = new Alert(AlertType.INFORMATION);
-                alert.setTitle("BagageOverzicht");
-                alert.setHeaderText(null);
-                alert.setContentText("Data succesvol geïmporteerd!");
-                alert.showAndWait();
-
-            }
-            pst.close();
-            rs.close();
-        } catch (SQLException | FileNotFoundException ex) {
-            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
+//    @FXML
+//    private void importExcel() {
+//        try {
+//            conn = Database.connectdb();
+//            String query = "Insert into registratie(naam, adres, woonplaats, postcode, land, telefoonnummer, type, merk, kleur, kenmerken, "
+//                    + "labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID, klantnummer) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//            pst = conn.prepareStatement(query);
+//
+//            String excelFilePath = "Bagage.xlsx";
+//            try (FileInputStream fileIn = new FileInputStream(new File(excelFilePath));
+//                    XSSFWorkbook wb = new XSSFWorkbook(fileIn)) {
+//                XSSFSheet sheet = wb.getSheetAt(0);
+//                Row row;
+//                for (int i = 1; i <= sheet.getLastRowNum(); i++) {
+//                    try {
+//                        row = sheet.getRow(i);
+//                        pst.setString(1, row.getCell(0).getStringCellValue());
+//                        pst.setString(2, row.getCell(1).getStringCellValue());
+//                        pst.setString(3, row.getCell(2).getStringCellValue());
+//                        pst.setString(4, row.getCell(3).getStringCellValue());
+//                        pst.setString(5, row.getCell(4).getStringCellValue());
+//                        pst.setString(6, row.getCell(5).getStringCellValue());
+//                        pst.setString(7, row.getCell(6).getStringCellValue());
+//                        pst.setString(8, row.getCell(7).getStringCellValue());
+//                        pst.setString(9, row.getCell(8).getStringCellValue());
+//                        pst.setString(10, row.getCell(9).getStringCellValue());
+//                        pst.setInt(11,(int) row.getCell(10).getNumericCellValue());
+//                        pst.setInt(12,(int) row.getCell(11).getNumericCellValue());
+//                        pst.setString(13, row.getCell(12).getStringCellValue());
+//                        pst.setInt(14, (int) row.getCell(13).getNumericCellValue());
+//                        pst.setTime(15, new Time((int) row.getCell(14).getNumericCellValue()));
+//                        pst.setDate (16, Date.valueOf(row.getCell(15).getStringCellValue()));
+//                        pst.setInt(17,(int) row.getCell(16).getNumericCellValue());
+//                        pst.setInt(18,(int) row.getCell(17).getNumericCellValue());
+//                        pst.execute();
+//                    } catch (NumberFormatException e) {
+//                    }
+//                }
+//
+//                Alert alert = new Alert(AlertType.INFORMATION);
+//                alert.setTitle("BagageOverzicht");
+//                alert.setHeaderText(null);
+//                alert.setContentText("Data succesvol geïmporteerd!");
+//                alert.showAndWait();
+//
+//            }
+//            pst.close();
+//            rs.close();
+//        } catch (SQLException | FileNotFoundException ex) {
+//            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
+//        } catch (IOException ex) {
+//            Logger.getLogger(BagageOverzichtController.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
