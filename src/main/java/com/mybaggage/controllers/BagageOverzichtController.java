@@ -9,6 +9,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mybaggage.Database;
 import com.mybaggage.Utilities;
+import static com.mybaggage.Utilities.rootPane;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,7 +28,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -89,7 +92,7 @@ public class BagageOverzichtController implements Initializable {
     @FXML
     private void bagageWijzigen() throws IOException {
 //MainController.switchScherm("/com/mybaggage/controllers/BagageWijzigen.fxml");
-        Utilities.switchSchermNaarFXML("BagageWijzigen.fxml", rootAnchorPane);
+        Utilities.switchSchermNaarFXML("BagageWijzigenAdmin.fxml", rootAnchorPane);
     }
 //Gaat naar het scherm Bagage Wijzigen
     @FXML
@@ -98,9 +101,15 @@ public class BagageOverzichtController implements Initializable {
     @FXML
     private void bagageVerwijderen() throws IOException {
 //MainController.switchScherm("/com/mybaggage/controllers/BagageVerwijderen.fxml");
-        Utilities.switchSchermNaarFXML("BagageVerwijderen.fxml", rootAnchorPane);
+        Utilities.switchSchermNaarFXML("BagageVerwijderenAdmin.fxml", rootAnchorPane);
     }
 
+    @FXML
+    private void loadOverzicht(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+    
     @FXML
     private void setCellTable() {
         formuliernummer.setCellValueFactory(new PropertyValueFactory<>("formuliernummer"));

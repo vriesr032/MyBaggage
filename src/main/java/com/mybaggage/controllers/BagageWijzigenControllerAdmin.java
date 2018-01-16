@@ -27,7 +27,7 @@ import javafx.stage.Stage;
  *
  * @author Rick de Vries (500758516)
  */
-public class BagageWijzigenController implements Initializable {
+public class BagageWijzigenControllerAdmin implements Initializable {
 
     @FXML
     private TextField txt_naam;
@@ -50,6 +50,8 @@ public class BagageWijzigenController implements Initializable {
     @FXML
     private AnchorPane rootAnchorPane;
 
+    @FXML
+    private AnchorPane rootPane;
 //Gaat terug naar het scherm Overzicht Bagage
     @FXML
     private Button btn_annuleren;
@@ -90,7 +92,7 @@ public class BagageWijzigenController implements Initializable {
             int i = pst.executeUpdate();
             if (i == 1) {
                 System.out.println("Bagage aangepast!");
-               Utilities.switchSchermNaarFXML("BagageOverzichtMedewerker.fxml", rootAnchorPane);
+               Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);
             }
         } catch (SQLException ex) {
             Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);
@@ -98,12 +100,12 @@ public class BagageWijzigenController implements Initializable {
     }
     
     @FXML
-    private void loadOverzichtMedewerker(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
+    private void loadOverzichtAdmin(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         rootAnchorPane.getChildren().setAll(pane);
     }
 
-    public BagageWijzigenController() {
+    public BagageWijzigenControllerAdmin() {
         conn = Database.connectdb();
     }
 

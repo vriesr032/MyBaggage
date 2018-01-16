@@ -10,7 +10,7 @@
 <AnchorPane id="AnchorPane" fx:id="rootPane" prefHeight="675.0" prefWidth="1100.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.FAQController">
    <children>
     
-      <Separator layoutX="133.0" layoutY="68.0" prefHeight="1.0" prefWidth="620.0" />
+      <Separator layoutX="133.0" layoutY="68.0" prefHeight="0.0" prefWidth="720.0" />
       <Label layoutX="133.0" layoutY="31.0" text="Contact">
          <font>
             <Font name="Arial Bold" size="18.0" />

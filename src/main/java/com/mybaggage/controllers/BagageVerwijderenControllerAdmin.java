@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author rickdevries
  */
-public class BagageVerwijderenController implements Initializable {
+public class BagageVerwijderenControllerAdmin implements Initializable {
 
     @FXML
     private TextField txt_registratienummer;
@@ -64,20 +64,20 @@ public class BagageVerwijderenController implements Initializable {
                 Utilities.switchSchermNaarFXML("BagageOverzicht.fxml", rootAnchorPane);            
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BagageVerwijderenController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BagageVerwijderenControllerAdmin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public BagageVerwijderenController() {
+    public BagageVerwijderenControllerAdmin() {
         conn = Database.connectdb();
     }
-
+    
     @FXML
-    private void loadOverzichtMedewerker(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
+    private void loadOverzichtAdmin(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         rootAnchorPane.getChildren().setAll(pane);
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }

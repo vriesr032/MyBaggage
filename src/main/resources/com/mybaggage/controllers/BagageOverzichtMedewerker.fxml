@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageOverzichtMedewerkerController">
+<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="675.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageOverzichtMedewerkerController">
     <children>
         <BorderPane prefHeight="768.0" prefWidth="1366.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox prefHeight="605.0" prefWidth="123.0" BorderPane.alignment="CENTER">
                     <children>
                         <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false" onAction="#bagageWijzigen" prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
-                        <Button fx:id="btn_bagageVerwijderen" mnemonicParsing="false" onAction="#onDeleteItem" prefHeight="27.0" prefWidth="124.0" text="Bagage Verwijderen" />
+                        <Button fx:id="btn_bagageVerwijderen" mnemonicParsing="false" onAction="#bagageVerwijderen" prefHeight="27.0" prefWidth="124.0" text="Bagage Verwijderen" />
                     </children>
                 </VBox>
             </left>

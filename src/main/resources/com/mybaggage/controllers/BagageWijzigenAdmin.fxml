@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageWijzigenController">
+<AnchorPane id="AnchorPane" fx:id="rootAnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mybaggage.controllers.BagageWijzigenControllerAdmin">
     <children>
         <GridPane layoutX="4.0" prefHeight="400.0" prefWidth="600.0">
             <columnConstraints>
@@ -108,7 +108,7 @@
                         <Insets left="200.0" />
                     </GridPane.margin>
                 </Button>
-            <Button fx:id="loadOverzichtMedewerker" alignment="CENTER" mnemonicParsing="false" onAction="#loadOverzichtMedewerker" text="Terug" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="loadOverzichtAdmin" alignment="CENTER" mnemonicParsing="false" onAction="#loadOverzichtAdmin" text="Terug" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             </children>
         </GridPane>
     </children>

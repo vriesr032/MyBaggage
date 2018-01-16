@@ -2,6 +2,7 @@ package com.mybaggage.controllers;
 
 import com.mybaggage.Database;
 import com.mybaggage.Utilities;
+import static com.mybaggage.Utilities.rootPane;
 import com.mybaggage.models.BagageToevoegen;
 import java.io.IOException;
 import java.net.URL;
@@ -18,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -119,6 +121,12 @@ public class BagageOverzichtMedewerkerController implements Initializable {
 
     public BagageOverzichtMedewerkerController() {
         conn = Database.connectdb();
+    }
+    
+    @FXML
+    private void loadOverzicht(ActionEvent event) throws IOException {
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzichtMedewerker.fxml"));
+        rootAnchorPane.getChildren().setAll(pane);
     }
 
     @Override
