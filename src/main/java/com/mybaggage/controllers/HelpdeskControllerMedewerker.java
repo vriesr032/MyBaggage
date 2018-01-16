@@ -28,10 +28,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
+ * Deze controller zorgt ervoor dat medewerkers de helpdesk kunnen gebruiken.
  *
- * @author Ismail
+ * @author Ismail Bahar (500783727)
  */
-public class HelpdeskController implements Initializable {
+public class HelpdeskControllerMedewerker implements Initializable {
 
     @FXML
     private GridPane newEntryDialog;
@@ -65,7 +66,6 @@ public class HelpdeskController implements Initializable {
     private Button addTicket;
     @FXML
     private Button closeTicket;
-    //Initialize observable list to hold out database data
     private ObservableList<UserDetails> data;
     private DbConnection dc;
     BookDataModel data2;
@@ -75,14 +75,14 @@ public class HelpdeskController implements Initializable {
         dc = new DbConnection();
     }
 
-    //Method to open && close a popup window.
+    //Methode om de pop-up window te openen en sluiten.
     @FXML
     private void handleButtonAction(ActionEvent event) throws IOException {
         Stage stage;
         Parent root;
         if (event.getSource() == addTicket) {
             stage = new Stage();
-            root = FXMLLoader.load(getClass().getResource("Add.fxml"));
+            root = FXMLLoader.load(getClass().getResource("AddTicketMedewerker.fxml"));
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initOwner(addTicket.getScene().getWindow());
@@ -99,10 +99,10 @@ public class HelpdeskController implements Initializable {
         try {
             Connection conn = dc.Connect();
             data = FXCollections.observableArrayList();
-            // SQL Query 1.
+            //SQL Query 1 pakt alles van tabel: ticket.
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM bagage_registratie.ticket");
             while (rs.next()) {
-                //Get string from database.
+                //Pakt alle gegevens uit de database.
                 data.add(new UserDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
 
@@ -110,8 +110,7 @@ public class HelpdeskController implements Initializable {
             System.err.println("Error" + ex);
         }
 
-        //Set functie naar tableview.
-        //PropertyValue Factory moet hetzelfde zijn als de model class
+        //Set functie naar de table selecteert elke kolom stap voor stap.
         columnIdTicket.setCellValueFactory(new PropertyValueFactory<>("idTicket"));
         columnVoornaam.setCellValueFactory(new PropertyValueFactory<>("voornaam"));
         columnAchternaam.setCellValueFactory(new PropertyValueFactory<>("achternaam"));
@@ -120,7 +119,7 @@ public class HelpdeskController implements Initializable {
         columnBeschrijving.setCellValueFactory(new PropertyValueFactory<>("beschrijving"));
 
         tableUser.setItems(null);
-        tableUser.setItems(data);
+        tableUser.setItems(data); //Zet alle data erin.
 
     }
 
@@ -135,7 +134,7 @@ public class HelpdeskController implements Initializable {
         LocalDate datum = datumTextField.getValue();
         String toegewezenAan = toegewezenAanTextField.getText();
         String beschrijving = beschrijvingTextField.getText();
-        //SQL Query 2.
+        //SQL Query 2 data toevoegen.
         String query = "INSERT INTO bagage_registratie.ticket (idTicket, voornaam, achternaam, datum, toegewezen_aan, beschrijving) VALUES (' " + idTicket + "','" + voornaam + "','" + achternaam + "','" + datum + "','" + toegewezenAan + "','" + beschrijving + "')";
 
         PreparedStatement pst;
@@ -152,7 +151,7 @@ public class HelpdeskController implements Initializable {
             data2.setDatum(datum);
             data2.setToegewezenAan(toegewezenAan);
             data2.setBeschrijving(beschrijving);
-            //Sets input information into the database.
+            //Zet alle gegevens weer in de tabel.
 
         } catch (Exception ex) {
             System.out.println(ex);
@@ -160,31 +159,6 @@ public class HelpdeskController implements Initializable {
 
         Stage stage = (Stage) newEntryDialog.getScene().getWindow();
         stage.close();
-    }
-
-    //Method to delete tickets.    
-    @FXML
-    private void verwijderTicket() {
-        DbConnection conn = new DbConnection();
-        UserDetails data = tableUser.getSelectionModel().getSelectedItem();
-
-        if (data != null) {
-
-            try {
-                Connection myConn = conn.getConnection();
-                //SQL Query 3.
-                String query = "DELETE FROM bagage_registratie.ticket WHERE idTicket = '" + data.getIdTicket() + "'";
-
-                PreparedStatement pst;
-                pst = myConn.prepareStatement(query);
-                pst.executeUpdate();
-
-                tableUser.getSelectionModel().clearSelection(); //Gets the model of the table.
-
-            } catch (Exception ex) {
-                System.out.println(ex);
-            }
-        }
     }
 
 }

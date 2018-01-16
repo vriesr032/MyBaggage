@@ -9,12 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 
+/**
+ * Deze controller zorgt ervoor dat gebruikers veelgestelde vragen kunnen bekijken.
+ *
+ * @author Ismail Bahar (500783727)
+ */
 public class FAQController implements Initializable {
 
     @FXML
     private AnchorPane rootPane;
 
-
+    //Methodes om een van scene te switchen.
     @FXML
     private void loadQuestion1(ActionEvent event) throws IOException {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("Question1.fxml"));
