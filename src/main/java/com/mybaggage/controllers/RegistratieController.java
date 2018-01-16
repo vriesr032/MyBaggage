@@ -35,6 +35,11 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+/**
+ * Het doel van deze class is om de bagage registratie, zoeken en claimen functioneel te maken
+ *
+ * @author Mitchell Gordon (500775386)
+ */
 public class RegistratieController implements Initializable {
 
     final String DEFAULT_STRING = "";
