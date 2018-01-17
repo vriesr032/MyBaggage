@@ -37,7 +37,7 @@ public class HelpdeskControllerAdmin implements Initializable {
     @FXML
     private GridPane newEntryDialog;
     @FXML
-    private TableView<UserDetails> tableUser;
+    private TableView<HelpdeskDetails> tableUser;
     @FXML
     private TableColumn columnIdTicket;
     @FXML
@@ -66,9 +66,9 @@ public class HelpdeskControllerAdmin implements Initializable {
     private Button addTicket;
     @FXML
     private Button closeTicket;
-    private ObservableList<UserDetails> data;
+    private ObservableList<HelpdeskDetails> data; //A list that allows listeners to track changes when they occur.
     private DbConnection dc;
-    BookDataModel data2;
+    AddTickets data2;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -103,7 +103,7 @@ public class HelpdeskControllerAdmin implements Initializable {
             ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM bagage_registratie.ticket");
             while (rs.next()) {
                 //Pakt alle gegevens uit de database.
-                data.add(new UserDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                data.add(new HelpdeskDetails(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
             }
 
         } catch (SQLException ex) {
@@ -165,7 +165,7 @@ public class HelpdeskControllerAdmin implements Initializable {
     @FXML
     private void verwijderTicket() {
         DbConnection conn = new DbConnection();
-        UserDetails data = tableUser.getSelectionModel().getSelectedItem();
+        HelpdeskDetails data = tableUser.getSelectionModel().getSelectedItem();
 
         if (data != null) {
 

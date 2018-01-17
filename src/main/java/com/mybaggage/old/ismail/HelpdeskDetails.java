@@ -1,14 +1,14 @@
-// model class!
 package com.mybaggage.old.ismail;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
+ * Class voor alle getters en setters om gegevens in de tabel van de helpdesk te laden.
  *
- * @author Ismail
+ * @author Ismail Bahar (500783727)
  */
-public class UserDetails {
+public class HelpdeskDetails {
 
     private final StringProperty idTicket;
     private final StringProperty voornaam;
@@ -18,7 +18,7 @@ public class UserDetails {
     private final StringProperty beschrijving;
 
     //Default constructor
-    public UserDetails(String idTicket, String voornaam, String achternaam, String datum, String toegewezenAan, String beschrijving) {
+    public HelpdeskDetails(String idTicket, String voornaam, String achternaam, String datum, String toegewezenAan, String beschrijving) {
         this.idTicket = new SimpleStringProperty(idTicket);
         this.voornaam = new SimpleStringProperty(voornaam);
         this.achternaam = new SimpleStringProperty(achternaam);

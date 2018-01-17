@@ -5,10 +5,11 @@ import java.time.LocalDate;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
+ * Class voor alle getters en setters van de gegevens in de database om tickets toe te voegen.
  *
- * @author Ismail
+ * @author Ismail Bahar (500783727)
  */
-public class BookDataModel {
+public class AddTickets {
 
     private SimpleStringProperty idTicket;
     private SimpleStringProperty voornaam;
@@ -17,11 +18,10 @@ public class BookDataModel {
     private SimpleStringProperty toegewezenAan;
     private SimpleStringProperty beschrijving;
 
-    protected BookDataModel() {
+    protected AddTickets() {
         this.idTicket = new SimpleStringProperty();
         this.voornaam = new SimpleStringProperty();
         this.achternaam = new SimpleStringProperty();
-    
         this.toegewezenAan = new SimpleStringProperty();
         this.beschrijving = new SimpleStringProperty();
     }
@@ -53,7 +53,7 @@ public class BookDataModel {
     public String getDatum() {
         return datum;
     }
-    
+
     public void setDatum(LocalDate datum) {
         this.datum = Utilities.convertLocalDateToString(datum);
     }
@@ -74,7 +74,7 @@ public class BookDataModel {
         this.beschrijving.set(beschrijving);
     }
 
-    public void add(BookDataModel book) {
+    public void add(AddTickets book) {
 
     }
 

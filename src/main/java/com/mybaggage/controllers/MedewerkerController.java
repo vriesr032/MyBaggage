@@ -113,6 +113,11 @@ public class MedewerkerController implements Initializable {
         ft.play();
     }
 
+    /**
+     * Keyboard-shortcuts methode om te navigeren met F-Keys.
+     *
+     * @author Ismail Bahar (500783727)
+     */
     @FXML
     private void keyPressed(KeyEvent event) throws IOException {
         switch (event.getCode()) {
