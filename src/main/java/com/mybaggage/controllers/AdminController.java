@@ -54,7 +54,7 @@ public class AdminController implements Initializable {
     @FXML
     private Button btnBagageToevoegen;
 
-    AnchorPane bagageOverzicht, bagageToevoegen, bagageZoeken, faq, helpdesk, fxml2, inlogscherm, UM, registreerSchadevergoeding;
+    AnchorPane bagageOverzicht, bagageZoeken, faq, helpdesk, fxml2, inlogscherm, UM, registreerSchadevergoeding;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -69,7 +69,6 @@ public class AdminController implements Initializable {
         //Load all fxmls in a cache
         try {
             bagageOverzicht = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("BagageToevoegen.fxml"));
             bagageZoeken = FXMLLoader.load(getClass().getResource("FXML2.fxml"));
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));

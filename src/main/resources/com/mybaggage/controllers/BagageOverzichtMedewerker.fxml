@@ -16,7 +16,6 @@
             <left>
                 <VBox prefHeight="605.0" prefWidth="123.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="btn_bagageWijzigen" mnemonicParsing="false" onAction="#bagageWijzigen" prefHeight="27.0" prefWidth="122.0" text="Bagage Wijzigen" />
                         <Button fx:id="btn_bagageVerwijderen" mnemonicParsing="false" onAction="#bagageVerwijderen" prefHeight="27.0" prefWidth="124.0" text="Bagage Verwijderen" />
                     </children>
                 </VBox>
