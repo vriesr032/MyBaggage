@@ -19,6 +19,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Gebruiker Toevoegen
+ * @author Ilias Boughaba (500775068)
+ */
+
 public class NewEntryController {
 	
 	
@@ -79,6 +84,7 @@ public class NewEntryController {
 				String s5 = wachtwoordTextField.getText();
 				String s6 = functieTextField.getText();
 				
+                                //Insert Function
 				String query = "INSERT INTO persoonsgegevens ( voornaam, achternaam, gebruikersnaam, wachtwoord, functie) VALUES ('"+s2+"','"+s3+"','"+s4+"','"+s5+"','"+s6+"')";
 				PreparedStatement pst;
 				
@@ -125,6 +131,7 @@ public class NewEntryController {
 	
 
 	@FXML
+        //Close Window
 	public void handleCancel(){
 		Stage stage = (Stage) newEntryDialog.getScene().getWindow();
         stage.close();

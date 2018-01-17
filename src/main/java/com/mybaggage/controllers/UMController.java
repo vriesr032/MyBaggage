@@ -31,7 +31,10 @@ import javafx.stage.Stage;
 
 
 
-
+/**
+ * Main Controller User Management
+ * @author Ilias Boughaba (500775068)
+ */
 
 public class UMController implements Initializable{
      
@@ -110,7 +113,7 @@ public class UMController implements Initializable{
             pst = myConn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
 		
-        //Iterates through database and inserts information from .csv file into table.
+        
         while (rs.next()) {
         	DataModel book = new DataModel();
             book.setId(rs.getString("id"));
@@ -198,7 +201,7 @@ public class UMController implements Initializable{
             pst = myConn.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
 		
-        //Iterates through database and inserts information from .csv file into table.
+        
         while (rs.next()) {
         	DataModel book = new DataModel();
             book.setId(rs.getString("id"));
@@ -271,6 +274,7 @@ public class UMController implements Initializable{
 		if(data != null){
 			
 			try{
+                                //Delete Function 
 				Connection myConn = conn.getConnection();
 				String query = "DELETE FROM persoonsgegevens WHERE id = '"+data.getId()+"'";	
 				PreparedStatement pst;

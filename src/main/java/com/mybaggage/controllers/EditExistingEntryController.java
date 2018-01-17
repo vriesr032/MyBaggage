@@ -19,6 +19,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Wijzigen van gebruikers
+ * @author Ilias Boughaba (500775068)
+ */
+
 public class EditExistingEntryController {
 	
 	@FXML
@@ -26,33 +31,33 @@ public class EditExistingEntryController {
 	@FXML
 	private GridPane gridPane;
 	@FXML
-	private Button editBookButton;
+	private Button editButton;
 	@FXML
 	private Button cancelButton;
 	@FXML
-	private TextField titleTextField;
+	private TextField idTextField;
 	@FXML
-	private TextField authorTextField;
+	private TextField voornaamTextField;
 	@FXML
-	private TextField numberOfPagesTextField;
+	private TextField achternaamTextField;
 	@FXML 
-	private TextField startDateTextField;
+	private TextField gebruikersnaamTextField;
 	@FXML
-	private TextField endDateTextField;
+	private TextField wachtwoordTextField;
 	@FXML
-	private TextField thoughtsTextField;
+	private TextField functieTextField;
 	@FXML
-	private Label titleLabel;
+	private Label idLabel;
 	@FXML
-	private Label authorLabel;
+	private Label voornaamLabel;
 	@FXML
-	private Label numberOfPagesLabel;
+	private Label achternaamLabel;
+	@FXML 
+	private Label gebruikersnaamLabel;
 	@FXML
-	private Label startDateLabel;
+	private Label wachtwoordLabel;
 	@FXML
-	private Label endDateLabel;
-	@FXML
-	private Label thoughtsLabel;
+	private Label functieLabel;
 	@FXML
 	private TableView<DataModel> bookTable;
 	
@@ -66,12 +71,13 @@ public class EditExistingEntryController {
 	
 	@FXML
 	private void initialize(){
-		editBookButton.setOnAction(new EventHandler<ActionEvent>() {
+		editButton.setOnAction(new EventHandler<ActionEvent>() {
 		    @Override public void handle(ActionEvent e) {
 		    	
 				DBConnection conn = new DBConnection();
 					
 					try{
+                                                //Update Function
 						Connection myConn = conn.getConnection();
 						String query = "UPDATE persoonsgegevens SET id = ?, "
 								+ "voornaam = ?, "
@@ -83,12 +89,12 @@ public class EditExistingEntryController {
 									
 						PreparedStatement pst;
 						pst = myConn.prepareStatement(query);
-						pst.setString(1, titleTextField.getText());
-						pst.setString(2, authorTextField.getText());
-						pst.setString(3, numberOfPagesTextField.getText());
-						pst.setString(4, startDateTextField.getText());
-						pst.setString(5, endDateTextField.getText());
-						pst.setString(6, thoughtsTextField.getText());
+						pst.setString(1, idTextField.getText());
+						pst.setString(2, voornaamTextField.getText());
+						pst.setString(3, achternaamTextField.getText());
+						pst.setString(4, gebruikersnaamTextField.getText());
+						pst.setString(5, wachtwoordTextField.getText());
+						pst.setString(6, functieTextField.getText());
 						pst.setString(7, data.getId());
 						pst.executeUpdate();
 						
@@ -112,7 +118,7 @@ public class EditExistingEntryController {
 	public void handleEditExistingEntryMenuItem(GridPane gridPane){
 		try{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/view/EditExistingEntryDialog.fxml"));
+			loader.setLocation(getClass().getResource("EditExistingEntryDialog.fxml"));
 			Parent root = loader.load();
 			Scene scene = new Scene(root);
 			Stage stage = new Stage();
@@ -133,12 +139,12 @@ public class EditExistingEntryController {
 	public void showBook(DataModel data){
 		this.data = data;
 		if (data != null){
-			titleTextField.setText(data.getId());
-			authorTextField.setText(data.getVoornaam());
-			numberOfPagesTextField.setText(data.getAchternaam());
-			startDateTextField.setText(data.getGebruikersnaam());
-			endDateTextField.setText(data.getWachtwoord());
-			thoughtsTextField.setText(data.getFunctie());
+			idTextField.setText(data.getId());
+			voornaamTextField.setText(data.getVoornaam());
+			achternaamTextField.setText(data.getAchternaam());
+			gebruikersnaamTextField.setText(data.getGebruikersnaam());
+			wachtwoordTextField.setText(data.getWachtwoord());
+			functieTextField.setText(data.getFunctie());
 		}
 	}
 	
@@ -146,6 +152,7 @@ public class EditExistingEntryController {
 	
 	
 	@FXML
+        //Close Window
 	public void handleCancel(){
 		Stage stage = (Stage) editExistingEntryDialog.getScene().getWindow();
         stage.close();
