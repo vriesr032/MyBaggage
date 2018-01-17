@@ -16,52 +16,57 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 
-
+//AUTHOR Osman Can Sener
 public class RapController implements Initializable {
     int count3;
     int count21;
     int countNooit;
     @FXML
     private PieChart pieChart;
-    @FXML
-    private BarChart<String, Double> barChart;
-    @FXML
-    private BarChart<String, Double> barChart1;
-    @FXML
-    private Button btnLoad;
+//    @FXML
+//    private BarChart<String, Double> barChart;
+//    @FXML
+//    private BarChart<String, Double> barChart1;
+//    @FXML
+//    private Button btnLoad;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try{
+            //Maakt verbinding met de database
             Connection myConn = Database.connectdb();
+            // Maakt variabele om de query's makkelijker uit te voeren
             String query3; 
             String query21;
 //            String queryNooit;
             query3 = "SELECT * FROM registratie WHERE datum >= (CURDATE() - INTERVAL 3 DAY);";
             query21 = "SELECT * FROM registratie WHERE datum >= (CURDATE() - INTERVAL 21 DAY);";
 //            queryNooit = "SELECT * FROM registratie WHERE status = 'nooit';";
+            
             PreparedStatement pst3;
             PreparedStatement pst21;
+            //voert query3 uit
             pst3 = myConn.prepareStatement(query3);
             ResultSet rs3 = pst3.executeQuery();
-            
+            //voert query21 uit
             pst21 = myConn.prepareStatement(query21);
             ResultSet rs21 = pst21.executeQuery();
             
 //            pst = myConn.prepareStatement(queryNooit);
 //            ResultSet rsNooit = pst.executeQuery();
             
-
+            //Telt alle bagages op binnen 3 dagen 
             while (rs3.next()) {
                 ++count3;
             }
+            //Telt alle bagages op binnen 21 dagen
             while (rs21.next()) {
                 ++count21;
             }
 //            while (rsNooit.next()) {
 //                ++countNooit;
 //            }
-            
+            //Data wordt laten zien in de database. Vermissingen binnen 3 en 21 dagen.
             ObservableList<PieChart.Data> pieChartData
                = FXCollections.observableArrayList(
                         new PieChart.Data("Binnen 3 dagen("+ count3 +")" , count3),

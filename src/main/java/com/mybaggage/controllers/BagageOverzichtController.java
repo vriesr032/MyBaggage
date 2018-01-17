@@ -45,7 +45,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-
 public class BagageOverzichtController implements Initializable {
 
     @FXML
@@ -106,7 +105,7 @@ public class BagageOverzichtController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("BagageOverzicht.fxml"));
         rootPane.getChildren().setAll(pane);
     }
-    
+
     @FXML
     private void setCellTable() {
         formuliernummer.setCellValueFactory(new PropertyValueFactory<>("formuliernummer"));
@@ -146,10 +145,13 @@ public class BagageOverzichtController implements Initializable {
     public BagageOverzichtController() {
         conn = Database.connectdb();
     }
+//AUTHOR Osman Can Sener
 
     @FXML
     private void exportExcel() {
+        // Een variabele die verwijst naar DB connection zodat je het telkens opnieuw kan gebruiken
         conn = Database.connectdb();
+        //Maakt connectie met de database en voert de query uit
         try {
             String query = "Select * from registratie";
             pst = conn.prepareStatement(query);
@@ -159,21 +161,23 @@ public class BagageOverzichtController implements Initializable {
             XSSFWorkbook wb = new XSSFWorkbook();
             XSSFSheet sheet = wb.createSheet("Bagage overzicht");// maakt een sheet aan
             XSSFRow header = sheet.createRow(0); // maakt rijen aan om de data van de database te krijgen
-            header.createCell(0).setCellValue("formuliernummer");
+            header.createCell(0).setCellValue("formuliernummer");// hier worden de headers aangemaakt van de excel bestand
             header.createCell(1).setCellValue("naam");
             header.createCell(2).setCellValue("lostandfoundID");
             header.createCell(3).setCellValue("kenmerken");
             header.createCell(4).setCellValue("luchthaven");
 
+            //De breedte van de cellen worden hier bepaald
             sheet.setColumnWidth(0, 256 * 25);
             sheet.setColumnWidth(1, 256 * 25);
             sheet.setColumnWidth(2, 256 * 25);
             sheet.setColumnWidth(3, 256 * 25);
             sheet.setColumnWidth(4, 256 * 25);
 
-            int index = 1;
-// Met deze code  pak je alleen de 1e rij van de excel bestand.
+            int index = 1; // Met deze code  pak je alleen de 1e rij van het excel bestand.
+
             while (rs.next()) {
+                //Hier worden de rijen aangemaakt en alle data van de database wordt er in gepompt
                 XSSFRow row = sheet.createRow(index);
                 row.createCell(0).setCellValue(rs.getString("formuliernummer"));
                 row.createCell(1).setCellValue(rs.getString("naam"));
@@ -182,16 +186,18 @@ public class BagageOverzichtController implements Initializable {
                 row.createCell(4).setCellValue(rs.getString("luchthaven"));
                 index++; // Dit zorgt ervoor dat er meerdere rijen in de excel bestand worden opgepakt
             }
-
+            //Er wordt een excel bestand aangemaakt die "Bagage Overzicht" gaat heten.
             FileOutputStream fileOut = new FileOutputStream("Bagage Overzicht.xlsx");
             wb.write(fileOut);
 
+            //Een alert wanneer je succesvol geëxporteerd hebt
             Alert alert = new Alert(AlertType.INFORMATION);
             alert.setTitle("BagageOverzicht");
             alert.setHeaderText(null);
             alert.setContentText("Overzicht succesvol geëxporteerd!");
             alert.showAndWait();
 
+            //Eindigt de verbinding
             pst.close();
             rs.close();
 
@@ -200,23 +206,30 @@ public class BagageOverzichtController implements Initializable {
         }
 
     }
+//AUTHOR Osman Can Sener 
 
     @FXML
     private void importExcel() throws ParseException {
         try {
+            // Een variabele die verwijst naar DB connection zodat je het telkens opnieuw kan gebruiken
             conn = Database.connectdb();
+            //Maakt connectie met de database en voert de query uit
             String query = "Insert into registratie(naam, adres, woonplaats, postcode, land, telefoonnummer, type, merk, kleur, kenmerken, "
                     + "labelnummer, vluchtnummer, bestemming, tijd, datum, luchthaven, lostandfoundID, klantnummer) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             pst = conn.prepareStatement(query);
 
-            String excelFilePath = "Bagage.xlsx";
-            try (FileInputStream fileIn = new FileInputStream(new File(excelFilePath));
+            String excelFilePath = "Bagage.xlsx"; // variabele om een excel bestand te gebruiken
+            //Gebruikt het bestand "Bagage.xlsx"
+            try (FileInputStream fileIn = new FileInputStream(excelFilePath);
                     XSSFWorkbook wb = new XSSFWorkbook(fileIn)) {
                 XSSFSheet sheet = wb.getSheetAt(0);
-                Row row;
+                Row row; // creert een rij
+                //leest elke rij in het excel bestand
                 for (int i = 1; i <= sheet.getLastRowNum(); i++) {
                     try {
+                        // leest hier de 1e rij
                         row = sheet.getRow(i);
+                        //Leest een cel en voegt er waarde in toe
                         pst.setString(1, row.getCell(0).getStringCellValue());
                         pst.setString(2, row.getCell(1).getStringCellValue());
                         pst.setString(3, row.getCell(2).getStringCellValue());
@@ -227,19 +240,21 @@ public class BagageOverzichtController implements Initializable {
                         pst.setString(8, row.getCell(7).getStringCellValue());
                         pst.setString(9, row.getCell(8).getStringCellValue());
                         pst.setString(10, row.getCell(9).getStringCellValue());
-                        pst.setInt(11,(int) row.getCell(10).getNumericCellValue());
-                        pst.setInt(12,(int) row.getCell(11).getNumericCellValue());
+                        pst.setInt(11, (int) row.getCell(10).getNumericCellValue());
+                        pst.setInt(12, (int) row.getCell(11).getNumericCellValue());
                         pst.setString(13, row.getCell(12).getStringCellValue());
-                        pst.setTime(14, new java.sql.Time (row.getCell(13).getDateCellValue().getTime()));
+                        // Pakt util.time van een Excel cel and zet het om in SQL.time
+                        pst.setTime(14, new java.sql.Time(row.getCell(13).getDateCellValue().getTime()));
+                        //Pakt util.date van een Excel cel en zet het om in  SQL.date
                         pst.setDate(15, new java.sql.Date(row.getCell(14).getDateCellValue().getTime()));
                         pst.setString(16, row.getCell(15).getStringCellValue());
-                        pst.setInt(17,(int) row.getCell(16).getNumericCellValue());
-                        pst.setInt(18,(int) row.getCell(17).getNumericCellValue());
+                        pst.setInt(17, (int) row.getCell(16).getNumericCellValue());
+                        pst.setInt(18, (int) row.getCell(17).getNumericCellValue());
                         pst.execute();
                     } catch (NumberFormatException e) {
                     }
                 }
-
+                // geeft een alert aan wanneer je succesvol geïmporteerd hebt
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("BagageOverzicht");
                 alert.setHeaderText(null);
@@ -247,6 +262,7 @@ public class BagageOverzichtController implements Initializable {
                 alert.showAndWait();
 
             }
+            //Eindigt de verbinding
             pst.close();
             rs.close();
         } catch (SQLException | FileNotFoundException ex) {
