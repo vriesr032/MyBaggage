@@ -37,11 +37,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
 
-/*
+/* Het doel van deze code is dat de medewerker schade kan registreren.
  * @author Jordy Pouw (500783513)
  */
 
-public  class FXMLController implements Initializable {
+public  class SchadeRegistratieController implements Initializable {
 
     final String DEFAULT_STRING = "";
     final int DEFAULT_INTEGER = 1;
@@ -81,29 +81,42 @@ public  class FXMLController implements Initializable {
 
     @FXML
     private JFXButton btn_RegistreerSchadevergoeding;
+    
+    @FXML
+    private JFXButton btn_MaakFormulierLeeg;
+    
+    @FXML
+    private Label labelReset;
+    
+    @FXML
+    private Label labelRegistreer;
 
     @FXML
     private void insertSchadeFormulier(ActionEvent event) throws ClassNotFoundException, SQLException, ParseException {
         if (event.getTarget() == btn_RegistreerSchadevergoeding) {
 
             Schaderegistratie schadeFormulier = vulSchadeFormulierIn();
+            
+            //Maak een label aan voor als de button registreer wordt aangeklikt.
+            labelRegistreer.setText("Geregistreerd!");
 
+            //Maak een query aan zodat de ingevulde tekst goed in de database wordt gezet.
             String query = "INSERT INTO bagage_registratie.schade (lostandfoundID, bankrekening, datum, tijd, luchthaven, naam, schade, "
-                    + "vergoeding, type, merk)"
+                    + "vergoeding, merk, type)"
                     + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+            //Maak een methode aan zodat de ingevulde tekst in de database wordt gezet.
             try {
                 Utilities.preparedStatement = Database.connectdb().prepareStatement(query);               
                 Utilities.preparedStatement.setInt(1, schadeFormulier.getLostAndFoundID());
-                Utilities.preparedStatement.setString(6, schadeFormulier.getBankrekening());
+                Utilities.preparedStatement.setString(10, schadeFormulier.getBankrekening());
                 Utilities.preparedStatement.setString(3, schadeFormulier.getDatum());
                 Utilities.preparedStatement.setString(4, schadeFormulier.getTijd());
                 Utilities.preparedStatement.setString(5, schadeFormulier.getLuchthaven());
-                Utilities.preparedStatement.setString(10, schadeFormulier.getNaam());
+                Utilities.preparedStatement.setString(2, schadeFormulier.getNaam());
                 Utilities.preparedStatement.setString(9, schadeFormulier.getSchade());
                 Utilities.preparedStatement.setString(8, schadeFormulier.getVergoeding());
-                Utilities.preparedStatement.setString(2, schadeFormulier.getType());
-                Utilities.preparedStatement.setString(7, schadeFormulier.getMerk());
+                Utilities.preparedStatement.setString(7, schadeFormulier.getType());
+                Utilities.preparedStatement.setString(6, schadeFormulier.getMerk());
 
                 Utilities.preparedStatement.executeUpdate();
             } catch (SQLException mySQLException) {
@@ -113,6 +126,7 @@ public  class FXMLController implements Initializable {
     }
 
     @FXML
+    //zorg dat het formulier kan worden ingevuld.
     private Schaderegistratie vulSchadeFormulierIn() {
         Schaderegistratie schadeFormulier = new Schaderegistratie();
 
@@ -129,6 +143,23 @@ public  class FXMLController implements Initializable {
         schadeFormulier.setBankrekening(txtBankrekening.getText());
 
         return schadeFormulier;
+    }
+    
+    @FXML
+    //maak een methode aan voor de button reset formulier zodat het formulier handmatig kan worden gereset
+    private void maakLeeg(){
+        txtTijd.setText("");
+        txtLuchthaven.setText("");
+        txtNaam.setText("");
+        txtMerk.setText("");
+        txtType.setText("");
+        txtLostAndFoundID.setText("");
+        txtType.setText("");
+        txtSchade.setText("");
+        txtVergoeding.setText("");
+        txtBankrekening.setText("");
+               
+        labelReset.setText("Formulier gereset!");
     }
 
     @Override
