@@ -53,7 +53,7 @@ public class MedewerkerController implements Initializable {
     private Button btnBagageZoeken;
     @FXML
     private Button btnRegistreerSchadevergoeding;
-    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, bagageToevoegen, bagageZoeken, registreerSchadevergoeding;
+    AnchorPane bagageOverzicht, faq, helpdesk, fxml2, inlogscherm, bagageZoeken, registreerSchadevergoeding;
 
     //Zet waarden leeg en maakt nieuwe objecten via classes.
     Stage dialogStage = new Stage();
@@ -71,7 +71,7 @@ public class MedewerkerController implements Initializable {
             inlogscherm = FXMLLoader.load(getClass().getResource("Inlogscherm.fxml"));
             faq = FXMLLoader.load(getClass().getResource("FAQ.fxml"));
             fxml2 = FXMLLoader.load(getClass().getResource("Rapportage.fxml"));
-            bagageToevoegen = FXMLLoader.load(getClass().getResource("GevondenBagageRegistratie.fxml"));
+
             bagageZoeken = FXMLLoader.load(getClass().getResource("VermisteBagageRegistratie.fxml"));
             helpdesk = FXMLLoader.load(getClass().getResource("HelpdeskMedewerker.fxml"));
             registreerSchadevergoeding = FXMLLoader.load(getClass().getResource("RegistreerSchadevergoeding.fxml"));
@@ -86,7 +86,6 @@ public class MedewerkerController implements Initializable {
     @FXML
     private void logOff(ActionEvent event) throws IOException {
         Node source = (Node) event.getSource();
-        dialogStage = (Stage) source.getScene().getWindow();
         dialogStage.close();
         scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("Inlogscherm.fxml")));
         dialogStage.setScene(scene);

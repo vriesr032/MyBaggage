@@ -39,7 +39,7 @@ public class OningelogdController implements Initializable {
     
     AnchorPane contact, helpdesk;
 
-    //Zet waarden leeg en maakt nieuwe objecten via classes.
+    
     Stage dialogStage = new Stage();
     Scene scene;
     Connection connection = null;
@@ -49,7 +49,7 @@ public class OningelogdController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //Load all fxmls in a cache
+        //Laad de FXML's in cache geheugen.
         try {
 
             contact = FXMLLoader.load(getClass().getResource("Contact.fxml"));
