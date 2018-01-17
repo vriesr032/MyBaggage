@@ -83,9 +83,6 @@ public class RegistratieController implements Initializable {
     final int END_Y_VAN_SCHEIDINGSLIJN = 1120;
     final int LAYOUT_Y_SJABLOON_INCREMENTER = 200;
 
-    // Mag geen constante zijn omdat deze bij elke iteratie een nieuwe waarde krijgt
-    int LAYOUT_Y_VAN_SJABLOON = 20;
-
     // Houd bij hoeveel matches worden gegeneerd bij een zoeksessie
     private int matches;
 
@@ -157,6 +154,52 @@ public class RegistratieController implements Initializable {
 
     @FXML
     private JFXButton btn_RegistreerGevondenBagage;
+
+    @FXML
+    private void ShowZoekResultaten(ActionEvent event) throws IOException, ClassNotFoundException, SQLException, ParseException, InterruptedException {
+        if (event.getTarget() == btn_GetZoekResultaten) {
+            // Controleer of de vermiste bagage formulier op de juiste manier is ingevuld
+            if (isVermisteBagageFormulierGeldig()) {
+                // Vul de vermistebagageformulier in
+                Bagageregistratie ingevuldeVermisteBagageFormulier = vulVermisteBagageFormulierIn();
+
+                // Verzamel relevante zoekresultaten
+                getZoekResultaten(ingevuldeVermisteBagageFormulier);
+
+                // Controleer of er matches zijn gegeneerd
+                if (isMatchOnstaan()) {
+                    // Get de opmaak met behulp van de zoekresultaten
+                    Pane[] sjablonen = CreateZoekResultatenLijst(ingevuldeVermisteBagageFormulier);
+
+                    // Genereer de zoekresultaten
+                    genereerZoekResultaten(sjablonen);
+                }
+            }
+        }
+    }
+
+    @FXML
+    private Bagageregistratie vulVermisteBagageFormulierIn() throws ParseException {
+        Bagageregistratie vermisteBagageFormulier = new Bagageregistratie();
+
+        vermisteBagageFormulier.setDatum(txtDatum.getValue());
+        vermisteBagageFormulier.setLuchthaven((String) luchthavenComboBox.getValue());
+        vermisteBagageFormulier.setLabelnummer(txtLabelnummer.getText());
+        vermisteBagageFormulier.setVluchtnummer(txtVluchtnummer.getText());
+        vermisteBagageFormulier.setBestemming((String) bestemmingComboBox.getValue());
+        vermisteBagageFormulier.setNaam(txtNaam.getText());
+        vermisteBagageFormulier.setAdres(txtAdres.getText());
+        vermisteBagageFormulier.setWoonplaats(txtWoonplaats.getText());
+        vermisteBagageFormulier.setPostcode(txtPostcode.getText());
+        vermisteBagageFormulier.setLand((String) landComboBox.getValue());
+        vermisteBagageFormulier.setTelefoonnummer(txtTelefoonnummer.getText());
+        vermisteBagageFormulier.setType((String) typeComboBox.getValue());
+        vermisteBagageFormulier.setMerk((String) merkComboBox.getValue());
+        vermisteBagageFormulier.setKleur((String) kleurComboBox.getValue());
+        vermisteBagageFormulier.setKenmerken(txtKenmerken.getText());
+
+        return vermisteBagageFormulier;
+    }
 
     @FXML
     private boolean isVermisteBagageFormulierGeldig() {
@@ -232,31 +275,6 @@ public class RegistratieController implements Initializable {
     }
 
     @FXML
-    private boolean isGevondenBagageFormulierGeldig() {
-        try {
-            // Check of de datum is ingevuld
-            if (txtDatum.getValue() == null) {
-                Utilities.errorBox("Vul de datum in!");
-                return false;
-            } // Check of de ingevulde labelnummer alleen cijfers bevat
-            else if (!txtLabelnummer.getText().matches("[0-9]+") && !"".equals(txtLabelnummer.getText())) {
-                Utilities.errorBox("Labelnummer mag alleen cijfers bevatten!");
-                return false;
-            } // Check of de ingevulde lost-and-found-id alleen cijfers bevat
-            else if (!txtLostAndFoundID.getText().matches("[0-9]+") && !"".equals(txtLostAndFoundID.getText())) {
-                Utilities.errorBox("Lost-and-found-id mag alleen cijfers bevatten!");
-                return false;
-            } // Check of de bijzondere kenmerken text groter is dan is toegestaan
-            else if (txtKenmerken.getText().length() > MAX_LENGTE_KENMERKEN) {
-                Utilities.errorBox("Bijzondere kenmerken mag maar 255 karakaters lang zijn!");
-                return false;
-            }
-        } catch (Exception e) {
-        }
-        return true;
-    }
-
-    @FXML
     private boolean isMatchOnstaan() {
         switch (matches) {
             case 0:
@@ -272,52 +290,6 @@ public class RegistratieController implements Initializable {
                 Utilities.infoBox("Bagage Zoeken", "ALERT", String.format("%d matches!", matches));
                 return true;
         }
-    }
-
-    @FXML
-    private void ShowZoekResultaten(ActionEvent event) throws IOException, ClassNotFoundException, SQLException, ParseException, InterruptedException {
-        if (event.getTarget() == btn_GetZoekResultaten) {
-            // Controleer of de vermiste bagage formulier op de juiste manier is ingevuld
-            if (isVermisteBagageFormulierGeldig()) {
-                // Vul de vermistebagageformulier in
-                Bagageregistratie ingevuldeVermisteBagageFormulier = vulVermisteBagageFormulierIn();
-
-                // Verzamel relevante zoekresultaten
-                getZoekResultaten(ingevuldeVermisteBagageFormulier);
-
-                // Controleer of er matches zijn gegeneerd
-                if (isMatchOnstaan()) {
-                    // Get de opmaak met behulp van de zoekresultaten
-                    Pane[] sjablonen = CreateZoekResultatenLijst(ingevuldeVermisteBagageFormulier);
-
-                    // Genereer de zoekresultaten
-                    genereerZoekResultaten(sjablonen);
-                }
-            }
-        }
-    }
-
-    @FXML
-    private Bagageregistratie vulVermisteBagageFormulierIn() throws ParseException {
-        Bagageregistratie vermisteBagageFormulier = new Bagageregistratie();
-
-        vermisteBagageFormulier.setDatum(txtDatum.getValue());
-        vermisteBagageFormulier.setLuchthaven((String) luchthavenComboBox.getValue());
-        vermisteBagageFormulier.setLabelnummer(txtLabelnummer.getText());
-        vermisteBagageFormulier.setVluchtnummer(txtVluchtnummer.getText());
-        vermisteBagageFormulier.setBestemming((String) bestemmingComboBox.getValue());
-        vermisteBagageFormulier.setNaam(txtNaam.getText());
-        vermisteBagageFormulier.setAdres(txtAdres.getText());
-        vermisteBagageFormulier.setWoonplaats(txtWoonplaats.getText());
-        vermisteBagageFormulier.setPostcode(txtPostcode.getText());
-        vermisteBagageFormulier.setLand((String) landComboBox.getValue());
-        vermisteBagageFormulier.setTelefoonnummer(txtTelefoonnummer.getText());
-        vermisteBagageFormulier.setType((String) typeComboBox.getValue());
-        vermisteBagageFormulier.setMerk((String) merkComboBox.getValue());
-        vermisteBagageFormulier.setKleur((String) kleurComboBox.getValue());
-        vermisteBagageFormulier.setKenmerken(txtKenmerken.getText());
-
-        return vermisteBagageFormulier;
     }
 
     @FXML
@@ -372,12 +344,15 @@ public class RegistratieController implements Initializable {
         Button claimKoffer;
         Line scheidingslijn;
 
+        // Mag geen constante zijn omdat deze bij elke iteratie een nieuwe waarde krijgt
+        int layout_Y_Van_Sjabloon = 20;
+
         // Vul de sjablonen in
         for (int kofferIndex = 0; kofferIndex < lijstVanLuchthavens.size(); kofferIndex++) {
             // Creëer sjabloon
             sjablonen[kofferIndex] = new Pane();
             sjablonen[kofferIndex].setLayoutX(LAYOUT_X_VAN_SJABLOON);
-            sjablonen[kofferIndex].setLayoutY(LAYOUT_Y_VAN_SJABLOON);
+            sjablonen[kofferIndex].setLayoutY(layout_Y_Van_Sjabloon);
 
             // Set type
             type = new Label();
@@ -492,7 +467,7 @@ public class RegistratieController implements Initializable {
             sjablonen[kofferIndex].getChildren().add(scheidingslijn);
 
             // Verander de positie van de sjabloon voor een consistente opmaak
-            LAYOUT_Y_VAN_SJABLOON += LAYOUT_Y_SJABLOON_INCREMENTER;
+            layout_Y_Van_Sjabloon += LAYOUT_Y_SJABLOON_INCREMENTER;
         }
         return sjablonen;
     }
@@ -611,23 +586,28 @@ public class RegistratieController implements Initializable {
     }
 
     @FXML
-    private void laadAlleComboboxen() {
+    private boolean isGevondenBagageFormulierGeldig() {
         try {
-            setLuchthavensLijst();
-            setBestemmingenLijst();
-            setTypesLijst();
-            setMerkenLijst();
-            setKleurenLijst();
-            setLandenLijst();
+            // Check of de datum is ingevuld
+            if (txtDatum.getValue() == null) {
+                Utilities.errorBox("Vul de datum in!");
+                return false;
+            } // Check of de ingevulde labelnummer alleen cijfers bevat
+            else if (!txtLabelnummer.getText().matches("[0-9]+") && !"".equals(txtLabelnummer.getText())) {
+                Utilities.errorBox("Labelnummer mag alleen cijfers bevatten!");
+                return false;
+            } // Check of de ingevulde lost-and-found-id alleen cijfers bevat
+            else if (!txtLostAndFoundID.getText().matches("[0-9]+") && !"".equals(txtLostAndFoundID.getText())) {
+                Utilities.errorBox("Lost-and-found-id mag alleen cijfers bevatten!");
+                return false;
+            } // Check of de bijzondere kenmerken text groter is dan is toegestaan
+            else if (txtKenmerken.getText().length() > MAX_LENGTE_KENMERKEN) {
+                Utilities.errorBox("Bijzondere kenmerken mag maar 255 karakaters lang zijn!");
+                return false;
+            }
         } catch (Exception e) {
         }
-    }
-
-    @FXML
-    private void vulCombobox(ArrayList<String> lijst, JFXComboBox comboBox) {
-        for (String item : lijst) {
-            comboBox.getItems().add(item);
-        }
+        return true;
     }
 
     @FXML
@@ -765,6 +745,26 @@ public class RegistratieController implements Initializable {
         Collections.sort(landenLijst);
 
         vulCombobox(landenLijst, landComboBox);
+    }
+
+    @FXML
+    private void laadAlleComboboxen() {
+        try {
+            setLuchthavensLijst();
+            setBestemmingenLijst();
+            setTypesLijst();
+            setMerkenLijst();
+            setKleurenLijst();
+            setLandenLijst();
+        } catch (Exception e) {
+        }
+    }
+
+    @FXML
+    private void vulCombobox(ArrayList<String> lijst, JFXComboBox comboBox) {
+        for (String item : lijst) {
+            comboBox.getItems().add(item);
+        }
     }
 
     @Override

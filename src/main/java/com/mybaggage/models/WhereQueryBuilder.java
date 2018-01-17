@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- * Het doel van deze class is om de WHERE query dynamisch op te bouwen. De reden hiervoor is om de query overzichtelijk en simpel te houden.
+ * Het doel van deze class is om een WHERE query dynamisch op te bouwen, zo kan je namelijk de Where query overzichtelijk en simpel houden.
  *
  * @author Mitchell Gordon (500775386)
  */
